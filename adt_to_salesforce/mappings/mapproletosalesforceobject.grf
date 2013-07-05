@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="sranjitkar" created="Thu Jun 20 16:30:34 PDT 2013" guiVersion="3.3.2" id="1371774065247" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Thu Jun 20 16:30:34 PDT 2013" modifiedBy="sranjitkar" name="mapproletosalesforceobject_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{}/ADT_Patient_Visit_Care_Role__c" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="db8f72d1-7834-4e33-bb01-670dfecce910">
+<Record fieldDelimiter="|" name="ADT_Patient_Visit_Care_Role__c" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Provider__c" containerType="SINGLE" label="Provider__c" name="Provider__c" type="string"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/LastModifiedById" containerType="SINGLE" label="LastModifiedById" name="LastModifiedById" type="string"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/LastModifiedDate" containerType="SINGLE" label="LastModifiedDate" name="LastModifiedDate" type="date"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Active__c" containerType="SINGLE" label="Active__c" name="Active__c" type="boolean"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Primary_Care_Provider__c" containerType="SINGLE" label="Primary_Care_Provider__c" name="Primary_Care_Provider__c" type="boolean"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/ADT_Patient__c" containerType="SINGLE" label="ADT_Patient__c" name="Patient__c" type="string"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Name" containerType="SINGLE" label="Name" name="Name" type="string"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/ADT_Patient_Visit__c" containerType="SINGLE" label="ADT_Patient_Visit__c" name="ADT_Patient_Visit__c" type="string"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/SystemModstamp" containerType="SINGLE" label="SystemModstamp" name="SystemModstamp" type="date"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/CreatedById" containerType="SINGLE" label="CreatedById" name="CreatedById" type="string"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/CreatedDate" containerType="SINGLE" label="CreatedDate" name="CreatedDate" type="date"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Id" containerType="SINGLE" label="Id" name="Id" type="string"/>
+<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/ExternalKey__c" containerType="SINGLE" label="ExternalKey__c" name="ExternalKey__c" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/list" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Input" id="5ec93c7d-337d-48a2-8aa1-5ff3243833b7">
+<Record fieldDelimiter="|" name="list" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/list/externatlId" containerType="SINGLE" label="externatlId" name="externatlId" type="string"/>
+<Field __sourcePath="{}/list/firstname" containerType="SINGLE" label="firstname" name="firstname" type="string"/>
+<Field __sourcePath="{}/list/lastname" containerType="SINGLE" label="lastname" name="lastname" type="string"/>
+<Field __sourcePath="{}/list/middlename" containerType="SINGLE" label="middlename" name="middlename" type="string"/>
+<Field __sourcePath="{}/list/mso" containerType="SINGLE" label="mso" name="mso" type="string"/>
+<Field __sourcePath="{}/list/patientId" containerType="SINGLE" label="patientId" name="patientId" type="string"/>
+<Field __sourcePath="{}/list/patientVisitId" containerType="SINGLE" label="patientVisitId" name="patientVisitId" type="string"/>
+<Field __sourcePath="{}/list/providerId" containerType="SINGLE" label="providerId" name="providerId" type="string"/>
+<Field __sourcePath="{}/list/roleid" containerType="SINGLE" label="roleid" name="roleid" type="string"/>
+<Field __sourcePath="{}/list/roletype" containerType="SINGLE" label="roletype" name="roletype" type="string"/>
+<Field __sourcePath="{}/list/ucsfid" containerType="SINGLE" label="ucsfid" name="ucsfid" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+<Entry dictval.__javaType="java.lang.String" id="DictionaryEntry2" input="true" name="patientId" output="true" type="string"/>
+<Entry dictval.__javaType="java.lang.String" id="DictionaryEntry3" input="true" name="patientVisitId" output="true" type="string"/>
+<Entry dictval.__javaType="java.lang.String" id="DictionaryEntry4" input="true" name="roletype" output="true" type="string"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="Pojo READER" guiWidth="0" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="externatlId" trim="true" xpath="externatlId"/>
+  <Mapping cloverField="firstname" trim="true" xpath="firstname"/>
+  <Mapping cloverField="lastname" trim="true" xpath="lastname"/>
+  <Mapping cloverField="middlename" trim="true" xpath="middlename"/>
+  <Mapping cloverField="mso" trim="true" xpath="mso"/>
+  <Mapping cloverField="patientId" trim="true" xpath="patientId"/>
+  <Mapping cloverField="patientVisitId" trim="true" xpath="patientVisitId"/>
+  <Mapping cloverField="providerId" trim="true" xpath="providerId"/>
+  <Mapping cloverField="roleid" trim="true" xpath="roleid"/>
+  <Mapping cloverField="roletype" trim="true" xpath="roletype"/>
+  <Mapping cloverField="ucsfid" trim="true" xpath="ucsfid"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema-object>
+  <schema-collection>
+    <typed-object-ref type-ref="edu.ucsf.mule.domain.Role"/>
+  </schema-collection>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="edu.ucsf.mule.domain.Role">
+    <typed-object-ref name="externatlId" type-ref="java.lang.String"/>
+    <typed-object-ref name="firstname" type-ref="java.lang.String"/>
+    <typed-object-ref name="lastname" type-ref="java.lang.String"/>
+    <typed-object-ref name="middlename" type-ref="java.lang.String"/>
+    <typed-object-ref name="mso" type-ref="java.lang.String"/>
+    <typed-object-ref name="patientId" type-ref="java.lang.String"/>
+    <typed-object-ref name="patientVisitId" type-ref="java.lang.String"/>
+    <typed-object-ref name="providerId" type-ref="java.lang.String"/>
+    <typed-object-ref name="roleid" type-ref="java.lang.String"/>
+    <typed-object-ref name="roletype" type-ref="java.lang.String"/>
+    <typed-object-ref name="ucsfid" type-ref="java.lang.String"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+</Node>
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Map&lt;k,v&gt; WRITER" guiWidth="0" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:collection clover:name="ADT_Patient_Visit_Care_Role__c" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
+  <item clover:inPort="0">
+    <clover:element clover:name="Provider__c">$0.Provider__c</clover:element>
+    <LastModifiedById>$0.LastModifiedById</LastModifiedById>
+    <LastModifiedDate>$0.LastModifiedDate</LastModifiedDate>
+    <clover:element clover:name="Active__c">$0.Active__c</clover:element>
+    <clover:element clover:name="Primary_Care_Provider__c">$0.Primary_Care_Provider__c</clover:element>
+    <clover:element clover:name="ADT_Patient__c">$0.Patient__c</clover:element>
+    <Name>$0.Name</Name>
+    <clover:element clover:name="ADT_Patient_Visit__c">$0.ADT_Patient_Visit__c</clover:element>
+    <SystemModstamp>$0.SystemModstamp</SystemModstamp>
+    <CreatedById>$0.CreatedById</CreatedById>
+    <CreatedDate>$0.CreatedDate</CreatedDate>
+    <Id>$0.Id</Id>
+    <clover:element clover:name="ExternalKey__c">$0.ExternalKey__c</clover:element>
+  </item>
+</clover:collection>]]></attr>
+<attr name="__typeName"><![CDATA[ADT_Patient_Visit_Care_Role__c]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/sfdc/update]]></attr>
+<attr name="__connectorName"><![CDATA[UCSF_SF_Connection]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'list' -&gt; 'ADT_Patient_Visit_Care_Role__c'" guiWidth="0" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.Provider__c = input.providerId;
+
+
+output.Patient__c = inputArguments.patientId;
+output.ADT_Patient_Visit__c = (inputArguments.roletype =='inpatient' ?   inputArguments.patientVisitId : null);
+output.Active__c = true;
+output.ExternalKey__c = input.externatlId;]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="5ec93c7d-337d-48a2-8aa1-5ff3243833b7" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="db8f72d1-7834-4e33-bb01-670dfecce910" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+</Phase>
+</Graph>

@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="Shuba" created="Wed Mar 27 20:19:42 PDT 2013" guiVersion="3.3.2" id="1364495072659" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Wed Mar 27 20:19:42 PDT 2013" modifiedBy="Shuba" name="a01map2map_grf" preview-file="${Project_Home}/src/test/resources/sample3A01.xml" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01" _dataStructure="OBJECT" _id="__id" _type="Input" id="fa14a1a0-8a6c-4469-b9a4-42866e1331d5">
+<Record fieldDelimiter="|" name="ADT_A01" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.1" containerType="SINGLE" label="MSH.1" name="MSH_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.2" containerType="SINGLE" label="MSH.2" name="MSH_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.3/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.4/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.5/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.6/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.7/ns0:TS.1" containerType="SINGLE" label="TS.1" name="TS_1" type="long"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.8" containerType="SINGLE" label="MSH.8" name="MSH_8" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.9/ns0:MSG.1" containerType="SINGLE" label="MSG.1" name="MSG_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.9/ns0:MSG.2" containerType="SINGLE" label="MSG.2" name="MSG_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.10" containerType="SINGLE" label="MSH.10" name="MSH_10" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.11/ns0:PT.1" containerType="SINGLE" label="PT.1" name="PT_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:MSH/ns0:MSH.12/ns0:VID.1" containerType="SINGLE" label="VID.1" name="VID_1" type="number"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.1" containerType="SINGLE" label="EVN.1" name="EVN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.2/ns0:TS.1" containerType="SINGLE" label="TS.1" name="TS_1_1" type="long"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.4" containerType="SINGLE" label="EVN.4" name="EVN_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.5/ns0:XCN.1" containerType="SINGLE" label="XCN.1" name="XCN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.5/ns0:XCN.2/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.5/ns0:XCN.3" containerType="SINGLE" label="XCN.3" name="XCN_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.5/ns0:XCN.9/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.5/ns0:XCN.14/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_5" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:EVN/ns0:EVN.6/ns0:TS.1" containerType="SINGLE" label="TS.1" name="TS_1_2" type="long"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.1" containerType="SINGLE" label="PID.1" name="PID_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.3/ns0:CX.1" containerType="SINGLE" label="CX.1" name="CX_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.3/ns0:CX.4/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_6" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.3/ns0:CX.5" containerType="SINGLE" label="CX.5" name="CX_5" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.5/ns0:XPN.1/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.5/ns0:XPN.2" containerType="SINGLE" label="XPN.2" name="XPN_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.7/ns0:TS.1" containerType="SINGLE" label="TS.1" name="TS_1_3" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.8" containerType="SINGLE" label="PID.8" name="PID_8" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.10/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.11/ns0:XAD.1/ns0:SAD.1" containerType="SINGLE" label="SAD.1" name="SAD_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.11/ns0:XAD.3" containerType="SINGLE" label="XAD.3" name="XAD_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.11/ns0:XAD.4" containerType="SINGLE" label="XAD.4" name="XAD_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.11/ns0:XAD.5" containerType="SINGLE" label="XAD.5" name="XAD_5" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.11/ns0:XAD.6" containerType="SINGLE" label="XAD.6" name="XAD_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.11/ns0:XAD.7" containerType="SINGLE" label="XAD.7" name="XAD_7" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.11/ns0:XAD.9" containerType="SINGLE" label="XAD.9" name="XAD_9" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.12" containerType="SINGLE" label="PID.12" name="PID_12" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.14/ns0:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.14/ns0:XTN.2" containerType="SINGLE" label="XTN.2" name="XTN_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.14/ns0:XTN.3" containerType="SINGLE" label="XTN.3" name="XTN_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.14/ns0:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.14/ns0:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.15/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.16/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.17/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.19" containerType="SINGLE" label="PID.19" name="PID_19" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.22/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.28/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_5" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.30" containerType="SINGLE" label="PID.30" name="PID_30" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ZPD/ns0:ZPD.9" containerType="SINGLE" label="ZPD.9" name="ZPD_9" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.3/ns0:XON.1" containerType="SINGLE" label="XON.1" name="XON_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.3/ns0:XON.3" containerType="SINGLE" label="XON.3" name="XON_3" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.4/ns0:XCN.1" containerType="SINGLE" label="XCN.1" name="XCN_1_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.4/ns0:XCN.2/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.4/ns0:XCN.3" containerType="SINGLE" label="XCN.3" name="XCN_3_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.4/ns0:XCN.4" containerType="SINGLE" label="XCN.4" name="XCN_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.4/ns0:XCN.9/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_7" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.4/ns0:XCN.13" containerType="SINGLE" label="XCN.13" name="XCN_13" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.1/ns0:EI.1" containerType="SINGLE" label="EI.1" name="EI_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.3/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_6" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.4/ns0:XCN.1" containerType="SINGLE" label="XCN.1" name="XCN_1_2" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.4/ns0:XCN.2/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.4/ns0:XCN.3" containerType="SINGLE" label="XCN.3" name="XCN_3_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.4/ns0:XCN.4" containerType="SINGLE" label="XCN.4" name="XCN_4_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.4/ns0:XCN.9/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_8" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.4/ns0:XCN.13" containerType="SINGLE" label="XCN.13" name="XCN_13_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.5/ns0:TS.1" containerType="SINGLE" label="TS.1" name="TS_1_4" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.9/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_7" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.10/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_8" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.11/ns0:XAD.1/ns0:SAD.1" containerType="SINGLE" label="SAD.1" name="SAD_1_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.11/ns0:XAD.2" containerType="SINGLE" label="XAD.2" name="XAD_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.11/ns0:XAD.3" containerType="SINGLE" label="XAD.3" name="XAD_3_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.11/ns0:XAD.4" containerType="SINGLE" label="XAD.4" name="XAD_4_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.11/ns0:XAD.5" containerType="SINGLE" label="XAD.5" name="XAD_5_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.1" containerType="SINGLE" label="PV1.1" name="PV1_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.2" containerType="SINGLE" label="PV1.2" name="PV1_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.3/ns0:PL.1" containerType="SINGLE" label="PL.1" name="PL_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.3/ns0:PL.2" containerType="SINGLE" label="PL.2" name="PL_2" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.3/ns0:PL.3" containerType="SINGLE" label="PL.3" name="PL_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.3/ns0:PL.4/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_9" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.3/ns0:PL.5" containerType="SINGLE" label="PL.5" name="PL_5" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.4" containerType="SINGLE" label="PV1.4" name="PV1_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.7/ns0:XCN.1" containerType="SINGLE" label="XCN.1" name="XCN_1_3" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.7/ns0:XCN.2/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.7/ns0:XCN.3" containerType="SINGLE" label="XCN.3" name="XCN_3_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.7/ns0:XCN.4" containerType="SINGLE" label="XCN.4" name="XCN_4_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.7/ns0:XCN.9/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_10" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.7/ns0:XCN.13" containerType="SINGLE" label="XCN.13" name="XCN_13_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.8/ns0:XCN.1" containerType="SINGLE" label="XCN.1" name="XCN_1_4" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.8/ns0:XCN.2/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1_5" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.8/ns0:XCN.3" containerType="SINGLE" label="XCN.3" name="XCN_3_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.8/ns0:XCN.4" containerType="SINGLE" label="XCN.4" name="XCN_4_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.8/ns0:XCN.9/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_11" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.8/ns0:XCN.13" containerType="SINGLE" label="XCN.13" name="XCN_13_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.10" containerType="SINGLE" label="PV1.10" name="PV1_10" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.14" containerType="SINGLE" label="PV1.14" name="PV1_14" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.17/ns0:XCN.1" containerType="SINGLE" label="XCN.1" name="XCN_1_5" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.17/ns0:XCN.2/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1_6" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.17/ns0:XCN.3" containerType="SINGLE" label="XCN.3" name="XCN_3_5" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.17/ns0:XCN.4" containerType="SINGLE" label="XCN.4" name="XCN_4_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.17/ns0:XCN.9/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_12" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.17/ns0:XCN.13" containerType="SINGLE" label="XCN.13" name="XCN_13_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.19/ns0:CX.1" containerType="SINGLE" label="CX.1" name="CX_1_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.20/ns0:FC.1" containerType="SINGLE" label="FC.1" name="FC_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.41" containerType="SINGLE" label="PV1.41" name="PV1_41" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.42/ns0:PL.4/ns0:HD.1" containerType="SINGLE" label="HD.1" name="HD_1_13" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV1/ns0:PV1.44/ns0:TS.1" containerType="SINGLE" label="TS.1" name="TS_1_5" type="long"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV2/ns0:PV2.2/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_9" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV2/ns0:PV2.8/ns0:TS.1" containerType="SINGLE" label="TS.1" name="TS_1_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV2/ns0:PV2.21" containerType="SINGLE" label="PV2.21" name="PV2_21" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PV2/ns0:PV2.22" containerType="SINGLE" label="PV2.22" name="PV2_22" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ZPV/ns0:ZPV.5/ns0:UNKNOWN.1" containerType="SINGLE" label="UNKNOWN.1" name="UNKNOWN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ZPV/ns0:ZPV.5/ns0:UNKNOWN.7" containerType="SINGLE" label="UNKNOWN.7" name="UNKNOWN_7" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:DG1/ns0:DG1.1" containerType="SINGLE" label="DG1.1" name="DG1_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:DG1/ns0:DG1.3/ns0:CE.2" containerType="SINGLE" label="CE.2" name="CE_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:DG1/ns0:DG1.4" containerType="SINGLE" label="DG1.4" name="DG1_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.1" containerType="SINGLE" label="GT1.1" name="GT1_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.2/ns0:CX.1" containerType="SINGLE" label="CX.1" name="CX_1_2" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.3/ns0:XPN.1/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1_7" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.3/ns0:XPN.2" containerType="SINGLE" label="XPN.2" name="XPN_2_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.5/ns0:XAD.1/ns0:SAD.1" containerType="SINGLE" label="SAD.1" name="SAD_1_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.5/ns0:XAD.3" containerType="SINGLE" label="XAD.3" name="XAD_3_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.5/ns0:XAD.4" containerType="SINGLE" label="XAD.4" name="XAD_4_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.5/ns0:XAD.5" containerType="SINGLE" label="XAD.5" name="XAD_5_2" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.5/ns0:XAD.6" containerType="SINGLE" label="XAD.6" name="XAD_6_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.5/ns0:XAD.9" containerType="SINGLE" label="XAD.9" name="XAD_9_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.6/ns0:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.6/ns0:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.6/ns0:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.7/ns0:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.7/ns0:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6_2" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.7/ns0:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7_2" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.8/ns0:TS.1" containerType="SINGLE" label="TS.1" name="TS_1_7" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.9" containerType="SINGLE" label="GT1.9" name="GT1_9" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.10" containerType="SINGLE" label="GT1.10" name="GT1_10" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.11/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_10" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.12" containerType="SINGLE" label="GT1.12" name="GT1_12" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.16/ns0:XPN.1/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1_8" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.17/ns0:XAD.1/ns0:SAD.1" containerType="SINGLE" label="SAD.1" name="SAD_1_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.17/ns0:XAD.3" containerType="SINGLE" label="XAD.3" name="XAD_3_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.17/ns0:XAD.4" containerType="SINGLE" label="XAD.4" name="XAD_4_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.17/ns0:XAD.5" containerType="SINGLE" label="XAD.5" name="XAD_5_3" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.17/ns0:XAD.6" containerType="SINGLE" label="XAD.6" name="XAD_6_2" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.18/ns0:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.18/ns0:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6_3" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.18/ns0:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7_3" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:GT1/ns0:GT1.20" containerType="SINGLE" label="GT1.20" name="GT1_20" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="fa14a1a0-8a6c-4469-b9a4-42866e1331d5" _parent_id="__parent_id" _type="Input" id="33ab1457-b284-4290-8507-2c8259022322">
+<Record fieldDelimiter="|" name="NK1" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.1" containerType="SINGLE" label="NK1.1" name="NK1_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.2/ns0:XPN.1/ns0:FN.1" containerType="SINGLE" label="FN.1" name="FN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.2/ns0:XPN.2" containerType="SINGLE" label="XPN.2" name="XPN_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.3/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.4/ns0:XAD.1/ns0:SAD.1" containerType="SINGLE" label="SAD.1" name="SAD_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.4/ns0:XAD.3" containerType="SINGLE" label="XAD.3" name="XAD_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.4/ns0:XAD.4" containerType="SINGLE" label="XAD.4" name="XAD_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.4/ns0:XAD.5" containerType="SINGLE" label="XAD.5" name="XAD_5" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.4/ns0:XAD.6" containerType="SINGLE" label="XAD.6" name="XAD_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.5/ns0:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.5/ns0:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.5/ns0:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.6/ns0:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.6/ns0:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.6/ns0:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.7/ns0:CE.1" containerType="SINGLE" label="CE.1" name="CE_1_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.13/ns0:XON.1" containerType="SINGLE" label="XON.1" name="XON_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.33/ns0:CX.1" containerType="SINGLE" label="CX.1" name="CX_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:NK1/ns0:NK1.34" containerType="SINGLE" label="NK1.34" name="NK1_34" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.13" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="fa14a1a0-8a6c-4469-b9a4-42866e1331d5" _parent_id="__parent_id" _type="Input" id="3d33e6fa-d8fd-4b59-a031-ee6ef2421cfa">
+<Record fieldDelimiter="|" name="PID_13" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.13/ns0:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.13/ns0:XTN.2" containerType="SINGLE" label="XTN.2" name="XTN_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.13/ns0:XTN.3" containerType="SINGLE" label="XTN.3" name="XTN_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.13/ns0:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.13/ns0:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PID/ns0:PID.13/ns0:XTN.4" containerType="SINGLE" label="XTN.4" name="XTN_4" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/ReturnPayload" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="5a704ea0-6d6c-433e-bf6f-e7de6cb7c17a">
+<Record fieldDelimiter="|" name="ReturnPayload" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/ReturnPayload/PatientId" containerType="SINGLE" label="PatientId" name="PatientId" type="string"/>
+<Field __sourcePath="{}/ReturnPayload/PatientVisitId" containerType="SINGLE" label="PatientVisitId" name="PatientVisitId" type="string"/>
+<Field __sourcePath="{}/ReturnPayload/Firstname" containerType="SINGLE" label="Firstname" name="Firstname" type="string"/>
+<Field __sourcePath="{}/ReturnPayload/Lastname" containerType="SINGLE" label="Lastname" name="Lastname" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.12" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="fa14a1a0-8a6c-4469-b9a4-42866e1331d5" _parent_id="__parent_id" _type="Input" id="56c804cc-f108-4038-a1cd-b2f8b1dd2ca1">
+<Record fieldDelimiter="|" name="ROL_12" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.12/ns0:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.12/ns0:XTN.3" containerType="SINGLE" label="XTN.3" name="XTN_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.12/ns0:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:ROL/ns0:ROL.12/ns0:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7" type="integer"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+<Entry dictval.__javaType="java.lang.String" id="DictionaryEntry2" input="true" name="PatientIndentifier" output="true" type="string"/>
+<Entry dictval.__javaType="java.lang.String" id="DictionaryEntry3" input="true" name="PatientVisitId" output="true" type="string"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Map&lt;k,v&gt; WRITER" guiWidth="0" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:collection clover:name="ReturnPayload" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
+  <item clover:inPort="0">
+    <PatientId>$0.PatientId</PatientId>
+    <PatientVisitId>$0.PatientVisitId</PatientVisitId>
+    <Firstname>$0.Firstname</Firstname>
+    <Lastname>$0.Lastname</Lastname>
+  </item>
+</clover:collection>]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'ns0:ADT_A01' -&gt; 'ReturnPayload'" guiWidth="0" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.PatientId = inputArguments.PatientIndentifier;
+output.PatientVisitId = inputArguments.PatientVisitId;
+output.Lastname = input.FN_1_2;;
+output.Firstname = input.XCN_3_1;;]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="XML READER" guiWidth="0" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
+<attr name="xmlSchemaURL"><![CDATA[./src/test/resources/ADT_A01.xsd]]></attr>
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" outPort="0" sequenceField="__id" xpath="/ns0:ADT_A01">
+  <Mapping cloverField="MSH_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.1"/>
+  <Mapping cloverField="MSH_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.2"/>
+  <Mapping cloverField="HD_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.3/ns0:HD.1"/>
+  <Mapping cloverField="HD_1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.4/ns0:HD.1"/>
+  <Mapping cloverField="HD_1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.5/ns0:HD.1"/>
+  <Mapping cloverField="HD_1_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.6/ns0:HD.1"/>
+  <Mapping cloverField="TS_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.7/ns0:TS.1"/>
+  <Mapping cloverField="MSH_8" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.8"/>
+  <Mapping cloverField="MSG_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.9/ns0:MSG.1"/>
+  <Mapping cloverField="MSG_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.9/ns0:MSG.2"/>
+  <Mapping cloverField="MSH_10" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.10"/>
+  <Mapping cloverField="PT_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.11/ns0:PT.1"/>
+  <Mapping cloverField="VID_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:MSH/ns0:MSH.12/ns0:VID.1"/>
+  <Mapping cloverField="EVN_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.1"/>
+  <Mapping cloverField="TS_1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.2/ns0:TS.1"/>
+  <Mapping cloverField="EVN_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.4"/>
+  <Mapping cloverField="XCN_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.5/ns0:XCN.1"/>
+  <Mapping cloverField="FN_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.5/ns0:XCN.2/ns0:FN.1"/>
+  <Mapping cloverField="XCN_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.5/ns0:XCN.3"/>
+  <Mapping cloverField="HD_1_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.5/ns0:XCN.9/ns0:HD.1"/>
+  <Mapping cloverField="HD_1_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.5/ns0:XCN.14/ns0:HD.1"/>
+  <Mapping cloverField="TS_1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:EVN/ns0:EVN.6/ns0:TS.1"/>
+  <Mapping cloverField="PID_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.1"/>
+  <Mapping cloverField="CX_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.3/ns0:CX.1"/>
+  <Mapping cloverField="HD_1_6" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.3/ns0:CX.4/ns0:HD.1"/>
+  <Mapping cloverField="CX_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.3/ns0:CX.5"/>
+  <Mapping cloverField="FN_1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.5/ns0:XPN.1/ns0:FN.1"/>
+  <Mapping cloverField="XPN_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.5/ns0:XPN.2"/>
+  <Mapping cloverField="TS_1_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.7/ns0:TS.1"/>
+  <Mapping cloverField="PID_8" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.8"/>
+  <Mapping cloverField="CE_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.10/ns0:CE.1"/>
+  <Mapping cloverField="SAD_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.11/ns0:XAD.1/ns0:SAD.1"/>
+  <Mapping cloverField="XAD_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.11/ns0:XAD.3"/>
+  <Mapping cloverField="XAD_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.11/ns0:XAD.4"/>
+  <Mapping cloverField="XAD_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.11/ns0:XAD.5"/>
+  <Mapping cloverField="XAD_6" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.11/ns0:XAD.6"/>
+  <Mapping cloverField="XAD_7" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.11/ns0:XAD.7"/>
+  <Mapping cloverField="XAD_9" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.11/ns0:XAD.9"/>
+  <Mapping cloverField="PID_12" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.12"/>
+  <Mapping cloverField="XTN_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.14/ns0:XTN.1"/>
+  <Mapping cloverField="XTN_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.14/ns0:XTN.2"/>
+  <Mapping cloverField="XTN_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.14/ns0:XTN.3"/>
+  <Mapping cloverField="XTN_6" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.14/ns0:XTN.6"/>
+  <Mapping cloverField="XTN_7" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.14/ns0:XTN.7"/>
+  <Mapping cloverField="CE_1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.15/ns0:CE.1"/>
+  <Mapping cloverField="CE_1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.16/ns0:CE.1"/>
+  <Mapping cloverField="CE_1_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.17/ns0:CE.1"/>
+  <Mapping cloverField="PID_19" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.19"/>
+  <Mapping cloverField="CE_1_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.22/ns0:CE.1"/>
+  <Mapping cloverField="CE_1_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.28/ns0:CE.1"/>
+  <Mapping cloverField="PID_30" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PID/ns0:PID.30"/>
+  <Mapping cloverField="ZPD_9" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ZPD/ns0:ZPD.9"/>
+  <Mapping cloverField="XON_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PD1/ns0:PD1.3/ns0:XON.1"/>
+  <Mapping cloverField="XON_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PD1/ns0:PD1.3/ns0:XON.3"/>
+  <Mapping cloverField="XCN_1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PD1/ns0:PD1.4/ns0:XCN.1"/>
+  <Mapping cloverField="FN_1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PD1/ns0:PD1.4/ns0:XCN.2/ns0:FN.1"/>
+  <Mapping cloverField="XCN_3_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PD1/ns0:PD1.4/ns0:XCN.3"/>
+  <Mapping cloverField="XCN_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PD1/ns0:PD1.4/ns0:XCN.4"/>
+  <Mapping cloverField="HD_1_7" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PD1/ns0:PD1.4/ns0:XCN.9/ns0:HD.1"/>
+  <Mapping cloverField="XCN_13" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PD1/ns0:PD1.4/ns0:XCN.13"/>
+  <Mapping cloverField="EI_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.1/ns0:EI.1"/>
+  <Mapping cloverField="CE_1_6" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.3/ns0:CE.1"/>
+  <Mapping cloverField="XCN_1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.4/ns0:XCN.1"/>
+  <Mapping cloverField="FN_1_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.4/ns0:XCN.2/ns0:FN.1"/>
+  <Mapping cloverField="XCN_3_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.4/ns0:XCN.3"/>
+  <Mapping cloverField="XCN_4_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.4/ns0:XCN.4"/>
+  <Mapping cloverField="HD_1_8" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.4/ns0:XCN.9/ns0:HD.1"/>
+  <Mapping cloverField="XCN_13_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.4/ns0:XCN.13"/>
+  <Mapping cloverField="TS_1_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.5/ns0:TS.1"/>
+  <Mapping cloverField="CE_1_7" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.9/ns0:CE.1"/>
+  <Mapping cloverField="CE_1_8" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.10/ns0:CE.1"/>
+  <Mapping cloverField="SAD_1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.11/ns0:XAD.1/ns0:SAD.1"/>
+  <Mapping cloverField="XAD_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.11/ns0:XAD.2"/>
+  <Mapping cloverField="XAD_3_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.11/ns0:XAD.3"/>
+  <Mapping cloverField="XAD_4_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.11/ns0:XAD.4"/>
+  <Mapping cloverField="XAD_5_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ROL/ns0:ROL.11/ns0:XAD.5"/>
+  <Mapping cloverField="PV1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.1"/>
+  <Mapping cloverField="PV1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.2"/>
+  <Mapping cloverField="PL_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.3/ns0:PL.1"/>
+  <Mapping cloverField="PL_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.3/ns0:PL.2"/>
+  <Mapping cloverField="PL_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.3/ns0:PL.3"/>
+  <Mapping cloverField="HD_1_9" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.3/ns0:PL.4/ns0:HD.1"/>
+  <Mapping cloverField="PL_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.3/ns0:PL.5"/>
+  <Mapping cloverField="PV1_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.4"/>
+  <Mapping cloverField="XCN_1_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.7/ns0:XCN.1"/>
+  <Mapping cloverField="FN_1_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.7/ns0:XCN.2/ns0:FN.1"/>
+  <Mapping cloverField="XCN_3_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.7/ns0:XCN.3"/>
+  <Mapping cloverField="XCN_4_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.7/ns0:XCN.4"/>
+  <Mapping cloverField="HD_1_10" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.7/ns0:XCN.9/ns0:HD.1"/>
+  <Mapping cloverField="XCN_13_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.7/ns0:XCN.13"/>
+  <Mapping cloverField="XCN_1_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.8/ns0:XCN.1"/>
+  <Mapping cloverField="FN_1_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.8/ns0:XCN.2/ns0:FN.1"/>
+  <Mapping cloverField="XCN_3_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.8/ns0:XCN.3"/>
+  <Mapping cloverField="XCN_4_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.8/ns0:XCN.4"/>
+  <Mapping cloverField="HD_1_11" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.8/ns0:XCN.9/ns0:HD.1"/>
+  <Mapping cloverField="XCN_13_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.8/ns0:XCN.13"/>
+  <Mapping cloverField="PV1_10" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.10"/>
+  <Mapping cloverField="PV1_14" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.14"/>
+  <Mapping cloverField="XCN_1_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.17/ns0:XCN.1"/>
+  <Mapping cloverField="FN_1_6" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.17/ns0:XCN.2/ns0:FN.1"/>
+  <Mapping cloverField="XCN_3_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.17/ns0:XCN.3"/>
+  <Mapping cloverField="XCN_4_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.17/ns0:XCN.4"/>
+  <Mapping cloverField="HD_1_12" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.17/ns0:XCN.9/ns0:HD.1"/>
+  <Mapping cloverField="XCN_13_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.17/ns0:XCN.13"/>
+  <Mapping cloverField="CX_1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.19/ns0:CX.1"/>
+  <Mapping cloverField="FC_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.20/ns0:FC.1"/>
+  <Mapping cloverField="PV1_41" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.41"/>
+  <Mapping cloverField="HD_1_13" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.42/ns0:PL.4/ns0:HD.1"/>
+  <Mapping cloverField="TS_1_5" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV1/ns0:PV1.44/ns0:TS.1"/>
+  <Mapping cloverField="CE_1_9" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV2/ns0:PV2.2/ns0:CE.1"/>
+  <Mapping cloverField="TS_1_6" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV2/ns0:PV2.8/ns0:TS.1"/>
+  <Mapping cloverField="PV2_21" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV2/ns0:PV2.21"/>
+  <Mapping cloverField="PV2_22" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:PV2/ns0:PV2.22"/>
+  <Mapping cloverField="UNKNOWN_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ZPV/ns0:ZPV.5/ns0:UNKNOWN.1"/>
+  <Mapping cloverField="UNKNOWN_7" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:ZPV/ns0:ZPV.5/ns0:UNKNOWN.7"/>
+  <Mapping cloverField="DG1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:DG1/ns0:DG1.1"/>
+  <Mapping cloverField="CE_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:DG1/ns0:DG1.3/ns0:CE.2"/>
+  <Mapping cloverField="DG1_4" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:DG1/ns0:DG1.4"/>
+  <Mapping cloverField="GT1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.1"/>
+  <Mapping cloverField="CX_1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.2/ns0:CX.1"/>
+  <Mapping cloverField="FN_1_7" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.3/ns0:XPN.1/ns0:FN.1"/>
+  <Mapping cloverField="XPN_2_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.3/ns0:XPN.2"/>
+  <Mapping cloverField="SAD_1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.5/ns0:XAD.1/ns0:SAD.1"/>
+  <Mapping cloverField="XAD_3_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.5/ns0:XAD.3"/>
+  <Mapping cloverField="XAD_4_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.5/ns0:XAD.4"/>
+  <Mapping cloverField="XAD_5_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.5/ns0:XAD.5"/>
+  <Mapping cloverField="XAD_6_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.5/ns0:XAD.6"/>
+  <Mapping cloverField="XAD_9_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.5/ns0:XAD.9"/>
+  <Mapping cloverField="XTN_1_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.6/ns0:XTN.1"/>
+  <Mapping cloverField="XTN_6_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.6/ns0:XTN.6"/>
+  <Mapping cloverField="XTN_7_1" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.6/ns0:XTN.7"/>
+  <Mapping cloverField="XTN_1_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.7/ns0:XTN.1"/>
+  <Mapping cloverField="XTN_6_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.7/ns0:XTN.6"/>
+  <Mapping cloverField="XTN_7_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.7/ns0:XTN.7"/>
+  <Mapping cloverField="TS_1_7" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.8/ns0:TS.1"/>
+  <Mapping cloverField="GT1_9" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.9"/>
+  <Mapping cloverField="GT1_10" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.10"/>
+  <Mapping cloverField="CE_1_10" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.11/ns0:CE.1"/>
+  <Mapping cloverField="GT1_12" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.12"/>
+  <Mapping cloverField="FN_1_8" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.16/ns0:XPN.1/ns0:FN.1"/>
+  <Mapping cloverField="SAD_1_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.17/ns0:XAD.1/ns0:SAD.1"/>
+  <Mapping cloverField="XAD_3_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.17/ns0:XAD.3"/>
+  <Mapping cloverField="XAD_4_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.17/ns0:XAD.4"/>
+  <Mapping cloverField="XAD_5_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.17/ns0:XAD.5"/>
+  <Mapping cloverField="XAD_6_2" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.17/ns0:XAD.6"/>
+  <Mapping cloverField="XTN_1_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.18/ns0:XTN.1"/>
+  <Mapping cloverField="XTN_6_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.18/ns0:XTN.6"/>
+  <Mapping cloverField="XTN_7_3" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.18/ns0:XTN.7"/>
+  <Mapping cloverField="GT1_20" namespacePaths="ns0=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns0:GT1/ns0:GT1.20"/>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__rootGlobalElementName"><![CDATA[{urn:hl7-org:v2xml}ADT_A01]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="5a704ea0-6d6c-433e-bf6f-e7de6cb7c17a" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+<Edge debugMode="true" fromNode="XML_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="fa14a1a0-8a6c-4469-b9a4-42866e1331d5" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+</Phase>
+</Graph>

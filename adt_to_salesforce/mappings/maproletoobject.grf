@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="sranjitkar" created="Tue Jun 18 08:44:05 PDT 2013" guiVersion="3.3.2" id="1371579265854" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Tue Jun 18 08:44:05 PDT 2013" modifiedBy="sranjitkar" name="maproletoobject_grf" preview-file="${Project_Home}/src/test/resources/rolesample.xml" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{}/list" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="58123c81-1ac2-4ce5-b084-802487f8160b">
+<Record fieldDelimiter="|" name="list" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/list/firstname" containerType="SINGLE" label="firstname" name="firstname" type="string"/>
+<Field __sourcePath="{}/list/lastname" containerType="SINGLE" label="lastname" name="lastname" type="string"/>
+<Field __sourcePath="{}/list/middlename" containerType="SINGLE" label="middlename" name="middlename" type="string"/>
+<Field __sourcePath="{}/list/mso" containerType="SINGLE" label="mso" name="mso" type="string"/>
+<Field __sourcePath="{}/list/patientId" containerType="SINGLE" label="patientId" name="patientId" type="string"/>
+<Field __sourcePath="{}/list/patientVisitId" containerType="SINGLE" label="patientVisitId" name="patientVisitId" type="string"/>
+<Field __sourcePath="{}/list/roleid" containerType="SINGLE" label="roleid" name="roleid" type="string"/>
+<Field __sourcePath="{}/list/roletype" containerType="SINGLE" label="roletype" name="roletype" type="string"/>
+<Field __sourcePath="{}/list/ucsfid" containerType="SINGLE" label="ucsfid" name="ucsfid" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns0:ROL" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="ca2c6fc6-4882-45e4-beb5-35f9f5284ef9" _parent_id="__parent_id" _type="Input" id="61802b6d-1b80-4aee-b60d-072e16dfc279">
+<Record fieldDelimiter="|" name="ROL" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns0:ROL/ns0:ROLID" containerType="SINGLE" label="ROLID" name="ROLID" type="integer"/>
+<Field __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns0:ROL/ns0:ROLTYPE" containerType="SINGLE" label="ROLTYPE" name="ROLTYPE" type="string"/>
+<Field __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns0:ROL/ns0:MSO" containerType="SINGLE" label="ns0:MSO" name="MSO" type="string"/>
+<Field __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns0:ROL/ns0:UCSFID" containerType="SINGLE" label="ns0:UCSFID" name="UCSFID" type="string"/>
+<Field __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns0:ROL/ns0:FRISTNAME" containerType="SINGLE" label="FRISTNAME" name="FRISTNAME" type="string"/>
+<Field __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns0:ROL/ns0:LASTNAME" containerType="SINGLE" label="LASTNAME" name="LASTNAME" type="string"/>
+<Field __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns0:ROL/ns0:MIDDLENAME" containerType="SINGLE" label="MIDDLENAME" name="MIDDLENAME" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS" _dataStructure="OBJECT" _id="__id" _type="Input" id="ca2c6fc6-4882-45e4-beb5-35f9f5284ef9">
+<Record fieldDelimiter="|" name="ROLS" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Pojo WRITER" guiWidth="0" guiX="900" guiY="20" id="BEAN_WRITER0" type="BEAN_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<clover:collection clover:name="list" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
+  <item clover:inPort="1">
+    <firstname>$1.firstname</firstname>
+    <lastname>$1.lastname</lastname>
+    <middlename>$1.middlename</middlename>
+    <mso>$1.mso</mso>
+    <patientId>$1.patientId</patientId>
+    <patientVisitId>$1.patientVisitId</patientVisitId>
+    <roleid>$1.roleid</roleid>
+    <roletype>$1.roletype</roletype>
+    <ucsfid>$1.ucsfid</ucsfid>
+  </item>
+  <item clover:inPort="0">
+    <firstname>$0.firstname</firstname>
+    <lastname>$0.lastname</lastname>
+    <middlename>$0.middlename</middlename>
+    <mso>$0.mso</mso>
+    <patientId>$0.patientId</patientId>
+    <patientVisitId>$0.patientVisitId</patientVisitId>
+    <roleid>$0.roleid</roleid>
+    <roletype>$0.roletype</roletype>
+    <ucsfid>$0.ucsfid</ucsfid>
+  </item>
+</clover:collection>]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema-object>
+  <schema-collection>
+    <typed-object-ref type-ref="edu.ucsf.mule.domain.Role"/>
+  </schema-collection>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="edu.ucsf.mule.domain.Role">
+    <typed-object-ref name="firstname" type-ref="java.lang.String"/>
+    <typed-object-ref name="lastname" type-ref="java.lang.String"/>
+    <typed-object-ref name="middlename" type-ref="java.lang.String"/>
+    <typed-object-ref name="mso" type-ref="java.lang.String"/>
+    <typed-object-ref name="patientId" type-ref="java.lang.String"/>
+    <typed-object-ref name="patientVisitId" type-ref="java.lang.String"/>
+    <typed-object-ref name="roleid" type-ref="java.lang.String"/>
+    <typed-object-ref name="roletype" type-ref="java.lang.String"/>
+    <typed-object-ref name="ucsfid" type-ref="java.lang.String"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'ns0:ROLS' -&gt; 'list'" guiWidth="0" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'ns0:ROL' -&gt; 'list'" guiWidth="0" guiX="460" guiY="120" id="REFORMAT1" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+output.mso = (isnull(input.MSO) ? null : num2str(input.MSO));
+output.ucsfid = (isnull(input.UCSFID) ? null : num2str(input.UCSFID));
+output.lastname = input.LASTNAME;
+output.middlename = input.MIDDLENAME;
+output.roleid = (isnull(input.ROLID) ? null : num2str(input.ROLID));
+]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="XML READER" guiWidth="0" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
+<attr name="xmlSchemaURL"><![CDATA[.\src\test\resources\ROLS.xsd]]></attr>
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" outPort="0" sequenceField="__id" xpath="/ns0:ROLS">
+  <Context generatedKey="__parent_id" namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" outPort="1" parentKey="__id" sequenceField="__id" xpath="ns0:ROL">
+    <Mapping cloverField="ROLID" namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" trim="true" xpath="ns0:ROLID"/>
+    <Mapping cloverField="ROLTYPE" namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" trim="true" xpath="ns0:ROLTYPE"/>
+    <Mapping cloverField="MSO" namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" trim="true" xpath="ns0:MSO"/>
+    <Mapping cloverField="UCSFID" namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" trim="true" xpath="ns0:UCSFID"/>
+    <Mapping cloverField="FRISTNAME" namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" trim="true" xpath="ns0:FRISTNAME"/>
+    <Mapping cloverField="LASTNAME" namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" trim="true" xpath="ns0:LASTNAME"/>
+    <Mapping cloverField="MIDDLENAME" namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" trim="true" xpath="ns0:MIDDLENAME"/>
+  </Context>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__rootGlobalElementName"><![CDATA[{http://www.mulesoft.org/schema/mule/core}ROLS]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="58123c81-1ac2-4ce5-b084-802487f8160b" outPort="Port 0 (out)" toNode="BEAN_WRITER0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT1:0" guiBendpoints="" id="Edge3" inPort="Port 1 (in)" metadata="58123c81-1ac2-4ce5-b084-802487f8160b" outPort="Port 0 (out)" toNode="BEAN_WRITER0:1"/>
+<Edge debugMode="true" fromNode="XML_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="ca2c6fc6-4882-45e4-beb5-35f9f5284ef9" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="XML_READER0:1" guiBendpoints="" id="Edge2" inPort="Port 0 (in)" metadata="61802b6d-1b80-4aee-b60d-072e16dfc279" outPort="Port 1 (out)" toNode="REFORMAT1:0"/>
+</Phase>
+</Graph>

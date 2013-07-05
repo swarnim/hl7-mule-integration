@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="urn:hl7-org:v2xml" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ADT_A01" type="urn:ADT_A01Type" xmlns:urn="urn:hl7-org:v2xml"/>
+  <xs:complexType name="MSH.3Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="HD.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MSH.4Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="HD.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MSH.5Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="HD.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MSH.6Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="HD.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MSH.7Type">
+    <xs:sequence>
+      <xs:element type="xs:long" name="TS.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MSH.9Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="MSG.1"/>
+      <xs:element type="xs:string" name="MSG.2"/>
+      <xs:element type="xs:string" name="MSG.3"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MSH.11Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PT.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MSH.12Type">
+    <xs:sequence>
+      <xs:element type="xs:float" name="VID.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MSHType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="MSH.1"/>
+      <xs:element type="xs:string" name="MSH.2"/>
+      <xs:element type="urn:MSH.3Type" name="MSH.3" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:MSH.4Type" name="MSH.4" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:MSH.5Type" name="MSH.5" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:MSH.6Type" name="MSH.6" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:MSH.7Type" name="MSH.7" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="MSH.8"/>
+      <xs:element type="urn:MSH.9Type" name="MSH.9" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:short" name="MSH.10"/>
+      <xs:element type="urn:MSH.11Type" name="MSH.11" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:MSH.12Type" name="MSH.12" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="MSH.21"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EVN.2Type">
+    <xs:sequence>
+      <xs:element type="xs:long" name="TS.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="XCN.2Type">
+    <xs:sequence>
+      <xs:element name="FN.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="INPATIENT"/>
+            <xs:enumeration value="KOBASHI"/>
+            <xs:enumeration value="AMARAL"/>
+            <xs:enumeration value="KIRKWOOD"/>
+            <xs:enumeration value="CUCINA"/>
+            <xs:enumeration value="AARONS"/>
+            <xs:enumeration value="BOKSER"/>
+            <xs:enumeration value="ABDOU"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="XCN.9Type">
+    <xs:sequence>
+      <xs:element name="HD.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="UCSF"/>
+            <xs:enumeration value="EPIC"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="XCN.14Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="HD.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EVN.5Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XCN.1"/>
+      <xs:element type="urn:XCN.2Type" name="XCN.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.3"/>
+      <xs:element type="urn:XCN.9Type" name="XCN.9" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:XCN.14Type" name="XCN.14" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EVN.7Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="HD.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EVNType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="EVN.1"/>
+      <xs:element type="urn:EVN.2Type" name="EVN.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="EVN.4"/>
+      <xs:element type="urn:EVN.5Type" name="EVN.5" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:EVN.7Type" name="EVN.7" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CX.4Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="HD.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.3Type">
+    <xs:sequence>
+      <xs:element type="xs:int" name="CX.1"/>
+      <xs:element type="urn:CX.4Type" name="CX.4" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="CX.5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="XPN.1Type">
+    <xs:sequence>
+      <xs:element name="FN.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="XFCMUSE-ADULT"/>
+            <xs:enumeration value="XFCMUSEADULT"/>
+            <xs:enumeration value="ABM INDUSTRIES INC"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.5Type">
+    <xs:sequence>
+      <xs:element type="urn:XPN.1Type" name="XPN.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XPN.2"/>
+      <xs:element type="xs:string" name="XPN.3"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.7Type">
+    <xs:sequence>
+      <xs:element type="xs:int" name="TS.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.9Type">
+    <xs:sequence>
+      <xs:element type="urn:XPN.1Type" name="XPN.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XPN.2"/>
+      <xs:element type="xs:string" name="XPN.3"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.10Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="XAD.1Type">
+    <xs:sequence>
+      <xs:element name="SAD.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="123 MAIN"/>
+            <xs:enumeration value="1701 DIVISADERO ST. SUITE 500"/>
+            <xs:enumeration value="50 FREMONT ST, 26TH FLR"/>
+            <xs:enumeration value="1121 W VINE ST #14"/>
+            <xs:enumeration value="533 PARNASSIS AVENUE BOX 0748"/>
+            <xs:enumeration value="PO BOX 2029"/>
+            <xs:enumeration value="PO BOX 14089"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.11Type">
+    <xs:sequence>
+      <xs:element type="urn:XAD.1Type" name="XAD.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XAD.3"/>
+      <xs:element type="xs:string" name="XAD.4"/>
+      <xs:element type="xs:int" name="XAD.5"/>
+      <xs:element type="xs:byte" name="XAD.6"/>
+      <xs:element type="xs:string" name="XAD.7"/>
+      <xs:element type="xs:string" name="XAD.9"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.13Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XTN.1"/>
+      <xs:element type="xs:string" name="XTN.2"/>
+      <xs:element type="xs:string" name="XTN.3"/>
+      <xs:element type="xs:short" name="XTN.6"/>
+      <xs:element type="xs:int" name="XTN.7"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.15Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.16Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PID.22Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PIDType">
+    <xs:sequence>
+      <xs:element type="xs:byte" name="PID.1"/>
+      <xs:element type="urn:PID.3Type" name="PID.3" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PID.5Type" name="PID.5" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PID.7Type" name="PID.7" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PID.8"/>
+      <xs:element type="urn:PID.9Type" name="PID.9" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PID.10Type" name="PID.10" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PID.11Type" name="PID.11" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PID.12"/>
+      <xs:element type="urn:PID.13Type" name="PID.13" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PID.15Type" name="PID.15" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PID.16Type" name="PID.16" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PID.19"/>
+      <xs:element type="urn:PID.22Type" name="PID.22" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PID.30"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ZPDType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="ZPD.9"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PD1.3Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XON.1"/>
+      <xs:element type="xs:short" name="XON.3"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PD1.4Type">
+    <xs:sequence>
+      <xs:element name="XCN.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="61866"/>
+            <xs:enumeration value="020041265"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="urn:XCN.2Type" name="XCN.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.3"/>
+      <xs:element type="xs:string" name="XCN.4"/>
+      <xs:element type="urn:XCN.9Type" name="XCN.9" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.13" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PD1Type">
+    <xs:sequence>
+      <xs:element type="urn:PD1.3Type" name="PD1.3" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PD1.4Type" name="PD1.4" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PD1.18"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.1Type">
+    <xs:sequence>
+      <xs:element name="EI.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:byte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.3Type">
+    <xs:sequence>
+      <xs:element name="CE.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="GENERAL"/>
+            <xs:enumeration value="Proceduralis"/>
+            <xs:enumeration value="PEDIATRICIAN"/>
+            <xs:enumeration value="AN Attending"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.4Type">
+    <xs:sequence>
+      <xs:element name="XCN.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="61866"/>
+            <xs:enumeration value="020041265"/>
+            <xs:enumeration value="020761052"/>
+            <xs:enumeration value="31023"/>
+            <xs:enumeration value="44048"/>
+            <xs:enumeration value="024810624"/>
+            <xs:enumeration value="54718"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="urn:XCN.2Type" name="XCN.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element name="XCN.3">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="BRENT"/>
+            <xs:enumeration value="ALISA"/>
+            <xs:enumeration value="DAVID"/>
+            <xs:enumeration value="SETH"/>
+            <xs:enumeration value="WAFIK"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="XCN.4">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="G"/>
+            <xs:enumeration value="JEAN QUINTERO"/>
+            <xs:enumeration value="RANDOLPH"/>
+            <xs:enumeration value="J."/>
+            <xs:enumeration value="ANDREW"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="urn:XCN.9Type" name="XCN.9" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.13" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.5Type">
+    <xs:sequence>
+      <xs:element name="TS.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:long">
+            <xs:enumeration value="20130516"/>
+            <xs:enumeration value="20130604"/>
+            <xs:enumeration value="201306041519"/>
+            <xs:enumeration value="201306041520"/>
+            <xs:enumeration value="201306041516"/>
+            <xs:enumeration value="201306041518"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.9Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.10Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.11Type">
+    <xs:sequence>
+      <xs:element type="urn:XAD.1Type" name="XAD.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element name="XAD.2" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="BOX 1701"/>
+            <xs:enumeration value="BOX 0748"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="XAD.3">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="SAN FRANCISCO"/>
+            <xs:enumeration value="LODI"/>
+            <xs:enumeration value="BAKERSFIELD"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:string" name="XAD.4"/>
+      <xs:element name="XAD.5">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="94115-1731"/>
+            <xs:enumeration value="95240"/>
+            <xs:enumeration value="94143-0748"/>
+            <xs:enumeration value="93303"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:byte" name="XAD.6" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.12Type">
+    <xs:sequence>
+      <xs:element name="XTN.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="(415)353-7999"/>
+            <xs:enumeration value="(415)353-7469"/>
+            <xs:enumeration value="(415)353-1787"/>
+            <xs:enumeration value="(209)334-3153"/>
+            <xs:enumeration value="(209)334-6029"/>
+            <xs:enumeration value="(415)353-2001"/>
+            <xs:enumeration value="(415)476-9976"/>
+            <xs:enumeration value="(661)335-7766"/>
+            <xs:enumeration value=""/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="XTN.3" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="PH"/>
+            <xs:enumeration value="FX"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="XTN.6" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:short">
+            <xs:enumeration value="415"/>
+            <xs:enumeration value="209"/>
+            <xs:enumeration value="661"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="XTN.7" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:float">
+            <xs:enumeration value="3537999"/>
+            <xs:enumeration value="3537469"/>
+            <xs:enumeration value="3531787"/>
+            <xs:enumeration value="3343153"/>
+            <xs:enumeration value="3346029"/>
+            <xs:enumeration value="3532001"/>
+            <xs:enumeration value="4769976"/>
+            <xs:enumeration value="3357766"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROLType">
+    <xs:sequence>
+      <xs:element type="urn:ROL.1Type" name="ROL.1" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.3Type" name="ROL.3" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.4Type" name="ROL.4" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.5Type" name="ROL.5" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.9Type" name="ROL.9" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.10Type" name="ROL.10" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.11Type" name="ROL.11" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.6Type" name="ROL.6" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.12Type" name="ROL.12" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NK1.4Type">
+    <xs:sequence>
+      <xs:element type="urn:XAD.1Type" name="XAD.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XAD.3"/>
+      <xs:element type="xs:string" name="XAD.4"/>
+      <xs:element type="xs:int" name="XAD.5"/>
+      <xs:element type="xs:byte" name="XAD.6"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NK1.5Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XTN.1"/>
+      <xs:element type="xs:short" name="XTN.6"/>
+      <xs:element type="xs:int" name="XTN.7"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NK1.7Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NK1.13Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XON.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NK1.33Type">
+    <xs:sequence>
+      <xs:element type="xs:short" name="CX.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="NK1Type">
+    <xs:sequence>
+      <xs:element type="xs:byte" name="NK1.1"/>
+      <xs:element type="urn:NK1.4Type" name="NK1.4" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:NK1.5Type" name="NK1.5" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:NK1.7Type" name="NK1.7" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:NK1.13Type" name="NK1.13" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:NK1.33Type" name="NK1.33" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="NK1.34"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PL.4Type">
+    <xs:sequence>
+      <xs:element type="xs:short" name="HD.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1.3Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="PL.1"/>
+      <xs:element type="xs:short" name="PL.2"/>
+      <xs:element type="xs:string" name="PL.3"/>
+      <xs:element type="urn:PL.4Type" name="PL.4" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PL.5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1.7Type">
+    <xs:sequence>
+      <xs:element name="XCN.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="25202"/>
+            <xs:enumeration value="024525917"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="urn:XCN.2Type" name="XCN.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.3"/>
+      <xs:element type="xs:string" name="XCN.4"/>
+      <xs:element type="urn:XCN.9Type" name="XCN.9" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.13" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1.8Type">
+    <xs:sequence>
+      <xs:element name="XCN.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="51112"/>
+            <xs:enumeration value="025888116"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="urn:XCN.2Type" name="XCN.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.3"/>
+      <xs:element type="xs:string" name="XCN.4"/>
+      <xs:element type="urn:XCN.9Type" name="XCN.9" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.13" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1.17Type">
+    <xs:sequence>
+      <xs:element name="XCN.1">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="51112"/>
+            <xs:enumeration value="025888116"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="urn:XCN.2Type" name="XCN.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.3"/>
+      <xs:element type="xs:string" name="XCN.4"/>
+      <xs:element type="urn:XCN.9Type" name="XCN.9" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XCN.13" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1.19Type">
+    <xs:sequence>
+      <xs:element type="xs:int" name="CX.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1.20Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="FC.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1.42Type">
+    <xs:sequence>
+      <xs:element type="urn:PL.4Type" name="PL.4" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1.44Type">
+    <xs:sequence>
+      <xs:element type="xs:long" name="TS.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV1Type">
+    <xs:sequence>
+      <xs:element type="xs:byte" name="PV1.1"/>
+      <xs:element type="xs:string" name="PV1.2"/>
+      <xs:element type="urn:PV1.3Type" name="PV1.3" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PV1.4"/>
+      <xs:element type="urn:PV1.7Type" name="PV1.7" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PV1.8Type" name="PV1.8" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PV1.10"/>
+      <xs:element type="xs:string" name="PV1.14"/>
+      <xs:element type="urn:PV1.17Type" name="PV1.17" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PV1.19Type" name="PV1.19" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PV1.20Type" name="PV1.20" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PV1.41"/>
+      <xs:element type="urn:PV1.42Type" name="PV1.42" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PV1.44Type" name="PV1.44" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV2.2Type">
+    <xs:sequence>
+      <xs:element type="xs:short" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV2.8Type">
+    <xs:sequence>
+      <xs:element type="xs:int" name="TS.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="PV2Type">
+    <xs:sequence>
+      <xs:element type="urn:PV2.2Type" name="PV2.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PV2.8Type" name="PV2.8" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="PV2.22"/>
+      <xs:element type="xs:string" name="PV2.49"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ZPV.5Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="UNKNOWN.1"/>
+      <xs:element type="xs:int" name="UNKNOWN.7"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ZPVType">
+    <xs:sequence>
+      <xs:element type="urn:ZPV.5Type" name="ZPV.5" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="ZPV.15" minOccurs="0"/>
+      <xs:element type="urn:ROL.1Type" name="ROL.1" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.3Type" name="ROL.3" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.4Type" name="ROL.4" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.5Type" name="ROL.5" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.9Type" name="ROL.9" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.10Type" name="ROL.10" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.11Type" name="ROL.11" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.6Type" name="ROL.6" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROL.12Type" name="ROL.12" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROL.6Type">
+    <xs:sequence>
+      <xs:element type="xs:long" name="TS.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DG1.3Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="DG1Type">
+    <xs:sequence>
+      <xs:element type="xs:byte" name="DG1.1"/>
+      <xs:element type="urn:DG1.3Type" name="DG1.3" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="DG1.4"/>
+      <xs:element type="xs:string" name="DG1.6"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.2Type">
+    <xs:sequence>
+      <xs:element type="xs:int" name="CX.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.3Type">
+    <xs:sequence>
+      <xs:element type="urn:XPN.1Type" name="XPN.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XPN.2"/>
+      <xs:element type="xs:string" name="XPN.3"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.5Type">
+    <xs:sequence>
+      <xs:element type="urn:XAD.1Type" name="XAD.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XAD.3"/>
+      <xs:element type="xs:string" name="XAD.4"/>
+      <xs:element type="xs:int" name="XAD.5"/>
+      <xs:element type="xs:byte" name="XAD.6"/>
+      <xs:element type="xs:string" name="XAD.9"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.6Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XTN.1"/>
+      <xs:element type="xs:short" name="XTN.6"/>
+      <xs:element type="xs:int" name="XTN.7"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.8Type">
+    <xs:sequence>
+      <xs:element type="xs:int" name="TS.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.11Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.16Type">
+    <xs:sequence>
+      <xs:element type="urn:XPN.1Type" name="XPN.1" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.17Type">
+    <xs:sequence>
+      <xs:element type="urn:XAD.1Type" name="XAD.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XAD.3"/>
+      <xs:element type="xs:string" name="XAD.4"/>
+      <xs:element type="xs:int" name="XAD.5"/>
+      <xs:element type="xs:byte" name="XAD.6"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1.18Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XTN.1"/>
+      <xs:element type="xs:short" name="XTN.6"/>
+      <xs:element type="xs:int" name="XTN.7"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GT1Type">
+    <xs:sequence>
+      <xs:element type="xs:byte" name="GT1.1"/>
+      <xs:element type="urn:GT1.2Type" name="GT1.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:GT1.3Type" name="GT1.3" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:GT1.5Type" name="GT1.5" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:GT1.6Type" name="GT1.6" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:GT1.8Type" name="GT1.8" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="GT1.9"/>
+      <xs:element type="xs:string" name="GT1.10"/>
+      <xs:element type="urn:GT1.11Type" name="GT1.11" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="GT1.12"/>
+      <xs:element type="urn:GT1.16Type" name="GT1.16" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:GT1.17Type" name="GT1.17" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:GT1.18Type" name="GT1.18" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.2Type">
+    <xs:sequence>
+      <xs:element type="xs:short" name="CE.1"/>
+      <xs:element type="xs:string" name="CE.2"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.3Type">
+    <xs:sequence>
+      <xs:element type="xs:byte" name="CX.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.4Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XON.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.5Type">
+    <xs:sequence>
+      <xs:element type="urn:XAD.1Type" name="XAD.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XAD.3"/>
+      <xs:element type="xs:string" name="XAD.4"/>
+      <xs:element type="xs:string" name="XAD.5"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.7Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XTN.1"/>
+      <xs:element type="xs:short" name="XTN.6"/>
+      <xs:element type="xs:int" name="XTN.7"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.16Type">
+    <xs:sequence>
+      <xs:element type="urn:XPN.1Type" name="XPN.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XPN.2"/>
+      <xs:element type="xs:string" name="XPN.3"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.17Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="CE.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.18Type">
+    <xs:sequence>
+      <xs:element type="xs:int" name="TS.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.19Type">
+    <xs:sequence>
+      <xs:element type="urn:XAD.1Type" name="XAD.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XAD.3"/>
+      <xs:element type="xs:string" name="XAD.4"/>
+      <xs:element type="xs:int" name="XAD.5"/>
+      <xs:element type="xs:byte" name="XAD.6"/>
+      <xs:element type="xs:string" name="XAD.9"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.44Type">
+    <xs:sequence>
+      <xs:element type="urn:XAD.1Type" name="XAD.1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="XAD.3"/>
+      <xs:element type="xs:string" name="XAD.4"/>
+      <xs:element type="xs:int" name="XAD.5"/>
+      <xs:element type="xs:byte" name="XAD.6"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1.49Type">
+    <xs:sequence>
+      <xs:element type="xs:float" name="CX.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN1Type">
+    <xs:sequence>
+      <xs:element type="xs:byte" name="IN1.1"/>
+      <xs:element type="urn:IN1.2Type" name="IN1.2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN1.3Type" name="IN1.3" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN1.4Type" name="IN1.4" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN1.5Type" name="IN1.5" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN1.7Type" name="IN1.7" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN1.16Type" name="IN1.16" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN1.17Type" name="IN1.17" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN1.18Type" name="IN1.18" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN1.19Type" name="IN1.19" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="IN1.22"/>
+      <xs:element type="xs:string" name="IN1.25"/>
+      <xs:element type="xs:string" name="IN1.36"/>
+      <xs:element type="xs:string" name="IN1.43"/>
+      <xs:element type="urn:IN1.44Type" name="IN1.44" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="xs:string" name="IN1.47"/>
+      <xs:element type="urn:IN1.49Type" name="IN1.49" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN2.63Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XTN.1"/>
+      <xs:element type="xs:short" name="XTN.6"/>
+      <xs:element type="xs:int" name="XTN.7"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN2.64Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XTN.1"/>
+      <xs:element type="xs:short" name="XTN.6"/>
+      <xs:element type="xs:int" name="XTN.7"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN2.70Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="XON.1"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="IN2Type">
+    <xs:sequence>
+      <xs:element type="xs:string" name="IN2.2"/>
+      <xs:element type="xs:string" name="IN2.5"/>
+      <xs:element type="urn:IN2.63Type" name="IN2.63" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN2.64Type" name="IN2.64" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN2.70Type" name="IN2.70" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ADT_A01.INSURANCEType">
+    <xs:sequence>
+      <xs:element type="urn:IN1Type" name="IN1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:IN2Type" name="IN2" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ADT_A01Type">
+    <xs:choice maxOccurs="unbounded" minOccurs="0">
+      <xs:element type="urn:MSHType" name="MSH" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:EVNType" name="EVN" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PIDType" name="PID" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ZPDType" name="ZPD" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PD1Type" name="PD1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ROLType" name="ROL" maxOccurs="unbounded" minOccurs="0" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:NK1Type" name="NK1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PV1Type" name="PV1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:PV2Type" name="PV2" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ZPVType" name="ZPV" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:DG1Type" name="DG1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:GT1Type" name="GT1" xmlns:urn="urn:hl7-org:v2xml"/>
+      <xs:element type="urn:ADT_A01.INSURANCEType" name="ADT_A01.INSURANCE" xmlns:urn="urn:hl7-org:v2xml"/>
+    </xs:choice>
+  </xs:complexType>
+</xs:schema>

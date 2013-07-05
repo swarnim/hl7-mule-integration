@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="
+http://www.mulesoft.org/schema/mule/scripting http://www.mulesoft.org/schema/mule/scripting/current/mule-scripting.xsd http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd">
+
+    <sub-flow name="getUcsfIds" doc:name="getUcsfIds">
+             <scripting:component doc:name="getUsfIdSetComponent">
+                <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[import edu.ucsf.groovy.Utils
+               		return Utils.getUcsfIds(patientADTROLs,warnings)                                                            
+			    ]]></scripting:text>
+                </scripting:script>
+            </scripting:component>
+    </sub-flow>
+    <sub-flow name="upsertListWithProviderId" doc:name="upsertListWithProviderId">
+             <scripting:component doc:name="upsertListWithProviderId">
+                <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[import edu.ucsf.groovy.Utils
+               		return Utils.getUpsertRoleListWithOtherIds(payload, patientADTROLs, pId, pVisitId, warnings)             	               		                          
+			    ]]></scripting:text>
+                </scripting:script>
+            </scripting:component>
+    </sub-flow>
+    <sub-flow name="getFinalRolesToUpsert" doc:name="getFinalRolesToUpsert">
+        <scripting:component doc:name="getFinalRolesToUpsert">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[import edu.ucsf.groovy.Utils
+               		return Utils.getFinalRolesToUpsertgetFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , PCPNO1, PCPNO2)
+			    ]]></scripting:text>
+            </scripting:script>
+        </scripting:component>
+    </sub-flow>
+    <sub-flow name="nullToBlank" doc:name="nullToBlank">
+        <scripting:component doc:name="PrepareData">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[import edu.ucsf.groovy.Utils
+					 				Utils.blankMapValue(payload)]]></scripting:text>
+            </scripting:script>
+        </scripting:component>
+    </sub-flow>
+     <sub-flow name="addSalesforceNullField" doc:name="addSalesforceNullField">
+        <scripting:component doc:name="addSalesforceNullField">
+            <scripting:script engine="Groovy">
+                <scripting:text><![CDATA[import edu.ucsf.groovy.Utils
+					 				Utils.addSalesforceNullField(payload)]]></scripting:text>
+            </scripting:script>
+        </scripting:component>
+    </sub-flow>
+
+</mule>
+

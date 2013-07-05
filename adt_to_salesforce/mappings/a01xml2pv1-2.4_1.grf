@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="sranjitkar" created="Mon Jun 17 09:09:19 PDT 2013" guiVersion="3.3.2" id="1371494652597" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Mon Jun 17 09:09:19 PDT 2013" modifiedBy="sranjitkar" name="a01xml2pv1_2_4_1_grf" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{}/object/childRelationships" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="400b239f-2284-44a7-b8fb-226b53adf060" _parent_id="__parent_id" _type="Input" id="5d3feaf5-8cd2-4b3b-ac30-c429378926e0">
+<Record fieldDelimiter="|" name="childRelationships" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/object/childRelationships/cascadeDelete" containerType="SINGLE" label="cascadeDelete" name="cascadeDelete" type="boolean"/>
+<Field __sourcePath="{}/object/childRelationships/childSObject" containerType="SINGLE" label="childSObject" name="childSObject" type="string"/>
+<Field __sourcePath="{}/object/childRelationships/deprecatedAndHidden" containerType="SINGLE" label="deprecatedAndHidden" name="deprecatedAndHidden" type="boolean"/>
+<Field __sourcePath="{}/object/childRelationships/field" containerType="SINGLE" label="field" name="field" type="string"/>
+<Field __sourcePath="{}/object/childRelationships/relationshipName" containerType="SINGLE" label="relationshipName" name="relationshipName" type="string"/>
+<Field __sourcePath="{}/object/childRelationships/restrictedDelete" containerType="SINGLE" label="restrictedDelete" name="restrictedDelete" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/object" _dataStructure="OBJECT" _id="__id" _type="Input" id="400b239f-2284-44a7-b8fb-226b53adf060">
+<Record fieldDelimiter="|" name="DescribeSObjectResult" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/object/activateable" containerType="SINGLE" label="activateable" name="activateable" type="boolean"/>
+<Field __sourcePath="{}/object/createable" containerType="SINGLE" label="createable" name="createable" type="boolean"/>
+<Field __sourcePath="{}/object/custom" containerType="SINGLE" label="custom" name="custom" type="boolean"/>
+<Field __sourcePath="{}/object/customSetting" containerType="SINGLE" label="customSetting" name="customSetting" type="boolean"/>
+<Field __sourcePath="{}/object/deletable" containerType="SINGLE" label="deletable" name="deletable" type="boolean"/>
+<Field __sourcePath="{}/object/deprecatedAndHidden" containerType="SINGLE" label="deprecatedAndHidden" name="deprecatedAndHidden" type="boolean"/>
+<Field __sourcePath="{}/object/feedEnabled" containerType="SINGLE" label="feedEnabled" name="feedEnabled" type="boolean"/>
+<Field __sourcePath="{}/object/keyPrefix" containerType="SINGLE" label="keyPrefix" name="keyPrefix" type="string"/>
+<Field __sourcePath="{}/object/label" containerType="SINGLE" label="label" name="label" type="string"/>
+<Field __sourcePath="{}/object/labelPlural" containerType="SINGLE" label="labelPlural" name="labelPlural" type="string"/>
+<Field __sourcePath="{}/object/layoutable" containerType="SINGLE" label="layoutable" name="layoutable" type="boolean"/>
+<Field __sourcePath="{}/object/mergeable" containerType="SINGLE" label="mergeable" name="mergeable" type="boolean"/>
+<Field __sourcePath="{}/object/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __sourcePath="{}/object/queryable" containerType="SINGLE" label="queryable" name="queryable" type="boolean"/>
+<Field __sourcePath="{}/object/replicateable" containerType="SINGLE" label="replicateable" name="replicateable" type="boolean"/>
+<Field __sourcePath="{}/object/retrieveable" containerType="SINGLE" label="retrieveable" name="retrieveable" type="boolean"/>
+<Field __sourcePath="{}/object/searchable" containerType="SINGLE" label="searchable" name="searchable" type="boolean"/>
+<Field __sourcePath="{}/object/triggerable" containerType="SINGLE" label="triggerable" name="triggerable" type="boolean"/>
+<Field __sourcePath="{}/object/undeletable" containerType="SINGLE" label="undeletable" name="undeletable" type="boolean"/>
+<Field __sourcePath="{}/object/updateable" containerType="SINGLE" label="updateable" name="updateable" type="boolean"/>
+<Field __sourcePath="{}/object/urlDetail" containerType="SINGLE" label="urlDetail" name="urlDetail" type="string"/>
+<Field __sourcePath="{}/object/urlEdit" containerType="SINGLE" label="urlEdit" name="urlEdit" type="string"/>
+<Field __sourcePath="{}/object/urlNew" containerType="SINGLE" label="urlNew" name="urlNew" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/object/fields" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="400b239f-2284-44a7-b8fb-226b53adf060" _parent_id="__parent_id" _type="Input" id="cdca836e-c5e4-4ffb-875b-f36b5fc23bac">
+<Record fieldDelimiter="|" name="fields" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/object/fields/autoNumber" containerType="SINGLE" label="autoNumber" name="autoNumber" type="boolean"/>
+<Field __sourcePath="{}/object/fields/byteLength" containerType="SINGLE" label="byteLength" name="byteLength" type="integer"/>
+<Field __sourcePath="{}/object/fields/calculated" containerType="SINGLE" label="calculated" name="calculated" type="boolean"/>
+<Field __sourcePath="{}/object/fields/calculatedFormula" containerType="SINGLE" label="calculatedFormula" name="calculatedFormula" type="string"/>
+<Field __sourcePath="{}/object/fields/cascadeDelete" containerType="SINGLE" label="cascadeDelete" name="cascadeDelete" type="boolean"/>
+<Field __sourcePath="{}/object/fields/caseSensitive" containerType="SINGLE" label="caseSensitive" name="caseSensitive" type="boolean"/>
+<Field __sourcePath="{}/object/fields/controllerName" containerType="SINGLE" label="controllerName" name="controllerName" type="string"/>
+<Field __sourcePath="{}/object/fields/createable" containerType="SINGLE" label="createable" name="createable" type="boolean"/>
+<Field __sourcePath="{}/object/fields/custom" containerType="SINGLE" label="custom" name="custom" type="boolean"/>
+<Field __sourcePath="{}/object/fields/defaultValueFormula" containerType="SINGLE" label="defaultValueFormula" name="defaultValueFormula" type="string"/>
+<Field __sourcePath="{}/object/fields/defaultedOnCreate" containerType="SINGLE" label="defaultedOnCreate" name="defaultedOnCreate" type="boolean"/>
+<Field __sourcePath="{}/object/fields/dependentPicklist" containerType="SINGLE" label="dependentPicklist" name="dependentPicklist" type="boolean"/>
+<Field __sourcePath="{}/object/fields/deprecatedAndHidden" containerType="SINGLE" label="deprecatedAndHidden" name="deprecatedAndHidden" type="boolean"/>
+<Field __sourcePath="{}/object/fields/digits" containerType="SINGLE" label="digits" name="digits" type="integer"/>
+<Field __sourcePath="{}/object/fields/displayLocationInDecimal" containerType="SINGLE" label="displayLocationInDecimal" name="displayLocationInDecimal" type="boolean"/>
+<Field __sourcePath="{}/object/fields/externalId" containerType="SINGLE" label="externalId" name="externalId" type="boolean"/>
+<Field __sourcePath="{}/object/fields/filterable" containerType="SINGLE" label="filterable" name="filterable" type="boolean"/>
+<Field __sourcePath="{}/object/fields/groupable" containerType="SINGLE" label="groupable" name="groupable" type="boolean"/>
+<Field __sourcePath="{}/object/fields/htmlFormatted" containerType="SINGLE" label="htmlFormatted" name="htmlFormatted" type="boolean"/>
+<Field __sourcePath="{}/object/fields/idLookup" containerType="SINGLE" label="idLookup" name="idLookup" type="boolean"/>
+<Field __sourcePath="{}/object/fields/inlineHelpText" containerType="SINGLE" label="inlineHelpText" name="inlineHelpText" type="string"/>
+<Field __sourcePath="{}/object/fields/label" containerType="SINGLE" label="label" name="label" type="string"/>
+<Field __sourcePath="{}/object/fields/length" containerType="SINGLE" label="length" name="length" type="integer"/>
+<Field __sourcePath="{}/object/fields/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __sourcePath="{}/object/fields/nameField" containerType="SINGLE" label="nameField" name="nameField" type="boolean"/>
+<Field __sourcePath="{}/object/fields/namePointing" containerType="SINGLE" label="namePointing" name="namePointing" type="boolean"/>
+<Field __sourcePath="{}/object/fields/nillable" containerType="SINGLE" label="nillable" name="nillable" type="boolean"/>
+<Field __sourcePath="{}/object/fields/permissionable" containerType="SINGLE" label="permissionable" name="permissionable" type="boolean"/>
+<Field __sourcePath="{}/object/fields/precision" containerType="SINGLE" label="precision" name="precision" type="integer"/>
+<Field __sourcePath="{}/object/fields/referenceTo" containerType="list" label="referenceTo" name="referenceTo" type="string"/>
+<Field __sourcePath="{}/object/fields/relationshipName" containerType="SINGLE" label="relationshipName" name="relationshipName" type="string"/>
+<Field __sourcePath="{}/object/fields/relationshipOrder" containerType="SINGLE" label="relationshipOrder" name="relationshipOrder" type="integer"/>
+<Field __sourcePath="{}/object/fields/restrictedDelete" containerType="SINGLE" label="restrictedDelete" name="restrictedDelete" type="boolean"/>
+<Field __sourcePath="{}/object/fields/restrictedPicklist" containerType="SINGLE" label="restrictedPicklist" name="restrictedPicklist" type="boolean"/>
+<Field __sourcePath="{}/object/fields/scale" containerType="SINGLE" label="scale" name="scale" type="integer"/>
+<Field __sourcePath="{}/object/fields/soapType" containerType="SINGLE" label="soapType" name="soapType" type="string"/>
+<Field __sourcePath="{}/object/fields/sortable" containerType="SINGLE" label="sortable" name="sortable" type="boolean"/>
+<Field __sourcePath="{}/object/fields/type" containerType="SINGLE" label="type" name="type" type="string"/>
+<Field __sourcePath="{}/object/fields/unique" containerType="SINGLE" label="unique" name="unique" type="boolean"/>
+<Field __sourcePath="{}/object/fields/updateable" containerType="SINGLE" label="updateable" name="updateable" type="boolean"/>
+<Field __sourcePath="{}/object/fields/writeRequiresMasterRead" containerType="SINGLE" label="writeRequiresMasterRead" name="writeRequiresMasterRead" type="boolean"/>
+</Record>
+</Metadata>
+<Metadata _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _type="Output" id="4222423c-5cb6-4cd8-96b1-a0a79fd9c7c1">
+<Record fieldDelimiter="|" name="object" recordDelimiter="\n\\|\r\n\\|\r" type="fixed">
+<Field __artificialType="_id" name="__id" size="50" type="long"/>
+<Field containerType="SINGLE" label="activateable" name="activateable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="createable" name="createable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="custom" name="custom" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="customSetting" name="customSetting" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="deletable" name="deletable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="deprecatedAndHidden" name="deprecatedAndHidden" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="feedEnabled" name="feedEnabled" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="keyPrefix" name="keyPrefix" size="10" type="string"/>
+<Field containerType="SINGLE" label="label" name="label" size="10" type="string"/>
+<Field containerType="SINGLE" label="labelPlural" name="labelPlural" size="10" type="string"/>
+<Field containerType="SINGLE" label="layoutable" name="layoutable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="mergeable" name="mergeable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="name" name="name" size="10" type="string"/>
+<Field containerType="SINGLE" label="queryable" name="queryable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="replicateable" name="replicateable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="retrieveable" name="retrieveable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="searchable" name="searchable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="triggerable" name="triggerable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="undeletable" name="undeletable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="updateable" name="updateable" size="10" type="boolean"/>
+<Field containerType="SINGLE" label="urlDetail" name="urlDetail" size="10" type="string"/>
+<Field containerType="SINGLE" label="urlEdit" name="urlEdit" size="10" type="string"/>
+<Field containerType="SINGLE" eofAsDelimiter="true" label="urlNew" name="urlNew" size="10" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/object/fields/picklistValues" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="cdca836e-c5e4-4ffb-875b-f36b5fc23bac" _parent_id="__parent_id" _type="Input" id="0e3ed8a2-258e-45bc-bb7c-2bb0b389ad38">
+<Record fieldDelimiter="|" name="picklistValues" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/object/fields/picklistValues/active" containerType="SINGLE" label="active" name="active" type="boolean"/>
+<Field __sourcePath="{}/object/fields/picklistValues/defaultValue" containerType="SINGLE" label="defaultValue" name="defaultValue" type="boolean"/>
+<Field __sourcePath="{}/object/fields/picklistValues/label" containerType="SINGLE" label="label" name="label" type="string"/>
+<Field __sourcePath="{}/object/fields/picklistValues/validFor" containerType="list" label="validFor" name="validFor" type="byte"/>
+<Field __sourcePath="{}/object/fields/picklistValues/value" containerType="SINGLE" label="value" name="value" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/object/recordTypeInfos" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="400b239f-2284-44a7-b8fb-226b53adf060" _parent_id="__parent_id" _type="Input" id="783d6b60-f1bc-43c9-af14-46a25b9fc988">
+<Record fieldDelimiter="|" name="recordTypeInfos" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/object/recordTypeInfos/available" containerType="SINGLE" label="available" name="available" type="boolean"/>
+<Field __sourcePath="{}/object/recordTypeInfos/defaultRecordTypeMapping" containerType="SINGLE" label="defaultRecordTypeMapping" name="defaultRecordTypeMapping" type="boolean"/>
+<Field __sourcePath="{}/object/recordTypeInfos/name" containerType="SINGLE" label="name" name="name" type="string"/>
+<Field __sourcePath="{}/object/recordTypeInfos/recordTypeId" containerType="SINGLE" label="recordTypeId" name="recordTypeId" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="Pojo READER" guiWidth="0" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="activateable" trim="true" xpath="activateable"/>
+  <Mapping cloverField="createable" trim="true" xpath="createable"/>
+  <Mapping cloverField="custom" trim="true" xpath="custom"/>
+  <Mapping cloverField="customSetting" trim="true" xpath="customSetting"/>
+  <Mapping cloverField="deletable" trim="true" xpath="deletable"/>
+  <Mapping cloverField="deprecatedAndHidden" trim="true" xpath="deprecatedAndHidden"/>
+  <Mapping cloverField="feedEnabled" trim="true" xpath="feedEnabled"/>
+  <Mapping cloverField="keyPrefix" trim="true" xpath="keyPrefix"/>
+  <Mapping cloverField="label" trim="true" xpath="label"/>
+  <Mapping cloverField="labelPlural" trim="true" xpath="labelPlural"/>
+  <Mapping cloverField="layoutable" trim="true" xpath="layoutable"/>
+  <Mapping cloverField="mergeable" trim="true" xpath="mergeable"/>
+  <Mapping cloverField="name" trim="true" xpath="name"/>
+  <Mapping cloverField="queryable" trim="true" xpath="queryable"/>
+  <Mapping cloverField="replicateable" trim="true" xpath="replicateable"/>
+  <Mapping cloverField="retrieveable" trim="true" xpath="retrieveable"/>
+  <Mapping cloverField="searchable" trim="true" xpath="searchable"/>
+  <Mapping cloverField="triggerable" trim="true" xpath="triggerable"/>
+  <Mapping cloverField="undeletable" trim="true" xpath="undeletable"/>
+  <Mapping cloverField="updateable" trim="true" xpath="updateable"/>
+  <Mapping cloverField="urlDetail" trim="true" xpath="urlDetail"/>
+  <Mapping cloverField="urlEdit" trim="true" xpath="urlEdit"/>
+  <Mapping cloverField="urlNew" trim="true" xpath="urlNew"/>
+</Context>
+]]></attr>
+<attr name="__typeName"><![CDATA[Master_Patient__c]]></attr>
+<attr name="_data_format"><![CDATA[JAVA]]></attr>
+<attr name="schema"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<schema-object>
+  <typed-object-ref type-ref="com.sforce.soap.partner.DescribeSObjectResult"/>
+  <typed-object type="com.sforce.soap.partner.DescribeSObjectResult">
+    <typed-object-ref name="activateable" type-ref="boolean"/>
+    <schema-collection array="true" name="childRelationships">
+      <typed-object-ref type-ref="com.sforce.soap.partner.ChildRelationship"/>
+    </schema-collection>
+    <typed-object-ref name="createable" type-ref="boolean"/>
+    <typed-object-ref name="custom" type-ref="boolean"/>
+    <typed-object-ref name="customSetting" type-ref="boolean"/>
+    <typed-object-ref name="deletable" type-ref="boolean"/>
+    <typed-object-ref name="deprecatedAndHidden" type-ref="boolean"/>
+    <typed-object-ref name="feedEnabled" type-ref="boolean"/>
+    <schema-collection array="true" name="fields">
+      <typed-object-ref type-ref="com.sforce.soap.partner.Field"/>
+    </schema-collection>
+    <typed-object-ref name="keyPrefix" type-ref="java.lang.String"/>
+    <typed-object-ref name="label" type-ref="java.lang.String"/>
+    <typed-object-ref name="labelPlural" type-ref="java.lang.String"/>
+    <typed-object-ref name="layoutable" type-ref="boolean"/>
+    <typed-object-ref name="mergeable" type-ref="boolean"/>
+    <typed-object-ref name="name" type-ref="java.lang.String"/>
+    <typed-object-ref name="queryable" type-ref="boolean"/>
+    <schema-collection array="true" name="recordTypeInfos">
+      <typed-object-ref type-ref="com.sforce.soap.partner.RecordTypeInfo"/>
+    </schema-collection>
+    <typed-object-ref name="replicateable" type-ref="boolean"/>
+    <typed-object-ref name="retrieveable" type-ref="boolean"/>
+    <typed-object-ref name="searchable" type-ref="boolean"/>
+    <typed-object-ref name="triggerable" type-ref="boolean"/>
+    <typed-object-ref name="undeletable" type-ref="boolean"/>
+    <typed-object-ref name="updateable" type-ref="boolean"/>
+    <typed-object-ref name="urlDetail" type-ref="java.lang.String"/>
+    <typed-object-ref name="urlEdit" type-ref="java.lang.String"/>
+    <typed-object-ref name="urlNew" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.sforce.soap.partner.FieldType"/>
+  <typed-object type="com.sforce.soap.partner.PicklistEntry">
+    <typed-object-ref name="active" type-ref="boolean"/>
+    <typed-object-ref name="defaultValue" type-ref="boolean"/>
+    <typed-object-ref name="label" type-ref="java.lang.String"/>
+    <schema-collection array="true" name="validFor">
+      <typed-object-ref type-ref="byte"/>
+    </schema-collection>
+    <typed-object-ref name="value" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="com.sforce.soap.partner.RecordTypeInfo">
+    <typed-object-ref name="available" type-ref="boolean"/>
+    <typed-object-ref name="defaultRecordTypeMapping" type-ref="boolean"/>
+    <typed-object-ref name="name" type-ref="java.lang.String"/>
+    <typed-object-ref name="recordTypeId" type-ref="java.lang.String"/>
+  </typed-object>
+  <typed-object type="byte"/>
+  <typed-object type="com.sforce.soap.partner.Field">
+    <typed-object-ref name="autoNumber" type-ref="boolean"/>
+    <typed-object-ref name="byteLength" type-ref="int"/>
+    <typed-object-ref name="calculated" type-ref="boolean"/>
+    <typed-object-ref name="calculatedFormula" type-ref="java.lang.String"/>
+    <typed-object-ref name="cascadeDelete" type-ref="boolean"/>
+    <typed-object-ref name="caseSensitive" type-ref="boolean"/>
+    <typed-object-ref name="controllerName" type-ref="java.lang.String"/>
+    <typed-object-ref name="createable" type-ref="boolean"/>
+    <typed-object-ref name="custom" type-ref="boolean"/>
+    <typed-object-ref name="defaultValueFormula" type-ref="java.lang.String"/>
+    <typed-object-ref name="defaultedOnCreate" type-ref="boolean"/>
+    <typed-object-ref name="dependentPicklist" type-ref="boolean"/>
+    <typed-object-ref name="deprecatedAndHidden" type-ref="boolean"/>
+    <typed-object-ref name="digits" type-ref="int"/>
+    <typed-object-ref name="displayLocationInDecimal" type-ref="boolean"/>
+    <typed-object-ref name="externalId" type-ref="boolean"/>
+    <typed-object-ref name="filterable" type-ref="boolean"/>
+    <typed-object-ref name="groupable" type-ref="boolean"/>
+    <typed-object-ref name="htmlFormatted" type-ref="boolean"/>
+    <typed-object-ref name="idLookup" type-ref="boolean"/>
+    <typed-object-ref name="inlineHelpText" type-ref="java.lang.String"/>
+    <typed-object-ref name="label" type-ref="java.lang.String"/>
+    <typed-object-ref name="length" type-ref="int"/>
+    <typed-object-ref name="name" type-ref="java.lang.String"/>
+    <typed-object-ref name="nameField" type-ref="boolean"/>
+    <typed-object-ref name="namePointing" type-ref="boolean"/>
+    <typed-object-ref name="nillable" type-ref="boolean"/>
+    <typed-object-ref name="permissionable" type-ref="boolean"/>
+    <schema-collection array="true" name="picklistValues">
+      <typed-object-ref type-ref="com.sforce.soap.partner.PicklistEntry"/>
+    </schema-collection>
+    <typed-object-ref name="precision" type-ref="int"/>
+    <schema-collection array="true" name="referenceTo">
+      <typed-object-ref type-ref="java.lang.String"/>
+    </schema-collection>
+    <typed-object-ref name="relationshipName" type-ref="java.lang.String"/>
+    <typed-object-ref name="relationshipOrder" type-ref="int"/>
+    <typed-object-ref name="restrictedDelete" type-ref="boolean"/>
+    <typed-object-ref name="restrictedPicklist" type-ref="boolean"/>
+    <typed-object-ref name="scale" type-ref="int"/>
+    <typed-object-ref name="soapType" type-ref="com.sforce.soap.partner.SoapType"/>
+    <typed-object-ref name="sortable" type-ref="boolean"/>
+    <typed-object-ref name="type" type-ref="com.sforce.soap.partner.FieldType"/>
+    <typed-object-ref name="unique" type-ref="boolean"/>
+    <typed-object-ref name="updateable" type-ref="boolean"/>
+    <typed-object-ref name="writeRequiresMasterRead" type-ref="boolean"/>
+  </typed-object>
+  <typed-object type="int"/>
+  <typed-object type="com.sforce.soap.partner.SoapType"/>
+  <typed-object type="java.lang.String"/>
+  <typed-object type="boolean"/>
+  <typed-object type="com.sforce.soap.partner.ChildRelationship">
+    <typed-object-ref name="cascadeDelete" type-ref="boolean"/>
+    <typed-object-ref name="childSObject" type-ref="java.lang.String"/>
+    <typed-object-ref name="deprecatedAndHidden" type-ref="boolean"/>
+    <typed-object-ref name="field" type-ref="java.lang.String"/>
+    <typed-object-ref name="relationshipName" type-ref="java.lang.String"/>
+    <typed-object-ref name="restrictedDelete" type-ref="boolean"/>
+  </typed-object>
+</schema-object>
+]]></attr>
+<attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/sfdc/describe-sobject]]></attr>
+<attr name="__connectorName"><![CDATA[UCSF_SF_Connection]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" excludeFields="__id" fileURL="dict:outputPayload" guiHeight="0" guiName="Fixed Width WRITER" guiWidth="0" guiX="900" guiY="20" id="DATA_WRITER0" quotedStrings="true" type="DATA_WRITER">
+<attr name="_data_format"><![CDATA[FIXED_WIDTH]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'object' -&gt; 'object'" guiWidth="0" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = (isnull(input.__id) ? null : str2long(input.__id));
+//END -> DO NOT REMOVE
+output.activateable = input.activateable;
+output.createable = input.createable;
+output.custom = input.custom;
+output.customSetting = input.customSetting;
+output.deletable = input.deletable;
+output.deprecatedAndHidden = input.deprecatedAndHidden;
+output.feedEnabled = input.feedEnabled;
+output.keyPrefix = input.keyPrefix;
+output.label = input.label;
+output.labelPlural = input.labelPlural;
+output.layoutable = input.layoutable;
+output.mergeable = input.mergeable;
+output.name = input.name;
+output.queryable = input.queryable;
+output.replicateable = input.replicateable;
+output.retrieveable = input.retrieveable;
+output.searchable = input.searchable;
+output.triggerable = input.triggerable;
+output.undeletable = input.undeletable;
+output.updateable = input.updateable;
+output.urlDetail = input.urlDetail;
+output.urlEdit = input.urlEdit;
+output.urlNew = input.urlNew;
+]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="400b239f-2284-44a7-b8fb-226b53adf060" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="4222423c-5cb6-4cd8-96b1-a0a79fd9c7c1" outPort="Port 0 (out)" toNode="DATA_WRITER0:0"/>
+</Phase>
+</Graph>

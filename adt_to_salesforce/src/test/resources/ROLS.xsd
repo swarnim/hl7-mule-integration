@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.mulesoft.org/schema/mule/core" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ROLS" type="core:ROLSType" xmlns:core="http://www.mulesoft.org/schema/mule/core"/>
+  <xs:complexType name="ROLType">
+    <xs:sequence>
+      <xs:element name="ROLID">
+        <xs:simpleType>
+          <xs:restriction base="xs:byte">
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="ROLTYPE">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="Proceduralis"/>
+            <xs:enumeration value="PEDIATRICIAN"/>
+            <xs:enumeration value="AN Attending"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element name="MSO" minOccurs="0">
+        <xs:simpleType>
+          <xs:restriction base="xs:int">
+            <xs:enumeration value="31023"/>
+            <xs:enumeration value="44048"/>
+            <xs:enumeration value="54718"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:element>
+      <xs:element type="xs:int" name="UCSFID" minOccurs="0"/>
+      <xs:element type="xs:string" name="FRISTNAME" minOccurs="0"/>
+      <xs:element type="xs:string" name="LASTNAME" minOccurs="0"/>
+      <xs:element type="xs:string" name="MIDDLENAME" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ROLSType">
+    <xs:sequence>
+      <xs:element type="core:ROLType" name="ROL" maxOccurs="unbounded" minOccurs="0" xmlns:core="http://www.mulesoft.org/schema/mule/core"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

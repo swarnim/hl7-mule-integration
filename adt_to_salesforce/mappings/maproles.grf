@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Graph author="sranjitkar" created="Mon Jun 17 14:07:41 PDT 2013" guiVersion="3.3.2" id="1371505394853" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Mon Jun 17 14:07:41 PDT 2013" modifiedBy="sranjitkar" name="maproles_grf" preview-file="${Project_Home}/src/test/resources/rolesample.xml" revision="1.0" showComponentDetails="false">
+<Global>
+<Metadata __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="2d4d082d-0672-4c9c-9929-a502527a3d56" _parent_id="__parent_id" _type="Input" id="5c154167-221c-4cd8-af2f-368c37927055">
+<Record fieldDelimiter="|" name="ROL" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.1/ns1:EI.1" containerType="SINGLE" label="EI.1" name="EI_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.3/ns1:CE.1" containerType="SINGLE" label="CE.1" name="CE_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.5/ns1:TS.1" containerType="SINGLE" label="TS.1" name="TS_1" type="long"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.11/ns1:XAD.1/ns1:SAD.1" containerType="SINGLE" label="SAD.1" name="SAD_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.11/ns1:XAD.2" containerType="SINGLE" label="XAD.2" name="XAD_2" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.11/ns1:XAD.3" containerType="SINGLE" label="XAD.3" name="XAD_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.11/ns1:XAD.4" containerType="SINGLE" label="XAD.4" name="XAD_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.11/ns1:XAD.5" containerType="SINGLE" label="XAD.5" name="XAD_5" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.11/ns1:XAD.6" containerType="SINGLE" label="XAD.6" name="XAD_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.6/ns1:TS.1" containerType="SINGLE" label="TS.1" name="TS_1_1" type="long"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/ROLS/ROL" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="6e25d5ae-3652-4789-a7b6-97307fd58536" _parent_id="__parent_id" _type="Output" id="b1a44b82-2419-43d9-a6cd-e05bd4238c74">
+<Record fieldDelimiter="|" name="ROL" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.1/EI.1" containerType="SINGLE" label="EI.1" name="EI_1" type="integer"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.3/CE.1" containerType="SINGLE" label="CE.1" name="CE_1" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.5/TS.1" containerType="SINGLE" label="TS.1" name="TS_1" type="long"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.11/XAD.1/SAD.1" containerType="SINGLE" label="SAD.1" name="SAD_1" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.11/XAD.2" containerType="SINGLE" label="XAD.2" name="XAD_2" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.11/XAD.3" containerType="SINGLE" label="XAD.3" name="XAD_3" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.11/XAD.4" containerType="SINGLE" label="XAD.4" name="XAD_4" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.11/XAD.5" containerType="SINGLE" label="XAD.5" name="XAD_5" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.11/XAD.6" containerType="SINGLE" label="XAD.6" name="XAD_6" type="integer"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.6/TS.1" containerType="SINGLE" label="TS.1" name="TS_1_1" type="long"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.12" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="5c154167-221c-4cd8-af2f-368c37927055" _parent_id="__parent_id" _type="Input" id="13dccdd8-4887-4d4a-a034-f4c4cab8dbf2">
+<Record fieldDelimiter="|" name="ROL_12" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.12/ns1:XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.12/ns1:XTN.3" containerType="SINGLE" label="XTN.3" name="XTN_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.12/ns1:XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.12/ns1:XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7" type="number"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/ROLS/ROL/ROL.12" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="b1a44b82-2419-43d9-a6cd-e05bd4238c74" _parent_id="__parent_id" _type="Output" id="4bc3de09-47e9-4296-b16e-b4417583c5a1">
+<Record fieldDelimiter="|" name="ROL_12" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.12/XTN.1" containerType="SINGLE" label="XTN.1" name="XTN_1" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.12/XTN.3" containerType="SINGLE" label="XTN.3" name="XTN_3" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.12/XTN.6" containerType="SINGLE" label="XTN.6" name="XTN_6" type="integer"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.12/XTN.7" containerType="SINGLE" label="XTN.7" name="XTN_7" type="number"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.4" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="5c154167-221c-4cd8-af2f-368c37927055" _parent_id="__parent_id" _type="Input" id="49c62a0e-b93b-46de-919d-7e8c891a30b1">
+<Record fieldDelimiter="|" name="ROL_4" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.4/ns1:XCN.1" containerType="SINGLE" label="XCN.1" name="XCN_1" type="integer"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.4/ns1:XCN.2/ns1:FN.1" containerType="SINGLE" label="FN.1" name="FN_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.4/ns1:XCN.3" containerType="SINGLE" label="XCN.3" name="XCN_3" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.4/ns1:XCN.4" containerType="SINGLE" label="XCN.4" name="XCN_4" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.4/ns1:XCN.9/ns1:HD.1" containerType="SINGLE" label="HD.1" name="HD_1" type="string"/>
+<Field __sourcePath="{urn:hl7-org:v2xml=ns1,http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS/ns1:ROL/ns1:ROL.4/ns1:XCN.13" containerType="SINGLE" label="XCN.13" name="XCN_13" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/ROLS/ROL/ROL.4" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="b1a44b82-2419-43d9-a6cd-e05bd4238c74" _parent_id="__parent_id" _type="Output" id="84facf45-5326-45e0-9dba-739025d87b03">
+<Record fieldDelimiter="|" name="ROL_4" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_parent_id" __systemManaged="true" name="__parent_id" type="string"/>
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.4/XCN.1" containerType="SINGLE" label="XCN.1" name="XCN_1" type="integer"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.4/XCN.2/FN.1" containerType="SINGLE" label="FN.1" name="FN_1" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.4/XCN.3" containerType="SINGLE" label="XCN.3" name="XCN_3" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.4/XCN.4" containerType="SINGLE" label="XCN.4" name="XCN_4" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.4/XCN.9/HD.1" containerType="SINGLE" label="HD.1" name="HD_1" type="string"/>
+<Field __sourcePath="{}/ROLS/ROL/ROL.4/XCN.13" containerType="SINGLE" label="XCN.13" name="XCN_13" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{http://www.mulesoft.org/schema/mule/core=ns0}/ns0:ROLS" _dataStructure="OBJECT" _id="__id" _type="Input" id="2d4d082d-0672-4c9c-9929-a502527a3d56">
+<Record fieldDelimiter="|" name="ROLS" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+</Record>
+</Metadata>
+<Metadata __sourcePath="{}/ROLS" _dataStructure="OBJECT" _id="__id" _type="Output" id="6e25d5ae-3652-4789-a7b6-97307fd58536">
+<Record fieldDelimiter="|" name="ROLS" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
+<Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+</Record>
+</Metadata>
+<Dictionary>
+<Entry id="DictionaryEntry0" input="true" name="inputPayload" output="false" type="object"/>
+<Entry id="DictionaryEntry1" input="false" name="outputPayload" output="true" type="object"/>
+<Entry dictval.__javaType="java.lang.String" id="DictionaryEntry2" input="true" name="patientId" output="true" type="string"/>
+</Dictionary>
+</Global>
+<Phase number="0">
+<Node enabled="enabled" fileURL="dict:outputPayload" guiHeight="0" guiName="Map&lt;k,v&gt; WRITER" guiWidth="0" guiX="900" guiY="20" id="MAP_WRITER0" type="MAP_WRITER">
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<ROLS xmlns:clover="http://www.cloveretl.com/ns/xmlmapping" clover:inPort="0">
+  <clover:collection clover:name="ROL">
+    <item clover:inPort="1" clover:key="__parent_id" clover:parentKey="__id">
+      <ROL.1>
+        <EI.1>$1.EI_1</EI.1>
+      </ROL.1>
+      <ROL.3>
+        <CE.1>$1.CE_1</CE.1>
+      </ROL.3>
+      <ROL.5>
+        <TS.1>$1.TS_1</TS.1>
+      </ROL.5>
+      <ROL.11>
+        <XAD.1>
+          <SAD.1>$1.SAD_1</SAD.1>
+        </XAD.1>
+        <XAD.2>$1.XAD_2</XAD.2>
+        <XAD.3>$1.XAD_3</XAD.3>
+        <XAD.4>$1.XAD_4</XAD.4>
+        <XAD.5>$1.XAD_5</XAD.5>
+        <XAD.6>$1.XAD_6</XAD.6>
+      </ROL.11>
+      <ROL.6>
+        <TS.1>$1.TS_1_1</TS.1>
+      </ROL.6>
+    </item>
+  </clover:collection>
+</ROLS>]]></attr>
+<attr name="_data_format"><![CDATA[MAP]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'ns0:ROLS' -&gt; 'ROLS'" guiWidth="0" guiX="460" guiY="20" id="REFORMAT0" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+//END -> DO NOT REMOVE
+]]></attr>
+</Node>
+<Node enabled="enabled" guiHeight="0" guiName="Foreach 'ns1:ROL' -&gt; 'ROL'" guiWidth="0" guiX="460" guiY="120" id="REFORMAT1" transformClass="com.mulesoft.datamapper.transform.MelRecordTransform" type="REFORMAT">
+<attr name="melScript"><![CDATA[//MEL
+//START -> DO NOT REMOVE
+output.__id = input.__id;
+output.__parent_id = input.__parent_id;
+//END -> DO NOT REMOVE
+output.EI_1 = input.EI_1;
+output.CE_1 = input.CE_1;
+output.TS_1 = input.TS_1;
+output.SAD_1 = input.SAD_1;
+output.XAD_2 = input.XAD_2;
+output.XAD_3 = input.XAD_3;
+output.XAD_4 = input.XAD_4;
+output.XAD_5 = input.XAD_5;
+output.XAD_6 = input.XAD_6;
+output.TS_1_1 = input.TS_1_1;
+]]></attr>
+</Node>
+<Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="XML READER" guiWidth="0" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
+<attr name="xmlSchemaURL"><![CDATA[.\src\test\resources\ROL.xsd,C:\Users\sranjitkar\MuleStudio\workspacehl7\adt_to_salesforce\src\test\resources\ROLS.xsd]]></attr>
+<attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Context namespacePaths="ns0=&quot;http://www.mulesoft.org/schema/mule/core&quot;" outPort="0" sequenceField="__id" xpath="/ns0:ROLS">
+  <Context generatedKey="__parent_id" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" outPort="1" parentKey="__id" sequenceField="__id" xpath="ns1:ROL">
+    <Mapping cloverField="EI_1" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.1/ns1:EI.1"/>
+    <Mapping cloverField="CE_1" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.3/ns1:CE.1"/>
+    <Mapping cloverField="TS_1" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.5/ns1:TS.1"/>
+    <Mapping cloverField="SAD_1" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.11/ns1:XAD.1/ns1:SAD.1"/>
+    <Mapping cloverField="XAD_2" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.11/ns1:XAD.2"/>
+    <Mapping cloverField="XAD_3" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.11/ns1:XAD.3"/>
+    <Mapping cloverField="XAD_4" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.11/ns1:XAD.4"/>
+    <Mapping cloverField="XAD_5" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.11/ns1:XAD.5"/>
+    <Mapping cloverField="XAD_6" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.11/ns1:XAD.6"/>
+    <Mapping cloverField="TS_1_1" namespacePaths="ns1=&quot;urn:hl7-org:v2xml&quot;" trim="true" xpath="ns1:ROL.6/ns1:TS.1"/>
+  </Context>
+</Context>
+]]></attr>
+<attr name="_data_format"><![CDATA[XML]]></attr>
+<attr name="__rootGlobalElementName"><![CDATA[{http://www.mulesoft.org/schema/mule/core}ROLS]]></attr>
+</Node>
+<Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="6e25d5ae-3652-4789-a7b6-97307fd58536" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>
+<Edge debugMode="true" fromNode="REFORMAT1:0" guiBendpoints="" id="Edge3" inPort="Port 1 (in)" metadata="b1a44b82-2419-43d9-a6cd-e05bd4238c74" outPort="Port 0 (out)" toNode="MAP_WRITER0:1"/>
+<Edge debugMode="true" fromNode="XML_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="2d4d082d-0672-4c9c-9929-a502527a3d56" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
+<Edge debugMode="true" fromNode="XML_READER0:1" guiBendpoints="" id="Edge2" inPort="Port 0 (in)" metadata="5c154167-221c-4cd8-af2f-368c37927055" outPort="Port 1 (out)" toNode="REFORMAT1:0"/>
+</Phase>
+</Graph>

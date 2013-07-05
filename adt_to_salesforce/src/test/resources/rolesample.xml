@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ROLS xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:hl7xml="urn:hl7-org:v2xml">
+   <ROL>
+      <ROLEID>3</ROLEID>
+      <ROLETYPE>Proceduralis</ROLETYPE>
+      <MSO>31023</MSO>
+   </ROL>
+   <ROL>
+      <ROLEID>4</ROLEID>
+      <ROLETYPE>PEDIATRICIAN</ROLETYPE>
+      <MSO>44048</MSO>
+      <UCSFID>024810624</UCSFID>
+      <FIRSTNAME>BOKSER</FIRSTNAME>
+      <LASTNAME>SETH</LASTNAME>
+      <MIDDLENAME>J.</MIDDLENAME>
+   </ROL>
+  
+</ROLS>
