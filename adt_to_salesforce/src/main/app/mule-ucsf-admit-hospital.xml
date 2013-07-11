@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:vm="http://www.mulesoft.org/schema/mule/vm" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
 	xmlns:jdbc-ee="http://www.mulesoft.org/schema/mule/ee/jdbc" xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml"
 	xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting" xmlns:tcp="http://www.mulesoft.org/schema/mule/tcp"
 	xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp" xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper"
 	xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc" xmlns:hl7="http://www.mulesoft.org/schema/mule/hl7" xmlns:file="http://www.mulesoft.org/schema/mule/file"
 	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 http://www.mulesoft.org/schema/mule/hl7 http://www.mulesoft.org/schema/mule/hl7/current/mule-hl7.xsd
 http://www.mulesoft.org/schema/mule/tcp http://www.mulesoft.org/schema/mule/tcp/current/mule-tcp.xsd
@@ -22,8 +24,9 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	<mulexml:namespace-manager includeConfigNamespaces="true">
 		<mulexml:namespace prefix="hl7xml" uri="urn:hl7-org:v2xml" />
 	</mulexml:namespace-manager>
-	<sfdc:config name="UCSF_SF_Connection" username="swarnim.ranjitkar@ucsf.edu.c4hdev" password="work2010"
-		securityToken="XLp1QUCWT2reiKL5OHT3W3mq" url="https://test.salesforce.com/services/Soap/u/26.0" doc:name="Salesforce">
+	
+	<sfdc:config name="UCSF_SF_Connection" username="${salesforce.username}" password="${salesforce.password}"
+		securityToken="${salesforce.securitytoken}" url="https://test.salesforce.com/services/Soap/u/26.0" doc:name="Salesforce">
 		<sfdc:connection-pooling-profile initialisationPolicy="INITIALISE_ONE"
 			exhaustedAction="WHEN_EXHAUSTED_GROW" />
 		<reconnect frequency="10000" count="50" />
@@ -45,6 +48,14 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	<catch-exception-strategy   name="Global_Catch_Exception_Strategy">
 		<set-payload value="#[originalhl7]" doc:name="Set Payload"/>
 		<logger level="ERROR" message="Payload is: #[payload]" doc:name="Logger"/>
+        <choice doc:name="Choice">
+        <when expression="flowVars['messageId'] != null">
+                <enricher doc:name="Message Enricher" target="variable:dummy">
+                    <flow-ref name="messageErrorLogging" doc:name="Flow Reference"/>
+                </enricher>
+        
+         </when>
+        </choice>
 		<!-- <vm:outbound-endpoint path="DeadLetterQueue" doc:name="VM"/> -->
 		<!-- send to MMC -->
 		<tracking:custom-event event-name="Rejected Message" doc:name="Custom Business event">
@@ -54,17 +65,18 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		</tracking:custom-event>
 		<choice doc:name="Choice">
 			<when expression="#[exception.causedBy(org.mule.api.ConnectionException)]">
-				<hl7:ack-component ackCode="AR" doc:name="HL7 ACK" />
+				<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
 			</when>
 		   <when expression="#[exception.causedBy(org.mule.api.expression.ExpressionRuntimeException)]">
 				<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
 			</when>
 			
 			<otherwise>
-				<hl7:ack-component ackCode="AA" doc:name="HL7 ACK" />
+				<hl7:ack-component ackCode="AR" doc:name="HL7 ACK" />
 			</otherwise>
 		</choice>
 		<logger level="INFO" message="ACK Payload #[payload]" doc:name="Logger"/>
+		<logger message=" Warnings during processing #[warnings]" level="WARN" doc:name="Logger" />
 	</catch-exception-strategy>
 	<!-- Dead Letter Queue Flow -->
 	<byte-array-to-string-transformer name="Byte_Array_to_StringForTCP" doc:name="Byte Array to String" />
@@ -81,23 +93,24 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	</sub-flow>
 	<flow name="mule-ucsf-pocFlow1" doc:name="mule-ucsf-pocFlow1" processingStrategy="synchronous">
 		<composite-source doc:name="Composite Source">
-			<tcp:inbound-endpoint exchange-pattern="request-response" host="localhost" port="9001"
+			<tcp:inbound-endpoint exchange-pattern="request-response" host="0.0.0.0" port="8062"
 				responseTimeout="1000000" doc:name="Receive HL7 message" transformer-refs="Byte_Array_to_StringForTCP" />
-			<hl7:inbound-endpoint port="9010" host="0.0.0.0" doc:name="HL7 MLLP" />
+			<hl7:inbound-endpoint port="8061" host="0.0.0.0" doc:name="HL7 MLLP" />
 		</composite-source>
 		<set-variable variableName="originalhl7" value="#[payload:]" doc:name="Variable" />
+		<logger level="INFO" message="${salesforce.username}-${salesforce.password}-${salesforce.securitytoken}" doc:name="Logger"/>
 		
-		
-		<enricher target="#[variable:dummy]" doc:name="Message Enricher">
+		<enricher target="#[variable:messageId]"   source="#[payload.id]" doc:name="Message Enricher"> 
 			<flow-ref name="SaveADT" doc:name="Flow Reference" />
 		</enricher>
 		<set-payload value="#[groovy:payload.replaceAll('\\|ADT\\^A\\d\\d\\|', '|ADT^A01|')]" doc:name="Processing everything as A01"/>
-		<set-variable variableName="warnings" value="@" doc:name="Warning Messages" />
+		<set-variable variableName="warnings" value="#[groovy:new StringBuilder()]" doc:name="Warning Messages" />
 		<!-- all doc:name="All"> <processor-chain -->
 		<logger message="&quot;received from  = &quot; #[payload]" level="INFO" doc:name="Log NEW" />
 		<hl7:hl7-encoding-transformer name="HL7_Encoding_Transformer" hl7Encoding="XML"
 			doc:name="Transform A01 to XML" />
 		<set-variable value="#[payload]" variableName="orginalXML" doc:name="Variable" />
+		<set-variable variableName="eventType" value="xpath('/hl7xml:ADT_A01/hl7xml:EVN/hl7xml:EVN.1').Text" doc:name="Variable" />
 		<logger level="INFO" doc:name="Log XML original" message="#[payload]" />
 		<enricher doc:name="Enricher PatientFlow">
 			<flow-ref name="mule-ucsf-insert-patient" doc:name="Insert Patient Flow" />
@@ -118,10 +131,13 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			</otherwise>
 		</choice>
 		<byte-array-to-string-transformer doc:name="Byte Array to String" />
-		<logger level="DEBUG" doc:name="Logger" />
+        <flow-ref name="updateSalesforce" doc:name="Flow Reference"/>
 		<!-- /processor-chain > <flow-ref name="SaveADT" doc:name="Flow Reference"/> </all -->
 		<set-payload value="#[originalhl7]" doc:name="Set Payload"/>
 		<hl7:ack-component ackCode="AA" doc:name="HL7 ACK" />
+       
+		
+	     
 	</flow>
 	<sub-flow name="mule-ucsf-insert-patient" doc:name="mule-ucsf-insert-patient">
 		<enricher doc:name="Message Enricher">
@@ -144,7 +160,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 								<sfdc:objects ref="#[flowVars['payloadVar']]" />
 							</sfdc:create>
 						</when>
-						<otherwise>
+						<otherwise> 
 							<set-variable value="#[payload[0]]" variableName="savedPatient" doc:name="Variable" />
 							<sfdc:upsert config-ref="UCSF_SF_Connection" type="ADT_Patient__c" doc:name="Upsert Patient"
 								externalIdFieldName="MRN_Number__c">
@@ -224,16 +240,16 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	<sub-flow name="defaultErrorHandler" doc:name="defaultErrorHandler">
 		<logger message="Error occurred: #[payload]" level="INFO" doc:name="Log Error" />
 	</sub-flow>
-	<flow name="testflow" doc:name="testflow">
-		<file:inbound-endpoint path="C:\tmp\hl7test\input" moveToDirectory="C:\tmp\hl7test\output"
+	<!-- <flow name="testflow" doc:name="testflow">
+		<file:inbound-endpoint path="/tmp/hl7test/input1" moveToDirectory="/tmp/hl7test/output1"
 			responseTimeout="10000" doc:name="Read File" />
 		<byte-array-to-string-transformer doc:name="Byte Array to String" />
 		<set-property propertyName="subject" value="test" doc:name="Property" doc:description="edfda" />
-		<tcp:outbound-endpoint exchange-pattern="request-response" host="localhost" port="9001"
+		<tcp:outbound-endpoint exchange-pattern="request-response" host="localhost" port="8062"
 			responseTimeout="1000000" doc:name="Post to Main Flow" />
 		<byte-array-to-string-transformer doc:name="Byte Array to String" />
 		<logger message="Outcome of HL7 Processing = #[payload]" level="INFO" doc:name="Logger" />
-	</flow>
+	</flow> -->
 	<sub-flow name="rollBackPatient" doc:name="rollBackPatient">
 		<logger message="In Rollback Process - #[payload]" level="INFO" doc:name="Logger" />
 		<expression-component doc:name="Expression"><![CDATA[
@@ -257,7 +273,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		</message-filter>
 		<sfdc:query config-ref="UCSF_SF_Connection" doc:name="Lookup for  ucsfId"
 			query="SELECT id,UCSF_ID__c FROM User where UCSF_ID__c in (#[ucsfIds])" />
-		<flow-ref name="upsertListWithProviderId" doc:name="Flow Reference getCareRoleUpsertList" />
+		<flow-ref name="getUpsertRoleListWithOtherIds" doc:name="Flow Reference getUpsertRoleListWithOtherIds" />
 		<set-variable variableName="rolesForUpsertList" value="#[payload]" doc:name="save mapped roles Roles" />
 		<message-filter doc:name="checkUpsertListSize" doc:description="Don't continue if there rolesForUpsertList blank">
 			<expression-filter expression="payload.size()  &gt; 0" evaluator="groovy" />
@@ -361,11 +377,48 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<set-variable variableName="patientADTROLs" value="#[payload:]" doc:name="patientRolsVariable" />
 	</sub-flow>
 	<flow name="SaveADT" doc:name="SaveADT">
-		<!-- <sfdc:create-single config-ref="UCSF_SF_Connection" type="ADT_Message__c" doc:name="Salesforce"> -->
-		<!-- <sfdc:object> -->
-		<!-- <sfdc:object key="ADT_String__c">#[payload]</sfdc:object> -->
-		<!-- </sfdc:object> -->
-		<!-- </sfdc:create-single> -->
+		<sfdc:create-single config-ref="UCSF_SF_Connection" type="ADT_Message__c" doc:name="Salesforce">
+		<sfdc:object>
+		<sfdc:object key="ADT_String__c">#[payload]</sfdc:object>
+		</sfdc:object>
+		</sfdc:create-single>
 		<logger level="INFO" message="test" doc:name="Logger" />
 	</flow>
+    <sub-flow name="updateSalesforce" doc:name="updateSalesforce">
+        <sfdc:upsert config-ref="UCSF_SF_Connection" externalIdFieldName="MRN_Number__c" type="ADT_Patient__c" doc:name="Salesforce">
+            <sfdc:objects>
+                <sfdc:object/>
+            </sfdc:objects>
+        </sfdc:upsert>
+        <sfdc:upsert config-ref="UCSF_SF_Connection" externalIdFieldName="Id" type="ADT_Message__c" doc:name="Salesforce">
+            <sfdc:objects>
+                <sfdc:object>
+                    <sfdc:inner-object key="Id">#[messageId]</sfdc:inner-object>
+                    <sfdc:inner-object key="ADT_Patient__c">#[flowVars.?pId]</sfdc:inner-object>
+                    <sfdc:inner-object key="log__c">#[groovy:warnings.toString()]</sfdc:inner-object>
+                  <sfdc:inner-object key="LogLevel__c">#[groovy:warnings.toString().length() > 0 ? "WARN" : "INFO"]</sfdc:inner-object>
+                </sfdc:object>
+            </sfdc:objects>
+        </sfdc:upsert>
+    </sub-flow>
+    
+    	
+    <sub-flow name="messageErrorLogging" doc:name="messageErrorLogging">
+     
+        <sfdc:upsert config-ref="UCSF_SF_Connection" externalIdFieldName="Id" type="ADT_Message__c" doc:name="Salesforce">
+            <sfdc:objects>
+                <sfdc:object>
+                    <sfdc:inner-object key="Id">#[messageId]</sfdc:inner-object>
+                    <sfdc:inner-object key="ADT_Patient__c">#[flowVars.?pId]</sfdc:inner-object>
+                    <sfdc:inner-object key="log__c">Error Payload #[payload]\n exception #[exception] </sfdc:inner-object>
+                    <sfdc:inner-object key="LogLevel__c">ERROR</sfdc:inner-object>
+                </sfdc:object>
+            </sfdc:objects>
+        </sfdc:upsert>
+    </sub-flow>
+     <flow name="dummyhl7Flow1" doc:name="dummyhl7Flow1">
+        <http:inbound-endpoint exchange-pattern="request-response" host="0.0.0.0" port="9000" doc:name="HTTP"/>
+        <set-payload value="OK" doc:name="Set Payload"/>
+    </flow>
+  
 </mule>

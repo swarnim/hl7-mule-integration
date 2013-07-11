@@ -63,11 +63,14 @@ class Utils {
 					role.setPatientVisitId(pVisitId);
 					
 					returnRoleList.add(role);
+				} else {
+					logger.info("userId not found  in salesforce " + role)
+					warnings.append("userId not found in salesforce for ").append(role).append("\n");
 				}
 
 			} else {
-				logger.info("userId not found  for " + role)
-				warnings = warnings + "userId not found  for " + role + "\n"
+				logger.info("userId not found  in " + role)
+				warnings.append("userId not found  for ").append(role).append("\n");
 			}
 		}
 		return returnRoleList;
@@ -80,7 +83,7 @@ class Utils {
 				ucsfIdSet.add(role.ucsfid)
 			} else {
 			logger.info("no ucsfid for" + role);
-			warnings = warnings + " no ucsfid for " + role + "\n";
+			warnings.append(warnings).append(" no ucsfid for ").append(role).append("\n");
 				
 			}
 		}

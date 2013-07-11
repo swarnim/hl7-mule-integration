@@ -14,11 +14,11 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
                 </scripting:script>
             </scripting:component>
     </sub-flow>
-    <sub-flow name="upsertListWithProviderId" doc:name="upsertListWithProviderId">
-             <scripting:component doc:name="upsertListWithProviderId">
+    <sub-flow name="getUpsertRoleListWithOtherIds" doc:name="getUpsertRoleListWithOtherIds">
+             <scripting:component doc:name="getUpsertRoleListWithOtherIds">
                 <scripting:script engine="Groovy">
                 <scripting:text><![CDATA[import edu.ucsf.groovy.Utils
-               		return Utils.getUpsertRoleListWithOtherIds(payload, patientADTROLs, pId, pVisitId, warnings)             	               		                          
+               		return Utils.getUpsertRoleListWithOtherIds(payload, patientADTROLs, pId, flowVars['pVisitId'], warnings)             	               		                          
 			    ]]></scripting:text>
                 </scripting:script>
             </scripting:component>
@@ -27,7 +27,7 @@ http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/cor
         <scripting:component doc:name="getFinalRolesToUpsert">
             <scripting:script engine="Groovy">
                 <scripting:text><![CDATA[import edu.ucsf.groovy.Utils
-               		return Utils.getFinalRolesToUpsertgetFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , PCPNO1, PCPNO2)
+               		return Utils.getFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , flowVars['PCPNO1'], flowVars['PCPNO2'])
 			    ]]></scripting:text>
             </scripting:script>
         </scripting:component>

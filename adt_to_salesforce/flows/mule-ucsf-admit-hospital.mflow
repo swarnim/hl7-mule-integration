@@ -8,16 +8,16 @@
     <global-element name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/config" entity-id="Salesforce#1">
         <properties>
             <property name="proxyUsername"/>
-            <property name="securityToken" value="XLp1QUCWT2reiKL5OHT3W3mq"/>
+            <property name="securityToken" value="${salesforce.securitytoken}"/>
             <property name="proxyHost"/>
             <property name="auxiliary;metauseMetaData" value="true"/>
             <property name="allowFieldTruncationSupport"/>
             <property name="assignmentRuleId"/>
             <property name="proxyPort"/>
-            <property name="password" value="work2010"/>
+            <property name="password" value="${salesforce.password}"/>
             <property name="url" value="https://test.salesforce.com/services/Soap/u/26.0"/>
             <property name="clientId"/>
-            <property name="username" value="swarnim.ranjitkar@ucsf.edu.c4hdev"/>
+            <property name="username" value="${salesforce.username}"/>
             <property name="useDefaultRule"/>
             <property name="name" value="UCSF_SF_Connection"/>
             <property name="timeObjectStore-ref"/>
@@ -139,80 +139,116 @@
                         <property name="auxiliary;index" value="18"/>
                     </properties>
                 </pattern>
+                <splitter index="19" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#1">
+                    <graphicalData x="0" y="0" width="0" height="0"/>
+                    <properties>
+                        <property-collection name="008045b0-6177-4bab-9ec6-72469b8e84d4">
+                            <property name="choice.expression" value="flowVars['messageId'] != null"/>
+                            <property-collection name="choice.attributes">
+<property name="expression" value="flowVars['messageId'] != null"/>
+                            </property-collection>
+                        </property-collection>
+                    </properties>
+                    <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#2"/>
+                    <compartment entity-id="compartment#1">
+                        <lane hadOnlyOneElement="false" index="21" isChoiceOtherwiseLane="false" entity-id="008045b0-6177-4bab-9ec6-72469b8e84d4">
+                            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#1">
+<graphicalData x="0" y="0" width="0" height="0"/>
+<properties>
+    <property name="source"/>
+    <property name="target" value="variable:dummy"/>
+    <property name="auxiliary;index" value="21"/>
+</properties>
+<compartment entity-id="compartment#2">
+    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
+        <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#1">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <properties>
+                <property name="name" value="messageErrorLogging"/>
+                <property name="auxiliary;index" value="22"/>
+            </properties>
+        </pattern>
+    </lane>
+</compartment>
+                            </scope>
+                        </lane>
+                        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="true" entity-id="07109775-ffe0-4839-bc60-bfd266c38084"/>
+                    </compartment>
+                </splitter>
                 <pattern name="Custom Business event" type="http://www.mulesoft.org/schema/mule/ee/tracking/custom-event" entity-id="Custom Business event#1">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
                         <property name="event-name" value="Rejected Message"/>
-                        <property name="auxiliary;index" value="19"/>
+                        <property name="auxiliary;index" value="23"/>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;0">
                             <property name="value" value="#[message.id]"/>
                             <property name="key" value="Message id"/>
-                            <property name="auxiliary;index" value="20"/>
-                            <property name="auxiliary;wrapIn" value="20"/>
+                            <property name="auxiliary;index" value="24"/>
+                            <property name="auxiliary;wrapIn" value="24"/>
                         </property-collection>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;1">
                             <property name="value" value="#[payload]"/>
                             <property name="key" value="Payload"/>
-                            <property name="auxiliary;index" value="21"/>
-                            <property name="auxiliary;wrapIn" value="21"/>
+                            <property name="auxiliary;index" value="25"/>
+                            <property name="auxiliary;wrapIn" value="25"/>
                         </property-collection>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/ee/tracking/meta-data;2">
                             <property name="value" value="#[exception]"/>
                             <property name="key" value="ExceptionMessage"/>
-                            <property name="auxiliary;index" value="22"/>
-                            <property name="auxiliary;wrapIn" value="22"/>
+                            <property name="auxiliary;index" value="26"/>
+                            <property name="auxiliary;wrapIn" value="26"/>
                         </property-collection>
                     </properties>
                 </pattern>
-                <splitter index="23" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#1">
+                <splitter index="27" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#3">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
-                        <property-collection name="e4809e0c-d5cd-40b7-945f-9fbb102de5e5">
+                        <property-collection name="1f3e7df6-2ee2-4d78-91a6-6bb8d2a72e48">
+                            <property name="choice.otherwise" value="true"/>
+                            <property-collection name="choice.attributes"/>
+                        </property-collection>
+                        <property-collection name="9890d8de-b3c5-4406-814f-2fafd68f8337">
                             <property name="choice.expression" value="#[exception.causedBy(org.mule.api.ConnectionException)]"/>
                             <property-collection name="choice.attributes">
 <property name="expression" value="#[exception.causedBy(org.mule.api.ConnectionException)]"/>
                             </property-collection>
                         </property-collection>
-                        <property-collection name="18f575e6-a325-4dff-8f4d-82508cbfe66d">
+                        <property-collection name="ae9da540-c3c9-43be-a6d1-dcc1c5618ab0">
                             <property name="choice.expression" value="#[exception.causedBy(org.mule.api.expression.ExpressionRuntimeException)]"/>
                             <property-collection name="choice.attributes">
 <property name="expression" value="#[exception.causedBy(org.mule.api.expression.ExpressionRuntimeException)]"/>
                             </property-collection>
                         </property-collection>
-                        <property-collection name="d5f686cd-8e71-4116-b174-0642baa42510">
-                            <property name="choice.otherwise" value="true"/>
-                            <property-collection name="choice.attributes"/>
-                        </property-collection>
                     </properties>
-                    <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#2"/>
-                    <compartment entity-id="compartment#1">
-                        <lane hadOnlyOneElement="false" index="25" isChoiceOtherwiseLane="false" entity-id="e4809e0c-d5cd-40b7-945f-9fbb102de5e5">
+                    <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#4"/>
+                    <compartment entity-id="compartment#3">
+                        <lane hadOnlyOneElement="false" index="29" isChoiceOtherwiseLane="false" entity-id="9890d8de-b3c5-4406-814f-2fafd68f8337">
                             <pattern name="HL7 ACK" type="http://www.mulesoft.org/schema/mule/hl7/ack-component" entity-id="HL7 ACK#1">
 <graphicalData x="0" y="0" width="0" height="0"/>
 <properties>
-    <property name="ackCode" value="AR"/>
+    <property name="ackCode" value="AE"/>
     <property name="validation"/>
-    <property name="auxiliary;index" value="25"/>
+    <property name="auxiliary;index" value="29"/>
 </properties>
                             </pattern>
                         </lane>
-                        <lane hadOnlyOneElement="false" index="27" isChoiceOtherwiseLane="false" entity-id="18f575e6-a325-4dff-8f4d-82508cbfe66d">
+                        <lane hadOnlyOneElement="false" index="31" isChoiceOtherwiseLane="false" entity-id="ae9da540-c3c9-43be-a6d1-dcc1c5618ab0">
                             <pattern name="HL7 ACK" type="http://www.mulesoft.org/schema/mule/hl7/ack-component" entity-id="HL7 ACK#2">
 <graphicalData x="0" y="0" width="0" height="0"/>
 <properties>
     <property name="ackCode" value="AE"/>
     <property name="validation"/>
-    <property name="auxiliary;index" value="27"/>
+    <property name="auxiliary;index" value="31"/>
 </properties>
                             </pattern>
                         </lane>
-                        <lane hadOnlyOneElement="false" index="29" isChoiceOtherwiseLane="true" entity-id="d5f686cd-8e71-4116-b174-0642baa42510">
+                        <lane hadOnlyOneElement="false" index="33" isChoiceOtherwiseLane="true" entity-id="1f3e7df6-2ee2-4d78-91a6-6bb8d2a72e48">
                             <pattern name="HL7 ACK" type="http://www.mulesoft.org/schema/mule/hl7/ack-component" entity-id="HL7 ACK#3">
 <graphicalData x="0" y="0" width="0" height="0"/>
 <properties>
-    <property name="ackCode" value="AA"/>
+    <property name="ackCode" value="AR"/>
     <property name="validation"/>
-    <property name="auxiliary;index" value="29"/>
+    <property name="auxiliary;index" value="33"/>
 </properties>
                             </pattern>
                         </lane>
@@ -224,7 +260,16 @@
                         <property name="message" value="ACK Payload #[payload]"/>
                         <property name="category"/>
                         <property name="level" value="INFO"/>
-                        <property name="auxiliary;index" value="30"/>
+                        <property name="auxiliary;index" value="34"/>
+                    </properties>
+                </pattern>
+                <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#3">
+                    <graphicalData x="0" y="0" width="0" height="0"/>
+                    <properties>
+                        <property name="message" value=" Warnings during processing #[warnings]"/>
+                        <property name="category"/>
+                        <property name="level" value="WARN"/>
+                        <property name="auxiliary;index" value="35"/>
                     </properties>
                 </pattern>
             </lane>
@@ -237,18 +282,18 @@
             <property name="name" value="Byte_Array_to_StringForTCP"/>
             <property name="encoding"/>
             <property name="mimeType"/>
-            <property name="auxiliary;index" value="31"/>
+            <property name="auxiliary;index" value="36"/>
         </properties>
     </global-element>
-    <flow SubFlow="false" name="ErrorHandlingFlow" entity-id="5c055752-a69b-4539-9bda-4401fd6cc7d6">
+    <flow SubFlow="false" name="ErrorHandlingFlow" entity-id="f579fd7a-370b-433e-a360-d2fbb9d3cdc0">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="32"/>
+            <property name="auxiliary;index" value="37"/>
         </properties>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#2">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
             <graphicalData x="0" y="0" width="0" height="0"/>
             <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="VM" type="http://www.mulesoft.org/schema/mule/vm/endpoint" entity-id="VM#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
@@ -263,71 +308,71 @@
                     <property name="path" value="DeadLetterQueue"/>
                     <property name="encoding"/>
                     <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="33"/>
+                    <property name="auxiliary;index" value="38"/>
                     <property name="responseTimeout"/>
                     <property name="mimeType"/>
                     <property name="connector-ref"/>
                 </properties>
             </endpoint>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#3">
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="message"/>
                     <property name="category" value="com.ucsf.events"/>
                     <property name="level" value="ERROR"/>
-                    <property name="auxiliary;index" value="34"/>
+                    <property name="auxiliary;index" value="39"/>
                 </properties>
             </pattern>
-            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#1">
+            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#2">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="name" value="undoProcessing"/>
-                    <property name="auxiliary;index" value="35"/>
+                    <property name="auxiliary;index" value="40"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="undoProcessing" entity-id="f44a1bc8-4270-4711-94ec-6aa02878dc48">
+    <flow SubFlow="true" name="undoProcessing" entity-id="02fc9235-bde4-4199-8ad2-167eef55f043">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="36"/>
+            <property name="auxiliary;index" value="41"/>
         </properties>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#3">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#4">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#4">
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#5">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="message" value="Undoing operations"/>
                     <property name="category"/>
                     <property name="level" value="ERROR"/>
-                    <property name="auxiliary;index" value="37"/>
+                    <property name="auxiliary;index" value="42"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="mule-ucsf-pocFlow1" entity-id="8939a66d-3395-46fa-97af-0f6b7ccf3377">
+    <flow SubFlow="false" name="mule-ucsf-pocFlow1" entity-id="e39fbd4d-2f74-4814-b841-bdb3a9bcc9c4">
         <properties>
             <property name="processingStrategy" value="synchronous"/>
             <property name="processingStrategy2" value="synchronous"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="38"/>
+            <property name="auxiliary;index" value="43"/>
         </properties>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#4">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#5">
             <graphicalData x="0" y="0" width="0" height="0"/>
             <multi-source index="0" name="Composite Source" type="http://www.mulesoft.org/schema/mule/core/composite-source" entity-id="Composite Source#1">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="auxiliary;index" value="39"/>
+                    <property name="auxiliary;index" value="44"/>
                 </properties>
                 <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="Receive HL7 message" type="http://www.mulesoft.org/schema/mule/tcp/endpoint" entity-id="TCP#1">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
-                        <property name="port" value="9001"/>
-                        <property name="host" value="localhost"/>
+                        <property name="port" value="8062"/>
+                        <property name="host" value="0.0.0.0"/>
                         <property name="businessEventsLabel"/>
                         <property name="disableTransportTransformer"/>
                         <property name="exchange-pattern" value="request-response"/>
@@ -337,7 +382,7 @@
                         <property name="address"/>
                         <property name="encoding"/>
                         <property name="responseTransformer-refs"/>
-                        <property name="auxiliary;index" value="40"/>
+                        <property name="auxiliary;index" value="45"/>
                         <property name="responseTimeout" value="1000000"/>
                         <property name="mimeType"/>
                         <property name="connector-ref"/>
@@ -346,7 +391,7 @@
                 <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HL7 MLLP" type="http://www.mulesoft.org/schema/mule/hl7/endpoint" entity-id="HL7 MLLP#1">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
-                        <property name="port" value="9010"/>
+                        <property name="port" value="8061"/>
                         <property name="host" value="0.0.0.0"/>
                         <property name="businessEventsLabel"/>
                         <property name="disableTransportTransformer"/>
@@ -357,7 +402,7 @@
                         <property name="address"/>
                         <property name="encoding"/>
                         <property name="responseTransformer-refs"/>
-                        <property name="auxiliary;index" value="41"/>
+                        <property name="auxiliary;index" value="46"/>
                         <property name="responseTimeout"/>
                         <property name="mimeType"/>
                         <property name="connector-ref"/>
@@ -370,23 +415,32 @@
                     <property name="variableName" value="originalhl7"/>
                     <property name="value" value="#[payload:]"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-                    <property name="auxiliary;index" value="42"/>
+                    <property name="auxiliary;index" value="47"/>
                 </properties>
             </pattern>
-            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#1">
+            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#6">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="source"/>
-                    <property name="target" value="#[variable:dummy]"/>
-                    <property name="auxiliary;index" value="43"/>
+                    <property name="message" value="${salesforce.username}-${salesforce.password}-${salesforce.securitytoken}"/>
+                    <property name="category"/>
+                    <property name="level" value="INFO"/>
+                    <property name="auxiliary;index" value="48"/>
                 </properties>
-                <compartment entity-id="compartment#2">
-                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#5">
-                        <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#2">
+            </pattern>
+            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#2">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="source" value="#[payload.id]"/>
+                    <property name="target" value="#[variable:messageId]"/>
+                    <property name="auxiliary;index" value="49"/>
+                </properties>
+                <compartment entity-id="compartment#4">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#6">
+                        <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#3">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="name" value="SaveADT"/>
-<property name="auxiliary;index" value="44"/>
+<property name="auxiliary;index" value="50"/>
                             </properties>
                         </pattern>
                     </lane>
@@ -396,25 +450,25 @@
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="value" value="#[groovy:payload.replaceAll('\\|ADT\\^A\\d\\d\\|', '|ADT^A01|')]"/>
-                    <property name="auxiliary;index" value="45"/>
+                    <property name="auxiliary;index" value="51"/>
                 </properties>
             </pattern>
             <pattern name="Warning Messages" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#2">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="variableName" value="warnings"/>
-                    <property name="value" value="@"/>
+                    <property name="value" value="#[groovy:new StringBuilder()]"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-                    <property name="auxiliary;index" value="46"/>
+                    <property name="auxiliary;index" value="52"/>
                 </properties>
             </pattern>
-            <pattern name="Log NEW" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#5">
+            <pattern name="Log NEW" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#7">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="message" value="&quot;received from  = &quot; #[payload]"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="47"/>
+                    <property name="auxiliary;index" value="53"/>
                 </properties>
             </pattern>
             <pattern name="Transform A01 to XML" type="http://www.mulesoft.org/schema/mule/hl7/hl7-encoding-transformer" entity-id="HL7 Encoding Transformer#1">
@@ -427,7 +481,7 @@
                     <property name="encoding"/>
                     <property name="hl7Encoding" value="XML"/>
                     <property name="mimeType"/>
-                    <property name="auxiliary;index" value="48"/>
+                    <property name="auxiliary;index" value="54"/>
                 </properties>
             </pattern>
             <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#3">
@@ -436,109 +490,118 @@
                     <property name="variableName" value="orginalXML"/>
                     <property name="value" value="#[payload]"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-                    <property name="auxiliary;index" value="49"/>
+                    <property name="auxiliary;index" value="55"/>
                 </properties>
             </pattern>
-            <pattern name="Log XML original" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#6">
+            <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#4">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="variableName" value="eventType"/>
+                    <property name="value" value="xpath('/hl7xml:ADT_A01/hl7xml:EVN/hl7xml:EVN.1').Text"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
+                    <property name="auxiliary;index" value="56"/>
+                </properties>
+            </pattern>
+            <pattern name="Log XML original" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#8">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="message" value="#[payload]"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="50"/>
+                    <property name="auxiliary;index" value="57"/>
                 </properties>
             </pattern>
-            <scope name="Enricher PatientFlow" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#2">
+            <scope name="Enricher PatientFlow" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#3">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="source"/>
                     <property name="target"/>
-                    <property name="auxiliary;index" value="51"/>
+                    <property name="auxiliary;index" value="58"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;0">
                         <property name="source" value="#[flowVars.?pId]"/>
                         <property name="target" value="#[flowVars['pId']]"/>
-                        <property name="auxiliary;index" value="53"/>
-                        <property name="auxiliary;wrapIn" value="53"/>
+                        <property name="auxiliary;index" value="60"/>
+                        <property name="auxiliary;wrapIn" value="60"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;1">
                         <property name="source" value="#[flowVars.?savedPatient]"/>
                         <property name="target" value="#[flowVars['savedPatient']]"/>
-                        <property name="auxiliary;index" value="54"/>
-                        <property name="auxiliary;wrapIn" value="54"/>
+                        <property name="auxiliary;index" value="61"/>
+                        <property name="auxiliary;wrapIn" value="61"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;2">
                         <property name="source" value="#[flowVars.?saveInpatientRoles]"/>
                         <property name="target" value="#[flowVars['saveInpatientRoles']]"/>
-                        <property name="auxiliary;index" value="55"/>
-                        <property name="auxiliary;wrapIn" value="55"/>
+                        <property name="auxiliary;index" value="62"/>
+                        <property name="auxiliary;wrapIn" value="62"/>
                     </property-collection>
                 </properties>
-                <compartment entity-id="compartment#3">
-                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#6">
-                        <pattern name="Insert Patient Flow" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#3">
+                <compartment entity-id="compartment#5">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#7">
+                        <pattern name="Insert Patient Flow" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#4">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="name" value="mule-ucsf-insert-patient"/>
-<property name="auxiliary;index" value="52"/>
+<property name="auxiliary;index" value="59"/>
                             </properties>
                         </pattern>
                     </lane>
                 </compartment>
             </scope>
-            <splitter index="56" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#3">
+            <splitter index="63" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#5">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property-collection name="a23ddce9-162c-4e37-8c49-c2baf5c707c0">
-                        <property name="choice.otherwise" value="true"/>
-                        <property-collection name="choice.attributes"/>
-                    </property-collection>
-                    <property-collection name="e20cde0e-b776-4bb5-a76b-58412a3b6d61">
+                    <property-collection name="57f6574d-e0cc-422b-a767-0cd654f6fa06">
                         <property name="choice.expression" value="#[pId instanceof NullPayload]"/>
                         <property-collection name="choice.attributes">
                             <property name="expression" value="#[pId instanceof NullPayload]"/>
                         </property-collection>
                     </property-collection>
+                    <property-collection name="fdaf22a6-b291-4765-ae3a-85162b3e3ba9">
+                        <property name="choice.otherwise" value="true"/>
+                        <property-collection name="choice.attributes"/>
+                    </property-collection>
                 </properties>
-                <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#4"/>
-                <compartment entity-id="compartment#4">
-                    <lane hadOnlyOneElement="false" index="58" isChoiceOtherwiseLane="false" entity-id="e20cde0e-b776-4bb5-a76b-58412a3b6d61">
-                        <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#7">
+                <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#6"/>
+                <compartment entity-id="compartment#6">
+                    <lane hadOnlyOneElement="false" index="65" isChoiceOtherwiseLane="false" entity-id="57f6574d-e0cc-422b-a767-0cd654f6fa06">
+                        <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#9">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="message" value="In Null Visit Choice = #[payload]"/>
 <property name="category"/>
 <property name="level" value="INFO"/>
-<property name="auxiliary;index" value="58"/>
+<property name="auxiliary;index" value="65"/>
                             </properties>
                         </pattern>
                         <pattern name="Set Back Patient Id" type="http://www.mulesoft.org/schema/mule/core/set-payload" entity-id="Set Payload#3">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="value" value="#[flowVars['pId']]"/>
-<property name="auxiliary;index" value="59"/>
+<property name="auxiliary;index" value="66"/>
                             </properties>
                         </pattern>
-                        <pattern name="Roll Back Master on Visit Failure" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#4">
+                        <pattern name="Roll Back Master on Visit Failure" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#5">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="name" value="rollBackPatient"/>
-<property name="auxiliary;index" value="60"/>
+<property name="auxiliary;index" value="67"/>
                             </properties>
                         </pattern>
                         <pattern name="Set Payload" type="http://www.mulesoft.org/schema/mule/core/set-payload" entity-id="Set Payload#4">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="value" value="&quot;Failed&quot;"/>
-<property name="auxiliary;index" value="61"/>
+<property name="auxiliary;index" value="68"/>
                             </properties>
                         </pattern>
                     </lane>
-                    <lane hadOnlyOneElement="false" index="63" isChoiceOtherwiseLane="true" entity-id="a23ddce9-162c-4e37-8c49-c2baf5c707c0">
+                    <lane hadOnlyOneElement="false" index="70" isChoiceOtherwiseLane="true" entity-id="fdaf22a6-b291-4765-ae3a-85162b3e3ba9">
                         <pattern name="Set Payload" type="http://www.mulesoft.org/schema/mule/core/set-payload" entity-id="Set Payload#5">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="value" value="&quot;Success&quot;"/>
-<property name="auxiliary;index" value="63"/>
+<property name="auxiliary;index" value="70"/>
                             </properties>
                         </pattern>
                     </lane>
@@ -551,23 +614,21 @@
                     <property name="ignoreBadInput"/>
                     <property name="encoding"/>
                     <property name="mimeType"/>
-                    <property name="auxiliary;index" value="64"/>
+                    <property name="auxiliary;index" value="71"/>
                 </properties>
             </pattern>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#8">
+            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#6">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="message"/>
-                    <property name="category"/>
-                    <property name="level" value="DEBUG"/>
-                    <property name="auxiliary;index" value="65"/>
+                    <property name="name" value="updateSalesforce"/>
+                    <property name="auxiliary;index" value="72"/>
                 </properties>
             </pattern>
             <pattern name="Set Payload" type="http://www.mulesoft.org/schema/mule/core/set-payload" entity-id="Set Payload#6">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="value" value="#[originalhl7]"/>
-                    <property name="auxiliary;index" value="66"/>
+                    <property name="auxiliary;index" value="73"/>
                 </properties>
             </pattern>
             <pattern name="HL7 ACK" type="http://www.mulesoft.org/schema/mule/hl7/ack-component" entity-id="HL7 ACK#4">
@@ -575,61 +636,61 @@
                 <properties>
                     <property name="ackCode" value="AA"/>
                     <property name="validation"/>
-                    <property name="auxiliary;index" value="67"/>
+                    <property name="auxiliary;index" value="74"/>
                 </properties>
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="mule-ucsf-insert-patient" entity-id="19158b02-9fec-4745-8e5b-cff699b1caf3">
+    <flow SubFlow="true" name="mule-ucsf-insert-patient" entity-id="e2008654-0e10-4625-b09a-ccf9b02dea30">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="68"/>
+            <property name="auxiliary;index" value="75"/>
         </properties>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#7">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#8">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#3">
+            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#4">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="source"/>
                     <property name="target"/>
-                    <property name="auxiliary;index" value="69"/>
+                    <property name="auxiliary;index" value="76"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;0">
                         <property name="source" value="#[flowVars.?PCPNO1]"/>
                         <property name="target" value="#[flowVars['PCPNO1']]"/>
-                        <property name="auxiliary;index" value="88"/>
-                        <property name="auxiliary;wrapIn" value="88"/>
+                        <property name="auxiliary;index" value="95"/>
+                        <property name="auxiliary;wrapIn" value="95"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;1">
                         <property name="source" value="#[flowVars.?PCPNO2]"/>
                         <property name="target" value="#[flowVars['PCPNO2']]"/>
-                        <property name="auxiliary;index" value="89"/>
-                        <property name="auxiliary;wrapIn" value="89"/>
+                        <property name="auxiliary;index" value="96"/>
+                        <property name="auxiliary;wrapIn" value="96"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;2">
                         <property name="source" value="#[flowVars.?pId]"/>
                         <property name="target" value="#[flowVars['pId']]"/>
-                        <property name="auxiliary;index" value="90"/>
-                        <property name="auxiliary;wrapIn" value="90"/>
+                        <property name="auxiliary;index" value="97"/>
+                        <property name="auxiliary;wrapIn" value="97"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;3">
                         <property name="source" value="#[flowVars.?savedPatient]"/>
                         <property name="target" value="#[flowVars['savedPatient']]"/>
-                        <property name="auxiliary;index" value="91"/>
-                        <property name="auxiliary;wrapIn" value="91"/>
+                        <property name="auxiliary;index" value="98"/>
+                        <property name="auxiliary;wrapIn" value="98"/>
                     </property-collection>
                 </properties>
-                <compartment entity-id="compartment#5">
-                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#8">
+                <compartment entity-id="compartment#7">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#9">
                         <scope name="Processor Chain" type="http://www.mulesoft.org/schema/mule/core/processor-chain" entity-id="Processor Chain#1">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
-<property name="auxiliary;index" value="70"/>
+<property name="auxiliary;index" value="77"/>
                             </properties>
-                            <compartment entity-id="compartment#6">
-<lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#9">
+                            <compartment entity-id="compartment#8">
+<lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#10">
     <pattern name="Byte Array to String" type="http://www.mulesoft.org/schema/mule/core/byte-array-to-string-transformer" entity-id="Byte Array to String#3">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
@@ -637,7 +698,7 @@
             <property name="ignoreBadInput"/>
             <property name="encoding"/>
             <property name="mimeType"/>
-            <property name="auxiliary;index" value="71"/>
+            <property name="auxiliary;index" value="78"/>
         </properties>
     </pattern>
     <pattern name="DataMapper" type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" entity-id="DataMapper#8">
@@ -649,43 +710,43 @@
             <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform"/>
             <property name="pipeSize"/>
             <property name="config-ref" value="mappatient_1_grf"/>
-            <property name="auxiliary;index" value="72"/>
+            <property name="auxiliary;index" value="79"/>
         </properties>
     </pattern>
-    <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#4">
+    <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#5">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
             <property name="variableName" value="pcpid1"/>
             <property name="value" value="rr"/>
             <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-            <property name="auxiliary;index" value="73"/>
+            <property name="auxiliary;index" value="80"/>
         </properties>
     </pattern>
-    <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#9">
+    <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#10">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
             <property name="message" value="-------#[payload:]"/>
             <property name="category"/>
             <property name="level" value="INFO"/>
-            <property name="auxiliary;index" value="74"/>
+            <property name="auxiliary;index" value="81"/>
         </properties>
     </pattern>
-    <pattern name="Set Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#5">
+    <pattern name="Set Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#6">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
             <property name="variableName" value="payloadVar"/>
             <property name="value" value="#[payload]"/>
             <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-            <property name="auxiliary;index" value="75"/>
+            <property name="auxiliary;index" value="82"/>
         </properties>
     </pattern>
     <scope name="Insert Update Patient" type="http://www.mulesoft.org/schema/mule/core/processor-chain" entity-id="Processor Chain#2">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
-            <property name="auxiliary;index" value="76"/>
+            <property name="auxiliary;index" value="83"/>
         </properties>
-        <compartment entity-id="compartment#7">
-            <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#10">
+        <compartment entity-id="compartment#9">
+            <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#11">
                 <pattern name="Lookup Patient" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#2">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
@@ -701,27 +762,27 @@
                         <property name="username"/>
                         <property name="accessTokenId"/>
                         <property name="config-ref" value="UCSF_SF_Connection"/>
-                        <property name="auxiliary;index" value="77"/>
+                        <property name="auxiliary;index" value="84"/>
                         <property name="proxyPassword"/>
                     </properties>
                 </pattern>
-                <splitter index="78" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#5">
+                <splitter index="85" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#7">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
-                        <property-collection name="4b92bf7d-f96b-4e87-a73d-8d6bc7a01f90">
+                        <property-collection name="4d068d7d-938b-4011-80ad-010f430e7533">
+                            <property name="choice.otherwise" value="true"/>
+                            <property-collection name="choice.attributes"/>
+                        </property-collection>
+                        <property-collection name="53b6a7e0-883c-4cc5-95ea-6ed97533d338">
                             <property name="choice.expression" value="#[groovy:payload.size() == 0]"/>
                             <property-collection name="choice.attributes">
 <property name="expression" value="#[groovy:payload.size() == 0]"/>
                             </property-collection>
                         </property-collection>
-                        <property-collection name="4bb8341b-c384-422f-96e9-bc7efb5620aa">
-                            <property name="choice.otherwise" value="true"/>
-                            <property-collection name="choice.attributes"/>
-                        </property-collection>
                     </properties>
-                    <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#6"/>
-                    <compartment entity-id="compartment#8">
-                        <lane hadOnlyOneElement="false" index="80" isChoiceOtherwiseLane="false" entity-id="4b92bf7d-f96b-4e87-a73d-8d6bc7a01f90">
+                    <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#8"/>
+                    <compartment entity-id="compartment#10">
+                        <lane hadOnlyOneElement="false" index="87" isChoiceOtherwiseLane="false" entity-id="53b6a7e0-883c-4cc5-95ea-6ed97533d338">
                             <pattern name="Insert Patient" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#3">
 <graphicalData x="0" y="0" width="0" height="0"/>
 <properties>
@@ -737,24 +798,24 @@
     <property name="username"/>
     <property name="accessTokenId"/>
     <property name="config-ref" value="UCSF_SF_Connection"/>
-    <property name="auxiliary;index" value="80"/>
+    <property name="auxiliary;index" value="87"/>
     <property name="proxyPassword"/>
     <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/create-objectss;0">
         <property name="ref" value="#[flowVars['payloadVar']]"/>
-        <property name="auxiliary;index" value="81"/>
-        <property name="auxiliary;wrapIn" value="81"/>
+        <property name="auxiliary;index" value="88"/>
+        <property name="auxiliary;wrapIn" value="88"/>
     </property-collection>
 </properties>
                             </pattern>
                         </lane>
-                        <lane hadOnlyOneElement="false" index="83" isChoiceOtherwiseLane="true" entity-id="4bb8341b-c384-422f-96e9-bc7efb5620aa">
-                            <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#6">
+                        <lane hadOnlyOneElement="false" index="90" isChoiceOtherwiseLane="true" entity-id="4d068d7d-938b-4011-80ad-010f430e7533">
+                            <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#7">
 <graphicalData x="0" y="0" width="0" height="0"/>
 <properties>
     <property name="variableName" value="savedPatient"/>
     <property name="value" value="#[payload[0]]"/>
     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-    <property name="auxiliary;index" value="83"/>
+    <property name="auxiliary;index" value="90"/>
 </properties>
                             </pattern>
                             <pattern name="Upsert Patient" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#4">
@@ -774,11 +835,11 @@
     <property name="accessTokenId"/>
     <property name="config-ref" value="UCSF_SF_Connection"/>
     <property name="proxyPassword"/>
-    <property name="auxiliary;index" value="84"/>
+    <property name="auxiliary;index" value="91"/>
     <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objectss;0">
         <property name="ref" value="#[flowVars['payloadVar']]"/>
-        <property name="auxiliary;index" value="85"/>
-        <property name="auxiliary;wrapIn" value="85"/>
+        <property name="auxiliary;index" value="92"/>
+        <property name="auxiliary;wrapIn" value="92"/>
     </property-collection>
 </properties>
                             </pattern>
@@ -788,22 +849,22 @@
             </lane>
         </compartment>
     </scope>
-    <pattern name="Set Patient Id" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#7">
+    <pattern name="Set Patient Id" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#8">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
             <property name="variableName" value="pId"/>
             <property name="value" value="#[payload[0].Id]"/>
             <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-            <property name="auxiliary;index" value="86"/>
+            <property name="auxiliary;index" value="93"/>
         </properties>
     </pattern>
-    <pattern name="SFDC Lookup Output" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#10">
+    <pattern name="SFDC Lookup Output" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#11">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
             <property name="message" value="&quot;log SFDC Final Return payload&quot; + #[payload]"/>
             <property name="category"/>
             <property name="level" value="INFO"/>
-            <property name="auxiliary;index" value="87"/>
+            <property name="auxiliary;index" value="94"/>
         </properties>
     </pattern>
 </lane>
@@ -812,72 +873,72 @@
                     </lane>
                 </compartment>
             </scope>
-            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#4">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-                <properties>
-                    <property name="source"/>
-                    <property name="target"/>
-                    <property name="auxiliary;index" value="92"/>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;0">
-                        <property name="source" value="#[flowVars.?savedPatientVisit]"/>
-                        <property name="target" value="#[flowVars['savedPatientVisit']]"/>
-                        <property name="auxiliary;index" value="94"/>
-                        <property name="auxiliary;wrapIn" value="94"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;1">
-                        <property name="source" value="#[flowVars.?saveInpatientRoles]"/>
-                        <property name="target" value="#[flowVars['saveInpatientRoles']]"/>
-                        <property name="auxiliary;index" value="95"/>
-                        <property name="auxiliary;wrapIn" value="95"/>
-                    </property-collection>
-                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;2">
-                        <property name="source" value="#[flowVars.?pVisitId]"/>
-                        <property name="target" value="#[flowVars['pVisitId']]"/>
-                        <property name="auxiliary;index" value="96"/>
-                        <property name="auxiliary;wrapIn" value="96"/>
-                    </property-collection>
-                </properties>
-                <compartment entity-id="compartment#9">
-                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#11">
-                        <pattern name="Insert Patient Visit Flow" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#5">
-                            <graphicalData x="0" y="0" width="0" height="0"/>
-                            <properties>
-<property name="name" value="mule-ucsf-insert-patientVisit"/>
-<property name="auxiliary;index" value="93"/>
-                            </properties>
-                        </pattern>
-                    </lane>
-                </compartment>
-            </scope>
-            <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#8">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-                <properties>
-                    <property name="variableName" value="rotetype"/>
-                    <property name="value" value="outpatient"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-                    <property name="auxiliary;index" value="97"/>
-                </properties>
-            </pattern>
             <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#5">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="source"/>
                     <property name="target"/>
-                    <property name="auxiliary;index" value="98"/>
+                    <property name="auxiliary;index" value="99"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;0">
+                        <property name="source" value="#[flowVars.?savedPatientVisit]"/>
+                        <property name="target" value="#[flowVars['savedPatientVisit']]"/>
+                        <property name="auxiliary;index" value="101"/>
+                        <property name="auxiliary;wrapIn" value="101"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;1">
+                        <property name="source" value="#[flowVars.?saveInpatientRoles]"/>
+                        <property name="target" value="#[flowVars['saveInpatientRoles']]"/>
+                        <property name="auxiliary;index" value="102"/>
+                        <property name="auxiliary;wrapIn" value="102"/>
+                    </property-collection>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;2">
+                        <property name="source" value="#[flowVars.?pVisitId]"/>
+                        <property name="target" value="#[flowVars['pVisitId']]"/>
+                        <property name="auxiliary;index" value="103"/>
+                        <property name="auxiliary;wrapIn" value="103"/>
+                    </property-collection>
+                </properties>
+                <compartment entity-id="compartment#11">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#12">
+                        <pattern name="Insert Patient Visit Flow" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#7">
+                            <graphicalData x="0" y="0" width="0" height="0"/>
+                            <properties>
+<property name="name" value="mule-ucsf-insert-patientVisit"/>
+<property name="auxiliary;index" value="100"/>
+                            </properties>
+                        </pattern>
+                    </lane>
+                </compartment>
+            </scope>
+            <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#9">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="variableName" value="rotetype"/>
+                    <property name="value" value="outpatient"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
+                    <property name="auxiliary;index" value="104"/>
+                </properties>
+            </pattern>
+            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#6">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="source"/>
+                    <property name="target"/>
+                    <property name="auxiliary;index" value="105"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;0">
                         <property name="source" value="#[flowVars.?saveRoles]"/>
                         <property name="target" value="#[flowVars['outpatientRoles']]"/>
-                        <property name="auxiliary;index" value="100"/>
-                        <property name="auxiliary;wrapIn" value="100"/>
+                        <property name="auxiliary;index" value="107"/>
+                        <property name="auxiliary;wrapIn" value="107"/>
                     </property-collection>
                 </properties>
-                <compartment entity-id="compartment#10">
-                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#12">
-                        <pattern name="Insert Patient Visit Role Flow" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#6">
+                <compartment entity-id="compartment#12">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#13">
+                        <pattern name="Insert Patient Visit Role Flow" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#8">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="name" value="mule-ucsf-insert-role"/>
-<property name="auxiliary;index" value="99"/>
+<property name="auxiliary;index" value="106"/>
                             </properties>
                         </pattern>
                     </lane>
@@ -885,51 +946,51 @@
             </scope>
         </lane>
     </flow>
-    <flow SubFlow="true" name="mule-ucsf-insert-patientVisit" entity-id="7b122030-a3b6-4d34-abc8-3559fdb1b89e">
+    <flow SubFlow="true" name="mule-ucsf-insert-patientVisit" entity-id="35900eb4-f14e-4a44-826d-d24b4a4673f9">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="101"/>
+            <property name="auxiliary;index" value="108"/>
         </properties>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#13">
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#14">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#6">
+            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#7">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="source"/>
                     <property name="target"/>
-                    <property name="auxiliary;index" value="102"/>
+                    <property name="auxiliary;index" value="109"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;0">
                         <property name="source" value="#[flowVars.?savedPatientVisit]"/>
                         <property name="target" value="#[flowVars['savedPatientVisit']]"/>
-                        <property name="auxiliary;index" value="122"/>
-                        <property name="auxiliary;wrapIn" value="122"/>
+                        <property name="auxiliary;index" value="129"/>
+                        <property name="auxiliary;wrapIn" value="129"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;1">
                         <property name="source" value="#[flowVars.?pVisitId]"/>
                         <property name="target" value="#[flowVars['pVisitId']]"/>
-                        <property name="auxiliary;index" value="123"/>
-                        <property name="auxiliary;wrapIn" value="123"/>
+                        <property name="auxiliary;index" value="130"/>
+                        <property name="auxiliary;wrapIn" value="130"/>
                     </property-collection>
                 </properties>
-                <compartment entity-id="compartment#11">
-                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#14">
+                <compartment entity-id="compartment#13">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#15">
                         <scope name="Processor Chain" type="http://www.mulesoft.org/schema/mule/core/processor-chain" entity-id="Processor Chain#3">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
-<property name="auxiliary;index" value="103"/>
+<property name="auxiliary;index" value="110"/>
                             </properties>
-                            <compartment entity-id="compartment#12">
-<lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#15">
-    <pattern name="Log SF Payload" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#11">
+                            <compartment entity-id="compartment#14">
+<lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#16">
+    <pattern name="Log SF Payload" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#12">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
             <property name="message" value="Log In PatientVisit Flow - #[pId]"/>
             <property name="category"/>
             <property name="level" value="INFO"/>
-            <property name="auxiliary;index" value="104"/>
+            <property name="auxiliary;index" value="111"/>
         </properties>
     </pattern>
     <pattern name="Byte Array to String" type="http://www.mulesoft.org/schema/mule/core/byte-array-to-string-transformer" entity-id="Byte Array to String#4">
@@ -939,7 +1000,7 @@
             <property name="ignoreBadInput"/>
             <property name="encoding"/>
             <property name="mimeType"/>
-            <property name="auxiliary;index" value="105"/>
+            <property name="auxiliary;index" value="112"/>
         </properties>
     </pattern>
     <pattern name="Transform A01 to Patient Visit" type="http://www.mulesoft.org/schema/mule/ee/data-mapper/data-mapper-connector" entity-id="DataMapper#9">
@@ -951,45 +1012,45 @@
             <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/ee/data-mapper/transform"/>
             <property name="pipeSize"/>
             <property name="config-ref" value="a01xml2pv1_2_4_grf"/>
-            <property name="auxiliary;index" value="106"/>
+            <property name="auxiliary;index" value="113"/>
             <property-collection name="@http://www.mulesoft.org/schema/mule/ee/data-mapper/input-arguments;0">
-                <property name="auxiliary;index" value="107"/>
-                <property name="auxiliary;wrapIn" value="107"/>
+                <property name="auxiliary;index" value="114"/>
+                <property name="auxiliary;wrapIn" value="114"/>
                 <property-collection name="@http://www.mulesoft.org/schema/mule/ee/data-mapper/input-argument;1">
                     <property name="value" value="#[pId]"/>
                     <property name="key" value="PatientIdentifier"/>
-                    <property name="auxiliary;index" value="108"/>
-                    <property name="auxiliary;wrapIn" value="108"/>
+                    <property name="auxiliary;index" value="115"/>
+                    <property name="auxiliary;wrapIn" value="115"/>
                 </property-collection>
             </property-collection>
         </properties>
     </pattern>
-    <pattern name="Saving the mapped Patient" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#9">
+    <pattern name="Saving the mapped Patient" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#10">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
             <property name="variableName" value="mappedPatientVisit"/>
             <property name="value" value="#[payload]"/>
             <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-            <property name="auxiliary;index" value="109"/>
+            <property name="auxiliary;index" value="116"/>
         </properties>
     </pattern>
-    <splitter index="110" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#7">
+    <splitter index="117" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#9">
         <graphicalData x="0" y="0" width="0" height="0"/>
         <properties>
-            <property-collection name="a8fbee70-18aa-42a0-b17a-0078d463d690">
+            <property-collection name="6c3181dd-86b6-484e-9bdc-d7739043860a">
                 <property name="choice.expression" value="#[groovy:payload.size() &gt;0 &amp;&amp; payload[0].Patient_Visit_Number__c]"/>
                 <property-collection name="choice.attributes">
                     <property name="expression" value="#[groovy:payload.size() &gt;0 &amp;&amp; payload[0].Patient_Visit_Number__c]"/>
                 </property-collection>
             </property-collection>
-            <property-collection name="ad77423f-b904-428a-b63a-f53a28d15ddd">
+            <property-collection name="cea0d0c9-cf08-4db6-90e5-38130888595b">
                 <property name="choice.otherwise" value="true"/>
                 <property-collection name="choice.attributes"/>
             </property-collection>
         </properties>
-        <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#8"/>
-        <compartment entity-id="compartment#13">
-            <lane hadOnlyOneElement="false" index="112" isChoiceOtherwiseLane="false" entity-id="a8fbee70-18aa-42a0-b17a-0078d463d690">
+        <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#10"/>
+        <compartment entity-id="compartment#15">
+            <lane hadOnlyOneElement="false" index="119" isChoiceOtherwiseLane="false" entity-id="6c3181dd-86b6-484e-9bdc-d7739043860a">
                 <pattern name="Lookup Patient Visit" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#5">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
@@ -1005,31 +1066,31 @@
                         <property name="username"/>
                         <property name="accessTokenId"/>
                         <property name="config-ref" value="UCSF_SF_Connection"/>
-                        <property name="auxiliary;index" value="112"/>
+                        <property name="auxiliary;index" value="119"/>
                         <property name="proxyPassword"/>
                     </properties>
                 </pattern>
-                <pattern name="Saved Patient Visit Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#10">
+                <pattern name="Saved Patient Visit Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#11">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
                         <property name="variableName" value="savedPatientVisit"/>
                         <property name="value" value="payload.size() &gt; 0 ? payload[0] : null"/>
                         <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-                        <property name="auxiliary;index" value="113"/>
+                        <property name="auxiliary;index" value="120"/>
                     </properties>
                 </pattern>
                 <pattern name="Set Payload" type="http://www.mulesoft.org/schema/mule/core/set-payload" entity-id="Set Payload#7">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
                         <property name="value" value="#[flowVars['mappedPatientVisit']]"/>
-                        <property name="auxiliary;index" value="114"/>
+                        <property name="auxiliary;index" value="121"/>
                     </properties>
                 </pattern>
-                <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#7">
+                <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#9">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
                         <property name="name" value="addSalesforceNullField"/>
-                        <property name="auxiliary;index" value="115"/>
+                        <property name="auxiliary;index" value="122"/>
                     </properties>
                 </pattern>
                 <pattern name="Upsert Patient visit" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#6">
@@ -1049,41 +1110,41 @@
                         <property name="accessTokenId"/>
                         <property name="config-ref" value="UCSF_SF_Connection"/>
                         <property name="proxyPassword"/>
-                        <property name="auxiliary;index" value="116"/>
+                        <property name="auxiliary;index" value="123"/>
                         <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objectss;0">
                             <property name="ref" value="#[payload:]"/>
-                            <property name="auxiliary;index" value="117"/>
-                            <property name="auxiliary;wrapIn" value="117"/>
+                            <property name="auxiliary;index" value="124"/>
+                            <property name="auxiliary;wrapIn" value="124"/>
                         </property-collection>
                     </properties>
                 </pattern>
-                <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#12">
+                <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#13">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
                         <property name="message" value="Subflow Patient Visit + #[payload]"/>
                         <property name="category"/>
                         <property name="level" value="INFO"/>
-                        <property name="auxiliary;index" value="118"/>
+                        <property name="auxiliary;index" value="125"/>
                     </properties>
                 </pattern>
-                <pattern name="Set Patient visit Id" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#11">
+                <pattern name="Set Patient visit Id" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#12">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
                         <property name="variableName" value="pVisitId"/>
                         <property name="value" value="#[payload[0].Id]"/>
                         <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-                        <property name="auxiliary;index" value="119"/>
+                        <property name="auxiliary;index" value="126"/>
                     </properties>
                 </pattern>
             </lane>
-            <lane hadOnlyOneElement="false" index="121" isChoiceOtherwiseLane="true" entity-id="ad77423f-b904-428a-b63a-f53a28d15ddd">
-                <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#13">
+            <lane hadOnlyOneElement="false" index="128" isChoiceOtherwiseLane="true" entity-id="cea0d0c9-cf08-4db6-90e5-38130888595b">
+                <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#14">
                     <graphicalData x="0" y="0" width="0" height="0"/>
                     <properties>
                         <property name="message" value="No Visit Id"/>
                         <property name="category"/>
                         <property name="level" value="INFO"/>
-                        <property name="auxiliary;index" value="121"/>
+                        <property name="auxiliary;index" value="128"/>
                     </properties>
                 </pattern>
             </lane>
@@ -1100,44 +1161,44 @@
                 <properties>
                     <property name="onUnaccepted"/>
                     <property name="throwOnUnaccepted"/>
-                    <property name="auxiliary;index" value="124"/>
+                    <property name="auxiliary;index" value="131"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/expression-filter;0">
                         <property name="expression" value="flowVars['pVisitId'] != null"/>
                         <property name="evaluator" value="groovy"/>
-                        <property name="auxiliary;index" value="125"/>
-                        <property name="auxiliary;wrapIn" value="125"/>
+                        <property name="auxiliary;index" value="132"/>
+                        <property name="auxiliary;wrapIn" value="132"/>
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#12">
+            <pattern name="Variable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#13">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="variableName" value="rotetype"/>
                     <property name="value" value="inpatient"/>
                     <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-variable"/>
-                    <property name="auxiliary;index" value="126"/>
+                    <property name="auxiliary;index" value="133"/>
                 </properties>
             </pattern>
-            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#7">
+            <scope name="Message Enricher" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#8">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="source"/>
                     <property name="target"/>
-                    <property name="auxiliary;index" value="127"/>
+                    <property name="auxiliary;index" value="134"/>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/core/enrich;0">
                         <property name="source" value="#[flowVars.?saveRoles]"/>
                         <property name="target" value="#[flowVars['saveInpatientRoles']]"/>
-                        <property name="auxiliary;index" value="129"/>
-                        <property name="auxiliary;wrapIn" value="129"/>
+                        <property name="auxiliary;index" value="136"/>
+                        <property name="auxiliary;wrapIn" value="136"/>
                     </property-collection>
                 </properties>
-                <compartment entity-id="compartment#14">
-                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#16">
-                        <pattern name="Insert Patient Visit Role Flow" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#8">
+                <compartment entity-id="compartment#16">
+                    <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#17">
+                        <pattern name="Insert Patient Visit Role Flow" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#10">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="name" value="mule-ucsf-insert-role"/>
-<property name="auxiliary;index" value="128"/>
+<property name="auxiliary;index" value="135"/>
                             </properties>
                         </pattern>
                     </lane>
@@ -1145,116 +1206,20 @@
             </scope>
         </lane>
     </flow>
-    <flow SubFlow="true" name="defaultErrorHandler" entity-id="3b6d457a-fd97-46df-ab09-bca1fea67de7">
+    <flow SubFlow="true" name="defaultErrorHandler" entity-id="c8e13c7a-a97f-43e8-aeef-646dcaf8d7b6">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
             <property name="bussinessEventsLabel"/>
             <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="130"/>
-        </properties>
-        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#17">
-            <graphicalData x="0" y="0" width="0" height="0"/>
-            <pattern name="Log Error" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#14">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-                <properties>
-                    <property name="message" value="Error occurred: #[payload]"/>
-                    <property name="category"/>
-                    <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="131"/>
-                </properties>
-            </pattern>
-        </lane>
-    </flow>
-    <flow SubFlow="false" name="testflow" entity-id="f72f2d24-a878-48d1-b0cd-cb1c26b4136b">
-        <properties>
-            <property name="processingStrategy"/>
-            <property name="processingStrategy2"/>
-            <property name="bussinessEventsLabel"/>
-            <property name="tracking:enable-default-events"/>
-            <property name="auxiliary;index" value="132"/>
+            <property name="auxiliary;index" value="137"/>
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#18">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <endpoint direction="Inbound" message-exchange-pattern="OneWay" name="Read File" type="http://www.mulesoft.org/schema/mule/file/endpoint" entity-id="File#1">
+            <pattern name="Log Error" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#15">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="reverseOrder"/>
-                    <property name="moveToPattern"/>
-                    <property name="pollingFrequency"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="comparator"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="exchange-pattern" value="one-way"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="moveToDirectory" value="C:\tmp\hl7test\output"/>
-                    <property name="address"/>
-                    <property name="fileAge"/>
-                    <property name="path" value="C:\tmp\hl7test\input"/>
-                    <property name="encoding"/>
-                    <property name="outputPattern"/>
-                    <property name="mimeType"/>
-                    <property name="auxiliary;index" value="133"/>
-                    <property name="responseTimeout" value="10000"/>
-                    <property name="connector-ref"/>
-                </properties>
-            </endpoint>
-            <pattern name="Byte Array to String" type="http://www.mulesoft.org/schema/mule/core/byte-array-to-string-transformer" entity-id="Byte Array to String#5">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-                <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
-                    <property name="encoding"/>
-                    <property name="mimeType"/>
-                    <property name="auxiliary;index" value="134"/>
-                </properties>
-            </pattern>
-            <pattern name="Property" type="http://www.mulesoft.org/schema/mule/core/properties-transformer" entity-id="Property#1">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-                <properties>
-                    <property name="propertyName" value="subject"/>
-                    <property name="value" value="test"/>
-                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/core/set-property"/>
-                    <property name="auxiliary;index" value="135"/>
-                </properties>
-                <description>edfda</description>
-            </pattern>
-            <endpoint direction="Outbound" message-exchange-pattern="RequestResponse" name="Post to Main Flow" type="http://www.mulesoft.org/schema/mule/tcp/endpoint" entity-id="TCP#2">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-                <properties>
-                    <property name="port" value="9001"/>
-                    <property name="host" value="localhost"/>
-                    <property name="businessEventsLabel"/>
-                    <property name="disableTransportTransformer"/>
-                    <property name="exchange-pattern" value="request-response"/>
-                    <property name="tracking:enable-default-events"/>
-                    <property name="ref"/>
-                    <property name="transformer-refs"/>
-                    <property name="address"/>
-                    <property name="encoding"/>
-                    <property name="responseTransformer-refs"/>
-                    <property name="auxiliary;index" value="136"/>
-                    <property name="responseTimeout" value="1000000"/>
-                    <property name="mimeType"/>
-                    <property name="connector-ref"/>
-                </properties>
-            </endpoint>
-            <pattern name="Byte Array to String" type="http://www.mulesoft.org/schema/mule/core/byte-array-to-string-transformer" entity-id="Byte Array to String#6">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-                <properties>
-                    <property name="returnClass"/>
-                    <property name="ignoreBadInput"/>
-                    <property name="encoding"/>
-                    <property name="mimeType"/>
-                    <property name="auxiliary;index" value="137"/>
-                </properties>
-            </pattern>
-            <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#15">
-                <graphicalData x="0" y="0" width="0" height="0"/>
-                <properties>
-                    <property name="message" value="Outcome of HL7 Processing = #[payload]"/>
+                    <property name="message" value="Error occurred: #[payload]"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
                     <property name="auxiliary;index" value="138"/>
@@ -1262,7 +1227,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="rollBackPatient" entity-id="69a2945f-d092-471a-854e-f04f81a3790b">
+    <flow SubFlow="true" name="rollBackPatient" entity-id="332a31e9-1fba-44aa-8921-5ed6bda8437c">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1333,7 +1298,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="mule-ucsf-insert-role" entity-id="e2c830ad-a2ee-4bdb-8002-0b5731e05a28">
+    <flow SubFlow="true" name="mule-ucsf-insert-role" entity-id="e3479b36-2f85-4a0b-9673-0f7dc6e90172">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1343,23 +1308,23 @@
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#20">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#9">
+            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#11">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="name" value="getMappedRoles"/>
                     <property name="auxiliary;index" value="147"/>
                 </properties>
             </pattern>
-            <scope name="Enrich Get ucsfIds Ids" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#8">
+            <scope name="Enrich Get ucsfIds Ids" type="org.mule.tooling.ui.modules.core.scope.enricher" entity-id="Message Enricher#9">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="source" value="#[payload]"/>
                     <property name="target" value="#[variable:ucsfIds]"/>
                     <property name="auxiliary;index" value="148"/>
                 </properties>
-                <compartment entity-id="compartment#15">
+                <compartment entity-id="compartment#17">
                     <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#21">
-                        <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#10">
+                        <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#12">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
 <property name="name" value="getUcsfIds"/>
@@ -1402,14 +1367,14 @@
                     <property name="proxyPassword"/>
                 </properties>
             </pattern>
-            <pattern name="Flow Reference getCareRoleUpsertList" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#11">
+            <pattern name="Flow Reference getUpsertRoleListWithOtherIds" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#13">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property name="name" value="upsertListWithProviderId"/>
+                    <property name="name" value="getUpsertRoleListWithOtherIds"/>
                     <property name="auxiliary;index" value="153"/>
                 </properties>
             </pattern>
-            <pattern name="save mapped roles Roles" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#13">
+            <pattern name="save mapped roles Roles" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#14">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="variableName" value="rolesForUpsertList"/>
@@ -1467,7 +1432,7 @@
                     </property-collection>
                 </properties>
             </pattern>
-            <pattern name="save mapped roles Roles" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#14">
+            <pattern name="save mapped roles Roles" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#15">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="variableName" value="mappedrolesForUpsertList"/>
@@ -1476,23 +1441,23 @@
                     <property name="auxiliary;index" value="162"/>
                 </properties>
             </pattern>
-            <splitter index="163" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#9">
+            <splitter index="163" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#11">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property-collection name="64e25685-adcc-4986-992b-c6664060ebb4">
+                    <property-collection name="0df0891d-9483-4127-aace-b10bbe3b1fc1">
                         <property name="choice.otherwise" value="true"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
-                    <property-collection name="fdd06329-ca21-4772-9556-d94b87ccc6b1">
+                    <property-collection name="229daef6-3b95-401b-b654-058867d3de05">
                         <property name="choice.expression" value="#[groovy:rotetype == 'inpatient']"/>
                         <property-collection name="choice.attributes">
                             <property name="expression" value="#[groovy:rotetype == 'inpatient']"/>
                         </property-collection>
                     </property-collection>
                 </properties>
-                <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#10"/>
-                <compartment entity-id="compartment#16">
-                    <lane hadOnlyOneElement="false" index="165" isChoiceOtherwiseLane="false" entity-id="fdd06329-ca21-4772-9556-d94b87ccc6b1">
+                <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#12"/>
+                <compartment entity-id="compartment#18">
+                    <lane hadOnlyOneElement="false" index="165" isChoiceOtherwiseLane="false" entity-id="229daef6-3b95-401b-b654-058867d3de05">
                         <pattern name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#9">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
@@ -1513,7 +1478,7 @@
                             </properties>
                         </pattern>
                     </lane>
-                    <lane hadOnlyOneElement="false" index="167" isChoiceOtherwiseLane="true" entity-id="64e25685-adcc-4986-992b-c6664060ebb4">
+                    <lane hadOnlyOneElement="false" index="167" isChoiceOtherwiseLane="true" entity-id="0df0891d-9483-4127-aace-b10bbe3b1fc1">
                         <pattern name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#10">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
@@ -1536,7 +1501,7 @@
                     </lane>
                 </compartment>
             </splitter>
-            <pattern name="save current Roles" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#15">
+            <pattern name="save current Roles" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#16">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="variableName" value="saveRoles"/>
@@ -1545,30 +1510,30 @@
                     <property name="auxiliary;index" value="168"/>
                 </properties>
             </pattern>
-            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#12">
+            <pattern name="Flow Reference" type="http://www.mulesoft.org/schema/mule/core/flow-ref" entity-id="Flow Reference#14">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="name" value="getFinalRolesToUpsert"/>
                     <property name="auxiliary;index" value="169"/>
                 </properties>
             </pattern>
-            <splitter index="170" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#11">
+            <splitter index="170" name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#13">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
-                    <property-collection name="5625aff3-4944-4e73-9ebe-947c8b3dc640">
+                    <property-collection name="86ba308e-8b1a-47c1-b4db-22f4177cee56">
                         <property name="choice.otherwise" value="true"/>
                         <property-collection name="choice.attributes"/>
                     </property-collection>
-                    <property-collection name="23ae4cf5-815a-4c94-b4b3-0f8bff6aada4">
+                    <property-collection name="b951961d-9578-415a-90ec-b6d21af5da0f">
                         <property name="choice.expression" value="rotetype == 'inpatient'"/>
                         <property-collection name="choice.attributes">
                             <property name="expression" value="rotetype == 'inpatient'"/>
                         </property-collection>
                     </property-collection>
                 </properties>
-                <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#12"/>
-                <compartment entity-id="compartment#17">
-                    <lane hadOnlyOneElement="false" index="172" isChoiceOtherwiseLane="false" entity-id="23ae4cf5-815a-4c94-b4b3-0f8bff6aada4">
+                <pattern name="Choice" type="org.mule.tooling.ui.modules.core.pattern.cbr" entity-id="Choice#14"/>
+                <compartment entity-id="compartment#19">
+                    <lane hadOnlyOneElement="false" index="172" isChoiceOtherwiseLane="false" entity-id="b951961d-9578-415a-90ec-b6d21af5da0f">
                         <pattern name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#11">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
@@ -1595,7 +1560,7 @@
                             </properties>
                         </pattern>
                     </lane>
-                    <lane hadOnlyOneElement="false" index="175" isChoiceOtherwiseLane="true" entity-id="5625aff3-4944-4e73-9ebe-947c8b3dc640">
+                    <lane hadOnlyOneElement="false" index="175" isChoiceOtherwiseLane="true" entity-id="86ba308e-8b1a-47c1-b4db-22f4177cee56">
                         <pattern name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#12">
                             <graphicalData x="0" y="0" width="0" height="0"/>
                             <properties>
@@ -1635,7 +1600,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="mule-ucsf-admit-hospitalFlow1" entity-id="f77aa233-2433-4dd9-af7e-de9120f8f515">
+    <flow SubFlow="false" name="mule-ucsf-admit-hospitalFlow1" entity-id="98f008fe-dc34-482c-878b-3d92c698c352">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1666,7 +1631,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="getMappedRoles" entity-id="4c9f6dd1-e0cf-46fa-880a-9ad3b1918628">
+    <flow SubFlow="true" name="getMappedRoles" entity-id="85614d30-c0a4-4404-9560-ba7fe1607f0b">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1676,7 +1641,7 @@
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#23">
             <graphicalData x="0" y="0" width="0" height="0"/>
-            <pattern name="save originalXML" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#16">
+            <pattern name="save originalXML" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#17">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="variableName" value="orginalXML"/>
@@ -1718,7 +1683,7 @@
                     <property name="auxiliary;index" value="210"/>
                 </properties>
             </pattern>
-            <pattern name="patientRolsVariable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#17">
+            <pattern name="patientRolsVariable" type="http://www.mulesoft.org/schema/mule/core/variable-transformer" entity-id="Variable#18">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="variableName" value="patientADTROLs"/>
@@ -1729,7 +1694,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="false" name="SaveADT" entity-id="e89284af-c0a2-4556-8196-9e8c0cbba6b7">
+    <flow SubFlow="false" name="SaveADT" entity-id="0b83ab22-e80b-401c-88d6-c025e0c2eb1d">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -1739,13 +1704,246 @@
         </properties>
         <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#24">
             <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#14">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="proxyUsername"/>
+                    <property name="securityToken"/>
+                    <property name="proxyHost"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/sfdc/create-single"/>
+                    <property name="proxyPort"/>
+                    <property name="type" value="ADT_Message__c"/>
+                    <property name="password"/>
+                    <property name="url"/>
+                    <property name="username"/>
+                    <property name="accessTokenId"/>
+                    <property name="config-ref" value="UCSF_SF_Connection"/>
+                    <property name="auxiliary;index" value="213"/>
+                    <property name="proxyPassword"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/create-single-objects;0">
+                        <property name="auxiliary;index" value="214"/>
+                        <property name="auxiliary;wrapIn" value="214"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/create-single-object;1">
+                            <property name="value" value="#[payload]"/>
+                            <property name="key" value="ADT_String__c"/>
+                            <property name="auxiliary;index" value="215"/>
+                            <property name="auxiliary;wrapIn" value="215"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
             <pattern name="Logger" type="http://www.mulesoft.org/schema/mule/core/logger" entity-id="Logger#20">
                 <graphicalData x="0" y="0" width="0" height="0"/>
                 <properties>
                     <property name="message" value="test"/>
                     <property name="category"/>
                     <property name="level" value="INFO"/>
-                    <property name="auxiliary;index" value="213"/>
+                    <property name="auxiliary;index" value="216"/>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="true" name="updateSalesforce" entity-id="79695411-16d1-47f8-919f-912a4413666d">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="217"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#25">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#15">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="proxyUsername"/>
+                    <property name="securityToken"/>
+                    <property name="proxyHost"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/sfdc/upsert"/>
+                    <property name="proxyPort"/>
+                    <property name="type" value="ADT_Patient__c"/>
+                    <property name="password"/>
+                    <property name="url"/>
+                    <property name="externalIdFieldName" value="MRN_Number__c"/>
+                    <property name="username"/>
+                    <property name="accessTokenId"/>
+                    <property name="config-ref" value="UCSF_SF_Connection"/>
+                    <property name="proxyPassword"/>
+                    <property name="auxiliary;index" value="218"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objectss;0">
+                        <property name="auxiliary;index" value="219"/>
+                        <property name="auxiliary;wrapIn" value="219"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objects;1">
+                            <property name="auxiliary;index" value="220"/>
+                            <property name="auxiliary;wrapIn" value="220"/>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+            <pattern name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#16">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="proxyUsername"/>
+                    <property name="securityToken"/>
+                    <property name="proxyHost"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/sfdc/upsert"/>
+                    <property name="proxyPort"/>
+                    <property name="type" value="ADT_Message__c"/>
+                    <property name="password"/>
+                    <property name="url"/>
+                    <property name="externalIdFieldName" value="Id"/>
+                    <property name="username"/>
+                    <property name="accessTokenId"/>
+                    <property name="config-ref" value="UCSF_SF_Connection"/>
+                    <property name="proxyPassword"/>
+                    <property name="auxiliary;index" value="221"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objectss;0">
+                        <property name="auxiliary;index" value="222"/>
+                        <property name="auxiliary;wrapIn" value="222"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objects;1">
+                            <property name="auxiliary;index" value="223"/>
+                            <property name="auxiliary;wrapIn" value="223"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/inner-upsert-objects;3">
+<property name="value" value="#[groovy:warnings.toString()]"/>
+<property name="key" value="log__c"/>
+<property name="auxiliary;index" value="226"/>
+<property name="auxiliary;wrapIn" value="226"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/inner-upsert-objects;2">
+<property name="value" value="#[flowVars.?pId]"/>
+<property name="key" value="ADT_Patient__c"/>
+<property name="auxiliary;index" value="225"/>
+<property name="auxiliary;wrapIn" value="225"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/inner-upsert-objects;4">
+<property name="value" value="#[groovy:warnings.toString().length() &gt; 0 ? &quot;WARN&quot; : &quot;INFO&quot;]"/>
+<property name="key" value="LogLevel__c"/>
+<property name="auxiliary;index" value="227"/>
+<property name="auxiliary;wrapIn" value="227"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/inner-upsert-objects;1">
+<property name="value" value="#[messageId]"/>
+<property name="key" value="Id"/>
+<property name="auxiliary;index" value="224"/>
+<property name="auxiliary;wrapIn" value="224"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="true" name="messageErrorLogging" entity-id="e7f4e03f-1b84-457d-aeb0-445d077111d4">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="228"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#26">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <pattern name="Salesforce" type="http://www.mulesoft.org/schema/mule/sfdc/sfdc-connector" entity-id="Salesforce#17">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name=""/>
+                    <property name="proxyUsername"/>
+                    <property name="securityToken"/>
+                    <property name="proxyHost"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/sfdc/upsert"/>
+                    <property name="proxyPort"/>
+                    <property name="type" value="ADT_Message__c"/>
+                    <property name="password"/>
+                    <property name="url"/>
+                    <property name="externalIdFieldName" value="Id"/>
+                    <property name="username"/>
+                    <property name="accessTokenId"/>
+                    <property name="config-ref" value="UCSF_SF_Connection"/>
+                    <property name="proxyPassword"/>
+                    <property name="auxiliary;index" value="229"/>
+                    <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objectss;0">
+                        <property name="auxiliary;index" value="230"/>
+                        <property name="auxiliary;wrapIn" value="230"/>
+                        <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/upsert-objects;1">
+                            <property name="auxiliary;index" value="231"/>
+                            <property name="auxiliary;wrapIn" value="231"/>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/inner-upsert-objects;3">
+<property name="value" value="Error Payload #[payload]\n exception #[exception] "/>
+<property name="key" value="log__c"/>
+<property name="auxiliary;index" value="234"/>
+<property name="auxiliary;wrapIn" value="234"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/inner-upsert-objects;2">
+<property name="value" value="#[flowVars.?pId]"/>
+<property name="key" value="ADT_Patient__c"/>
+<property name="auxiliary;index" value="233"/>
+<property name="auxiliary;wrapIn" value="233"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/inner-upsert-objects;4">
+<property name="value" value="ERROR"/>
+<property name="key" value="LogLevel__c"/>
+<property name="auxiliary;index" value="235"/>
+<property name="auxiliary;wrapIn" value="235"/>
+                            </property-collection>
+                            <property-collection name="@http://www.mulesoft.org/schema/mule/sfdc/inner-upsert-objects;1">
+<property name="value" value="#[messageId]"/>
+<property name="key" value="Id"/>
+<property name="auxiliary;index" value="232"/>
+<property name="auxiliary;wrapIn" value="232"/>
+                            </property-collection>
+                        </property-collection>
+                    </property-collection>
+                </properties>
+            </pattern>
+        </lane>
+    </flow>
+    <flow SubFlow="false" name="dummyhl7Flow1" entity-id="b2064df7-ae18-43a4-8a61-65110eb70c9c">
+        <properties>
+            <property name="processingStrategy"/>
+            <property name="processingStrategy2"/>
+            <property name="bussinessEventsLabel"/>
+            <property name="tracking:enable-default-events"/>
+            <property name="auxiliary;index" value="236"/>
+        </properties>
+        <lane hadOnlyOneElement="false" index="0" isChoiceOtherwiseLane="false" entity-id="compartment-lane#27">
+            <graphicalData x="0" y="0" width="0" height="0"/>
+            <endpoint direction="Inbound" message-exchange-pattern="RequestResponse" name="HTTP" type="http://www.mulesoft.org/schema/mule/http/endpoint" entity-id="HTTP#1">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="port" value="9000"/>
+                    <property name="host" value="0.0.0.0"/>
+                    <property name="businessEventsLabel"/>
+                    <property name="followRedirects"/>
+                    <property name="org.mule.tooling.ui.modules.core.widgets.meta.ModeAttribute" value="http://www.mulesoft.org/schema/mule/http/endpoint"/>
+                    <property name="keep-alive"/>
+                    <property name="contentType"/>
+                    <property name="disableTransportTransformer"/>
+                    <property name="password"/>
+                    <property name="exchange-pattern" value="request-response"/>
+                    <property name="tracking:enable-default-events"/>
+                    <property name="ref"/>
+                    <property name="transformer-refs"/>
+                    <property name="httpLabel"/>
+                    <property name="address"/>
+                    <property name="path"/>
+                    <property name="encoding"/>
+                    <property name="responseTransformer-refs"/>
+                    <property name="method"/>
+                    <property name="user"/>
+                    <property name="responseTimeout"/>
+                    <property name="mimeType"/>
+                    <property name="auxiliary;index" value="237"/>
+                    <property name="connector-ref"/>
+                </properties>
+            </endpoint>
+            <pattern name="Set Payload" type="http://www.mulesoft.org/schema/mule/core/set-payload" entity-id="Set Payload#8">
+                <graphicalData x="0" y="0" width="0" height="0"/>
+                <properties>
+                    <property name="value" value="OK"/>
+                    <property name="auxiliary;index" value="238"/>
                 </properties>
             </pattern>
         </lane>
