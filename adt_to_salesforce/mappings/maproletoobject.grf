@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Graph author="sranjitkar" created="Tue Jun 18 08:44:05 PDT 2013" guiVersion="3.3.2" id="1371579265854" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Tue Jun 18 08:44:05 PDT 2013" modifiedBy="sranjitkar" name="maproletoobject_grf" preview-file="${Project_Home}/src/test/resources/rolesample.xml" revision="1.0" showComponentDetails="false">
+<Graph author="sranjitkar" created="Tue Jun 18 08:44:05 PDT 2013" guiVersion="3.3.2" id="1371579265854" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Tue Jun 18 08:44:05 PDT 2013" modifiedBy="sranjitkar" name="maproletoobject_grf" preview-file="${Project_Home}/src/test/resources/rolesample2.xml" revision="1.0" showComponentDetails="false">
 <Global>
 <Metadata __sourcePath="{}/list" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="58123c81-1ac2-4ce5-b084-802487f8160b">
 <Record fieldDelimiter="|" name="list" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">

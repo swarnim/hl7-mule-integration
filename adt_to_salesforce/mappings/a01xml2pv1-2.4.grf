@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Graph author="Shuba" created="Wed Mar 27 20:19:42 PDT 2013" guiVersion="3.3.2" id="1364456643475" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Wed Mar 27 20:19:42 PDT 2013" modifiedBy="Shuba" name="a01xml2pv1_grf" preview-arguments="PatientIdentifier:null" preview-file="${Project_Home}/src/test/resources/samplenew.xml" revision="1.0" showComponentDetails="false">
+<Graph author="Shuba" created="Wed Mar 27 20:19:42 PDT 2013" guiVersion="3.3.2" id="1364456643475" licenseCode="CLPXDMULES37812333BY" licenseType="Commercial" modified="Wed Mar 27 20:19:42 PDT 2013" modifiedBy="Shuba" name="a01xml2pv1_grf" preview-arguments="PatientIdentifier:null,eventType:'A08'" preview-file="${Project_Home}/src/test/resources/samplenew.xml" revision="1.0" showComponentDetails="false">
 <Global>
 <Metadata __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01" _dataStructure="OBJECT" _id="__id" _type="Input" id="abaa54a8-70af-41c5-ae3b-430328164be0">
 <Record fieldDelimiter="|" name="ADT_A01" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
@@ -9934,26 +9934,16 @@
 <Metadata __sourcePath="{}/Patient_Visit__c" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Output" id="62918a5b-2298-44cf-ae6e-9d1f866cad6f">
 <Record fieldDelimiter="|" name="Patient_Visit__c" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
 <Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/Attending_Physician_Name__c" containerType="SINGLE" label="Attending_Physician_Name__c" name="Attending_Physician_Name__c" type="string"/>
 <Field __sourcePath="{}/Patient_Visit__c/ADT_Patient__c" containerType="SINGLE" label="ADT_Patient__c" name="Master_Patient__c" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/LastModifiedById" containerType="SINGLE" label="LastModifiedById" name="LastModifiedById" type="string"/>
 <Field __sourcePath="{}/Patient_Visit__c/Visit_Type__c" containerType="SINGLE" label="Visit_Type__c" name="Visit_Type__c" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/Attending_Physician_MSO_Number__c" containerType="SINGLE" label="Attending_Physician_MSO_Number__c" name="Attending_Physician_MSO_Number__c" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/LastModifiedDate" containerType="SINGLE" label="LastModifiedDate" name="LastModifiedDate" type="date"/>
 <Field __sourcePath="{}/Patient_Visit__c/Facility__c" containerType="SINGLE" label="Facility__c" name="Facility__c" type="string"/>
 <Field __sourcePath="{}/Patient_Visit__c/Bed__c" containerType="SINGLE" label="Bed__c" name="Bed__c" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/Nurse_Station__c" containerType="SINGLE" label="Nurse_Station__c" name="Nurse_Station__c" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/LastActivityDate" containerType="SINGLE" label="LastActivityDate" name="LastActivityDate" type="date"/>
-<Field __sourcePath="{}/Patient_Visit__c/Name" containerType="SINGLE" label="Name" name="Name" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/Admission_Date__c" containerType="SINGLE" label="Admission_Date__c" name="Admission_Date__c" type="date"/>
+<Field __dmType="Calendar" __sourcePath="{}/Patient_Visit__c/Admission_Date__c" containerType="SINGLE" label="Admission_Date__c" name="Admission_Date__c" type="date"/>
 <Field __sourcePath="{}/Patient_Visit__c/Patient_Visit_Number__c" containerType="SINGLE" label="Patient_Visit_Number__c" name="Patient_Visit_Number__c" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/Discharge_Date__c" containerType="SINGLE" label="Discharge_Date__c" name="Discharge_Date__c" type="date"/>
-<Field __sourcePath="{}/Patient_Visit__c/SystemModstamp" containerType="SINGLE" label="SystemModstamp" name="SystemModstamp" type="date"/>
-<Field __sourcePath="{}/Patient_Visit__c/CreatedById" containerType="SINGLE" label="CreatedById" name="CreatedById" type="string"/>
-<Field __sourcePath="{}/Patient_Visit__c/CreatedDate" containerType="SINGLE" label="CreatedDate" name="CreatedDate" type="date"/>
-<Field __sourcePath="{}/Patient_Visit__c/IsDeleted" containerType="SINGLE" label="IsDeleted" name="IsDeleted" type="boolean"/>
-<Field __sourcePath="{}/Patient_Visit__c/Id" containerType="SINGLE" label="Id" name="Id" type="string"/>
+<Field __dmType="Calendar" __sourcePath="{}/Patient_Visit__c/Discharge_Date__c" containerType="SINGLE" label="Discharge_Date__c" name="Discharge_Date__c" type="date"/>
 <Field __sourcePath="{}/Patient_Visit__c/Room__c" containerType="SINGLE" label="Room__c" name="Room__c" type="string"/>
+<Field __sourcePath="{}/Patient_Visit__c/ExternalKey__c" containerType="SINGLE" label="ExternalKey__c" name="ExternalKey__c" type="string"/>
+<Field __sourcePath="{}/Patient_Visit__c/Active__c" containerType="SINGLE" label="Active__c" name="Active__c" type="boolean"/>
 </Record>
 </Metadata>
 <Metadata __sourcePath="{urn:hl7-org:v2xml=ns0}/ns0:ADT_A01/ns0:PD1/ns0:PD1.1" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _metadataParentId="abaa54a8-70af-41c5-ae3b-430328164be0" _parent_id="__parent_id" _type="Input" id="de52b3e9-d24a-49ef-bf6d-e3d9e2c2ebbc">
@@ -13817,6 +13807,7 @@
 <Entry dictval.__javaType="java.lang.String" id="DictionaryEntry2" input="false" name="Master_Patient__c" output="true" type="string"/>
 <Entry dictval.__javaType="java.lang.String" id="DictionaryEntry3" input="true" name="PatientIdentifier" output="true" type="string"/>
 <Entry dictval.__javaType="java.lang.String" id="DictionaryEntry4" input="false" name="PCP" output="true" type="string"/>
+<Entry dictval.__javaType="java.lang.String" id="DictionaryEntry5" input="true" name="eventType" output="true" type="string"/>
 </Dictionary>
 </Global>
 <Phase number="0">
@@ -13824,29 +13815,19 @@
 <attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <clover:collection clover:name="Patient_Visit__c" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
   <item clover:inPort="0">
-    <clover:element clover:name="Attending_Physician_Name__c">$0.Attending_Physician_Name__c</clover:element>
-    <clover:element clover:name="ADT_Patient__c">$0.Master_Patient__c</clover:element>
-    <LastModifiedById>$0.LastModifiedById</LastModifiedById>
-    <clover:element clover:name="Visit_Type__c">$0.Visit_Type__c</clover:element>
-    <clover:element clover:name="Attending_Physician_MSO_Number__c">$0.Attending_Physician_MSO_Number__c</clover:element>
-    <LastModifiedDate>$0.LastModifiedDate</LastModifiedDate>
-    <clover:element clover:name="Facility__c">$0.Facility__c</clover:element>
-    <clover:element clover:name="Bed__c">$0.Bed__c</clover:element>
-    <clover:element clover:name="Nurse_Station__c">$0.Nurse_Station__c</clover:element>
-    <LastActivityDate>$0.LastActivityDate</LastActivityDate>
-    <Name>$0.Name</Name>
-    <clover:element clover:name="Admission_Date__c">$0.Admission_Date__c</clover:element>
-    <clover:element clover:name="Patient_Visit_Number__c">$0.Patient_Visit_Number__c</clover:element>
-    <clover:element clover:name="Discharge_Date__c">$0.Discharge_Date__c</clover:element>
-    <SystemModstamp>$0.SystemModstamp</SystemModstamp>
-    <CreatedById>$0.CreatedById</CreatedById>
-    <CreatedDate>$0.CreatedDate</CreatedDate>
-    <IsDeleted>$0.IsDeleted</IsDeleted>
-    <Id>$0.Id</Id>
-    <clover:element clover:name="Room__c">$0.Room__c</clover:element>
+    <clover:element clover:name="ADT_Patient__c" clover:writeNullElement="true">$0.Master_Patient__c</clover:element>
+    <clover:element clover:name="Visit_Type__c" clover:writeNullElement="true">$0.Visit_Type__c</clover:element>
+    <clover:element clover:name="Facility__c" clover:writeNullElement="true">$0.Facility__c</clover:element>
+    <clover:element clover:name="Bed__c" clover:writeNullElement="true">$0.Bed__c</clover:element>
+    <clover:element clover:name="Admission_Date__c" clover:dataType="java.util.Calendar" clover:writeNullElement="true">$0.Admission_Date__c</clover:element>
+    <clover:element clover:name="Patient_Visit_Number__c" clover:writeNullElement="true">$0.Patient_Visit_Number__c</clover:element>
+    <clover:element clover:name="Discharge_Date__c" clover:dataType="java.util.Calendar" clover:writeNullElement="true">$0.Discharge_Date__c</clover:element>
+    <clover:element clover:name="Room__c" clover:writeNullElement="true">$0.Room__c</clover:element>
+    <clover:element clover:name="ExternalKey__c" clover:writeNullElement="true">$0.ExternalKey__c</clover:element>
+    <clover:element clover:name="Active__c" clover:writeNullElement="true">$0.Active__c</clover:element>
   </item>
 </clover:collection>]]></attr>
-<attr name="__nullValues"><![CDATA[false]]></attr>
+<attr name="__nullValues"><![CDATA[true]]></attr>
 <attr name="__typeName"><![CDATA[Patient_Visit__c]]></attr>
 <attr name="_data_format"><![CDATA[MAP]]></attr>
 <attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/sfdc/create]]></attr>
@@ -13859,13 +13840,15 @@ output.__id = input.__id;
 //END -> DO NOT REMOVE
 output.Facility__c = (isnull(input.text_175) ? ''  : input.text_175);
 output.Room__c = (isnull(input.text_176)   ? '' : input.text_176);
-output.Bed__c = (isnull(input.text_177) ? '' : input.text_177);
+output.Bed__c = (isnull(input.text_177) ? 'N/A' : input.text_177);
 output.Master_Patient__c = inputArguments.PatientIdentifier;
 output.Visit_Type__c = (isnull(input.text_174) ? '' : input.text_174);
 output.Patient_Visit_Number__c =  (isnull(input.text_227) ? '' : input.text_227);
-output.Admission_Date__c = (isnull(input.text_285) ? null : str2date(input.text_285, "yyyyMMddHHmm"));
+outputArguments.PCP = input.PCPNO1 + ':' + input.PCPNO2;
+output.ExternalKey__c = inputArguments.PatientIdentifier + '~' + (isnull(input.text_227) ? '' : input.text_227);
+output.Active__c = (isnull(inputArguments.eventType) ? true : ((inputArguments.eventType == 'A11' || inputArguments.eventType == 'A38')  ? false : true));
 output.Discharge_Date__c = (isnull(input.ExtractDateDischarge) ? null : str2date(input.ExtractDateDischarge, "yyyyMMddHHmm"));
-outputArguments.PCP = input.PCPNO1 + ':' + input.PCPNO2;]]></attr>
+output.Admission_Date__c = (isnull(input.text_285) ? null : str2date(input.text_285,"yyyyMMddHHmm"));]]></attr>
 </Node>
 <Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="XML READER" guiWidth="0" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
 <attr name="xmlSchemaURL"><![CDATA[.\src\main\resources\HL7v2XSDs\2.4\ADT_A01.xsd]]></attr>

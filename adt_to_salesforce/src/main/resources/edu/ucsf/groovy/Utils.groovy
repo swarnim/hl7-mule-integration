@@ -33,6 +33,9 @@ class Utils {
 			return ""
 		}
 	}
+	static getCurrentSalesforceDatetime(){
+		return new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").format(new Date())
+	}
 	static convertGmtDateToPst(dateString){
 		if(dateString){
 			def dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'.000Z'")
@@ -97,17 +100,18 @@ class Utils {
 		return ucsfIds;
 	}
 
-	static getFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , PCPNO1, PCPNO2){
+	static getFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , PCPNO1, PCPNO2, ucsfid_salesforceid){
 
 		//hashset of Role external key which should be PVCareRoleKey__c of existing record if present.
-		def roleUpsertSet = new HashSet<String>()
+		def roleUpsertMap = new HashMap<String>()
 		def rolesToDelete = new ArrayList<>()
+		def finalUpsertList = new ArrayList<>();
 		for (mappedRolesToUpsert in mappedrolesForUpsertList){
-			roleUpsertSet.add(mappedRolesToUpsert.ExternalKey__c)
+			roleUpsertMap.put(mappedRolesToUpsert.ExternalKey__c, mappedRolesToUpsert)
 		}
 		for (role in saveRoles){
 			// if upsertRoles doesn't have the role then add to upsertMap as delete.
-			if(!roleUpsertSet.contains(role.ExternalKey__c)){
+			if(!roleUpsertMap.get(role.ExternalKey__c)){
 				def newRole = HelperUtils.deepClone(role)
 				//set role isactive flag to false
 				def clonedRole = (Map) HelperUtils.deepClone(newRole)
@@ -118,18 +122,28 @@ class Utils {
 
 		}
 		if (rolesToDelete.size() > 0){
-			mappedrolesForUpsertList.addAll(rolesToDelete);
+			finalUpsertList.addAll(rolesToDelete);
 		}
+		 finalUpsertList.addAll(roleUpsertMap.values());
 		//setup PCP
-		for (mappedRolesToUpsert in mappedrolesForUpsertList){
-			if (mappedRolesToUpsert['ucsfid'] == PCPNO1 || mappedRolesToUpsert['ucsfid'] == PCPNO2){
+		 
+		 def userIdToucsfIdMap = new HashMap<String,String>()
+		
+ 
+		 for (userRecord in ucsfid_salesforceid){
+			 userIdToucsfIdMap.put(userRecord.Id, userRecord.UCSF_ID__c)
+		 }
+		 
+		for (mappedRolesToUpsert in finalUpsertList){
+		 
+			if ((mappedRolesToUpsert['Provider__c']  && userIdToucsfIdMap[mappedRolesToUpsert['Provider__c']] == PCPNO1) || (mappedRolesToUpsert['Provider__c']  && userIdToucsfIdMap[mappedRolesToUpsert['Provider__c']] == PCPNO2)){
 				mappedRolesToUpsert['Primary_Care_Provider__c'] = true;
 			} else {
 				mappedRolesToUpsert['Primary_Care_Provider__c']= false;
 			}
 			
 		}
-		return mappedrolesForUpsertList;
+		return finalUpsertList;
 	}
 
 	//Salesforce objects must be a list of HashMap or Just a HashMap. Mule Salesforce connector doesn't handle when the data is null or blank. Doing here. For
@@ -144,7 +158,7 @@ class Utils {
 			} else if (sfData instanceof Map){
 				def fieldsToNullList = new ArrayList()
 				sfData.each{
-					if (!it.value){
+					if (!(it.value instanceof Boolean) && !it.value ){
 						fieldsToNullList.add(it.key)
 					}
 

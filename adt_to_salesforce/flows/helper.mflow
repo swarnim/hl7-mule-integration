@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="helper">
-    <flow SubFlow="true" name="getUcsfIds" entity-id="2feb210b-5005-474f-b318-1bc96a84c286">
+    <flow SubFlow="true" name="getUcsfIds" entity-id="c519edd4-9a9b-467d-9037-4e05e2e9d6b0">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -33,7 +33,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="getUpsertRoleListWithOtherIds" entity-id="79847112-cca3-4e60-93b9-69e2fcfaad2b">
+    <flow SubFlow="true" name="getUpsertRoleListWithOtherIds" entity-id="35725b9d-ac14-4d0e-9d01-3cd1c9fb0fd3">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -51,14 +51,14 @@
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
                         <property name="text" value="&#xA;                &#xA;                "/>
                         <property name="engine" value="Groovy"/>
-                        <property name="inner-text" value="import edu.ucsf.groovy.Utils&#xA;               &#x9;&#x9;return Utils.getUpsertRoleListWithOtherIds(payload, patientADTROLs, pId, flowVars['pVisitId'], warnings)             &#x9;               &#x9;&#x9;                          &#xA;&#x9;&#x9;&#x9;    "/>
+                        <property name="inner-text" value="import edu.ucsf.groovy.Utils&#xA;                def tempVistId = (roletype == 'inpatient') ? pVisitId : null&#xA;               &#x9;&#x9;return Utils.getUpsertRoleListWithOtherIds(payload, patientADTROLs, pId, tempVistId, warnings)             &#x9;               &#x9;&#x9;                          &#xA;&#x9;&#x9;&#x9;    "/>
                         <property name="auxiliary;index" value="7"/>
                         <property name="auxiliary;wrapIn" value="7"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
                         <property name="text" value="&#xA;                &#xA;                "/>
                         <property name="engine" value="Groovy"/>
-                        <property name="inner-text" value="import edu.ucsf.groovy.Utils&#xA;               &#x9;&#x9;return Utils.getUpsertRoleListWithOtherIds(payload, patientADTROLs, pId, flowVars['pVisitId'], warnings)             &#x9;               &#x9;&#x9;                          &#xA;&#x9;&#x9;&#x9;    "/>
+                        <property name="inner-text" value="import edu.ucsf.groovy.Utils&#xA;                def tempVistId = (roletype == 'inpatient') ? pVisitId : null&#xA;               &#x9;&#x9;return Utils.getUpsertRoleListWithOtherIds(payload, patientADTROLs, pId, tempVistId, warnings)             &#x9;               &#x9;&#x9;                          &#xA;&#x9;&#x9;&#x9;    "/>
                         <property name="auxiliary;index" value="7"/>
                         <property name="auxiliary;wrapIn" value="7"/>
                     </property-collection>
@@ -66,7 +66,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="getFinalRolesToUpsert" entity-id="e9416ac9-f55f-4597-a80c-dee7970464ee">
+    <flow SubFlow="true" name="getFinalRolesToUpsert" entity-id="53477a8f-5c1f-4021-93d4-fd8b250b95bc">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -84,14 +84,14 @@
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script-for-properties;0">
                         <property name="text" value="&#xA;                &#xA;            "/>
                         <property name="engine" value="Groovy"/>
-                        <property name="inner-text" value="import edu.ucsf.groovy.Utils&#xA;               &#x9;&#x9;return Utils.getFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , flowVars['PCPNO1'], flowVars['PCPNO2'])&#xA;&#x9;&#x9;&#x9;    "/>
+                        <property name="inner-text" value="import edu.ucsf.groovy.Utils&#xA;               &#x9;&#x9;return Utils.getFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , flowVars['PCPNO1'], flowVars['PCPNO2'], ucsfid_salesforceid)&#xA;&#x9;&#x9;&#x9;    "/>
                         <property name="auxiliary;index" value="11"/>
                         <property name="auxiliary;wrapIn" value="11"/>
                     </property-collection>
                     <property-collection name="@http://www.mulesoft.org/schema/mule/scripting/script;0">
                         <property name="text" value="&#xA;                &#xA;            "/>
                         <property name="engine" value="Groovy"/>
-                        <property name="inner-text" value="import edu.ucsf.groovy.Utils&#xA;               &#x9;&#x9;return Utils.getFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , flowVars['PCPNO1'], flowVars['PCPNO2'])&#xA;&#x9;&#x9;&#x9;    "/>
+                        <property name="inner-text" value="import edu.ucsf.groovy.Utils&#xA;               &#x9;&#x9;return Utils.getFinalRolesToUpsert(mappedrolesForUpsertList,saveRoles , flowVars['PCPNO1'], flowVars['PCPNO2'], ucsfid_salesforceid)&#xA;&#x9;&#x9;&#x9;    "/>
                         <property name="auxiliary;index" value="11"/>
                         <property name="auxiliary;wrapIn" value="11"/>
                     </property-collection>
@@ -99,7 +99,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="nullToBlank" entity-id="06ec221c-5b83-46ff-8ca2-63ee065b2fce">
+    <flow SubFlow="true" name="nullToBlank" entity-id="f4662b70-355a-4776-8271-f4e887ecd954">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -132,7 +132,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="addSalesforceNullField" entity-id="e1bdcf01-2c65-4c25-838b-87bdd9319781">
+    <flow SubFlow="true" name="addSalesforceNullField" entity-id="9153f9b0-7a1e-411b-9fcc-94317deb83b9">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
