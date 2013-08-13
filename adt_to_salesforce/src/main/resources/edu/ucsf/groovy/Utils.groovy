@@ -135,6 +135,9 @@ class Utils {
 		 }
 		 
 		for (mappedRolesToUpsert in finalUpsertList){
+			if (mappedRolesToUpsert['ADT_Patient_Visit__c'] == null){
+				mappedRolesToUpsert.remove('ADT_Patient_Visit__c');
+			}
 		 
 			if ((mappedRolesToUpsert['Provider__c']  && userIdToucsfIdMap[mappedRolesToUpsert['Provider__c']] == PCPNO1) || (mappedRolesToUpsert['Provider__c']  && userIdToucsfIdMap[mappedRolesToUpsert['Provider__c']] == PCPNO2)){
 				mappedRolesToUpsert['Primary_Care_Provider__c'] = true;

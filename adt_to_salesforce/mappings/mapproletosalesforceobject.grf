@@ -5,23 +5,20 @@
 <Record fieldDelimiter="|" name="ADT_Patient_Visit_Care_Role__c" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
 <Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
 <Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Provider__c" containerType="SINGLE" label="Provider__c" name="Provider__c" type="string"/>
-<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/LastModifiedById" containerType="SINGLE" label="LastModifiedById" name="LastModifiedById" type="string"/>
-<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/LastModifiedDate" containerType="SINGLE" label="LastModifiedDate" name="LastModifiedDate" type="date"/>
 <Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Active__c" containerType="SINGLE" label="Active__c" name="Active__c" type="boolean"/>
-<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Primary_Care_Provider__c" containerType="SINGLE" label="Primary_Care_Provider__c" name="Primary_Care_Provider__c" type="boolean"/>
 <Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/ADT_Patient__c" containerType="SINGLE" label="ADT_Patient__c" name="Patient__c" type="string"/>
-<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Name" containerType="SINGLE" label="Name" name="Name" type="string"/>
 <Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/ADT_Patient_Visit__c" containerType="SINGLE" label="ADT_Patient_Visit__c" name="ADT_Patient_Visit__c" type="string"/>
-<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/SystemModstamp" containerType="SINGLE" label="SystemModstamp" name="SystemModstamp" type="date"/>
-<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/CreatedById" containerType="SINGLE" label="CreatedById" name="CreatedById" type="string"/>
-<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/CreatedDate" containerType="SINGLE" label="CreatedDate" name="CreatedDate" type="date"/>
-<Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/Id" containerType="SINGLE" label="Id" name="Id" type="string"/>
 <Field __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/ExternalKey__c" containerType="SINGLE" label="ExternalKey__c" name="ExternalKey__c" type="string"/>
+<Field __dmType="Calendar" __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/endDate__c" containerType="SINGLE" label="endDate__c" name="endDate__c" type="string"/>
+<Field __dmType="Calendar" __sourcePath="{}/ADT_Patient_Visit_Care_Role__c/startDate__c" containerType="SINGLE" label="startDate__c" name="startDate__c" type="string"/>
 </Record>
 </Metadata>
 <Metadata __sourcePath="{}/list" _dataStructure="SINGLE_DIMENSIONAL_COLLECTION" _id="__id" _type="Input" id="5ec93c7d-337d-48a2-8aa1-5ff3243833b7">
 <Record fieldDelimiter="|" name="list" recordDelimiter="\n\\|\r\n\\|\r" type="delimited">
 <Field __artificialType="_id" __systemManaged="true" name="__id" type="string"/>
+<Field __sourcePath="{}/list/active" containerType="SINGLE" label="active" name="active" type="boolean"/>
+<Field __sourcePath="{}/list/endDate" containerType="SINGLE" label="endDate" name="endDate" type="date"/>
+<Field __sourcePath="{}/list/endDateString" containerType="SINGLE" label="endDateString" name="endDateString" type="string"/>
 <Field __sourcePath="{}/list/externatlId" containerType="SINGLE" label="externatlId" name="externatlId" type="string"/>
 <Field __sourcePath="{}/list/firstname" containerType="SINGLE" label="firstname" name="firstname" type="string"/>
 <Field __sourcePath="{}/list/lastname" containerType="SINGLE" label="lastname" name="lastname" type="string"/>
@@ -32,6 +29,8 @@
 <Field __sourcePath="{}/list/providerId" containerType="SINGLE" label="providerId" name="providerId" type="string"/>
 <Field __sourcePath="{}/list/roleid" containerType="SINGLE" label="roleid" name="roleid" type="string"/>
 <Field __sourcePath="{}/list/roletype" containerType="SINGLE" label="roletype" name="roletype" type="string"/>
+<Field __sourcePath="{}/list/startDate" containerType="SINGLE" label="startDate" name="startDate" type="date"/>
+<Field __sourcePath="{}/list/startDateString" containerType="SINGLE" label="startDateString" name="startDateString" type="string"/>
 <Field __sourcePath="{}/list/ucsfid" containerType="SINGLE" label="ucsfid" name="ucsfid" type="string"/>
 </Record>
 </Metadata>
@@ -47,6 +46,9 @@
 <Node enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="Pojo READER" guiWidth="0" guiX="20" guiY="20" id="BEAN_READER0" type="BEAN_READER">
 <attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Context outPort="0" sequenceField="__id" xpath=".">
+  <Mapping cloverField="active" trim="true" xpath="active"/>
+  <Mapping cloverField="endDate" trim="true" xpath="endDate"/>
+  <Mapping cloverField="endDateString" trim="true" xpath="endDateString"/>
   <Mapping cloverField="externatlId" trim="true" xpath="externatlId"/>
   <Mapping cloverField="firstname" trim="true" xpath="firstname"/>
   <Mapping cloverField="lastname" trim="true" xpath="lastname"/>
@@ -57,6 +59,8 @@
   <Mapping cloverField="providerId" trim="true" xpath="providerId"/>
   <Mapping cloverField="roleid" trim="true" xpath="roleid"/>
   <Mapping cloverField="roletype" trim="true" xpath="roletype"/>
+  <Mapping cloverField="startDate" trim="true" xpath="startDate"/>
+  <Mapping cloverField="startDateString" trim="true" xpath="startDateString"/>
   <Mapping cloverField="ucsfid" trim="true" xpath="ucsfid"/>
 </Context>
 ]]></attr>
@@ -67,7 +71,12 @@
     <typed-object-ref type-ref="edu.ucsf.mule.domain.Role"/>
   </schema-collection>
   <typed-object type="java.lang.String"/>
+  <typed-object type="boolean"/>
+  <typed-object type="java.util.Date"/>
   <typed-object type="edu.ucsf.mule.domain.Role">
+    <typed-object-ref name="active" type-ref="boolean"/>
+    <typed-object-ref name="endDate" type-ref="java.util.Date"/>
+    <typed-object-ref name="endDateString" type-ref="java.lang.String"/>
     <typed-object-ref name="externatlId" type-ref="java.lang.String"/>
     <typed-object-ref name="firstname" type-ref="java.lang.String"/>
     <typed-object-ref name="lastname" type-ref="java.lang.String"/>
@@ -78,6 +87,8 @@
     <typed-object-ref name="providerId" type-ref="java.lang.String"/>
     <typed-object-ref name="roleid" type-ref="java.lang.String"/>
     <typed-object-ref name="roletype" type-ref="java.lang.String"/>
+    <typed-object-ref name="startDate" type-ref="java.util.Date"/>
+    <typed-object-ref name="startDateString" type-ref="java.lang.String"/>
     <typed-object-ref name="ucsfid" type-ref="java.lang.String"/>
   </typed-object>
 </schema-object>
@@ -87,21 +98,16 @@
 <attr name="mapping"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
 <clover:collection clover:name="ADT_Patient_Visit_Care_Role__c" xmlns:clover="http://www.cloveretl.com/ns/xmlmapping">
   <item clover:inPort="0">
-    <clover:element clover:name="Provider__c">$0.Provider__c</clover:element>
-    <LastModifiedById>$0.LastModifiedById</LastModifiedById>
-    <LastModifiedDate>$0.LastModifiedDate</LastModifiedDate>
-    <clover:element clover:name="Active__c">$0.Active__c</clover:element>
-    <clover:element clover:name="Primary_Care_Provider__c">$0.Primary_Care_Provider__c</clover:element>
-    <clover:element clover:name="ADT_Patient__c">$0.Patient__c</clover:element>
-    <Name>$0.Name</Name>
-    <clover:element clover:name="ADT_Patient_Visit__c">$0.ADT_Patient_Visit__c</clover:element>
-    <SystemModstamp>$0.SystemModstamp</SystemModstamp>
-    <CreatedById>$0.CreatedById</CreatedById>
-    <CreatedDate>$0.CreatedDate</CreatedDate>
-    <Id>$0.Id</Id>
-    <clover:element clover:name="ExternalKey__c">$0.ExternalKey__c</clover:element>
+    <clover:element clover:name="Provider__c" clover:writeNullElement="true">$0.Provider__c</clover:element>
+    <clover:element clover:name="Active__c" clover:writeNullElement="true">$0.Active__c</clover:element>
+    <clover:element clover:name="ADT_Patient__c" clover:writeNullElement="true">$0.Patient__c</clover:element>
+    <clover:element clover:name="ADT_Patient_Visit__c" clover:writeNullElement="true">$0.ADT_Patient_Visit__c</clover:element>
+    <clover:element clover:name="ExternalKey__c" clover:writeNullElement="true">$0.ExternalKey__c</clover:element>
+    <clover:element clover:name="endDate__c" clover:dataType="java.util.Calendar" clover:writeNullElement="true">$0.endDate__c</clover:element>
+    <clover:element clover:name="startDate__c" clover:dataType="java.util.Calendar" clover:writeNullElement="true">$0.startDate__c</clover:element>
   </item>
 </clover:collection>]]></attr>
+<attr name="__nullValues"><![CDATA[true]]></attr>
 <attr name="__typeName"><![CDATA[ADT_Patient_Visit_Care_Role__c]]></attr>
 <attr name="_data_format"><![CDATA[MAP]]></attr>
 <attr name="__operationName"><![CDATA[http://www.mulesoft.org/schema/mule/sfdc/update]]></attr>
@@ -118,7 +124,9 @@ output.Provider__c = input.providerId;
 output.Patient__c = inputArguments.patientId;
 output.ADT_Patient_Visit__c = (inputArguments.roletype =='inpatient' ?   inputArguments.patientVisitId : null);
 output.Active__c = true;
-output.ExternalKey__c = input.externatlId;]]></attr>
+output.ExternalKey__c = input.externatlId;
+output.startDate__c = (isnull(input.startDate) ? null : date2calendar(input.startDate));
+output.endDate__c = (isnull(input.endDate) ? null : date2calendar(input.endDate));]]></attr>
 </Node>
 <Edge debugMode="true" fromNode="BEAN_READER0:0" guiBendpoints="" id="Edge0" inPort="Port 0 (in)" metadata="5ec93c7d-337d-48a2-8aa1-5ff3243833b7" outPort="Port 0 (out)" toNode="REFORMAT0:0"/>
 <Edge debugMode="true" fromNode="REFORMAT0:0" guiBendpoints="" id="Edge1" inPort="Port 0 (in)" metadata="db8f72d1-7834-4e33-bb01-670dfecce910" outPort="Port 0 (out)" toNode="MAP_WRITER0:0"/>

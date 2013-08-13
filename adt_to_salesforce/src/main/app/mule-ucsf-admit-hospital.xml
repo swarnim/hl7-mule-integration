@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
+<mule xmlns:smtps="http://www.mulesoft.org/schema/mule/smtps"
+	xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:vm="http://www.mulesoft.org/schema/mule/vm"
 	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:jdbc-ee="http://www.mulesoft.org/schema/mule/ee/jdbc"
 	xmlns:mulexml="http://www.mulesoft.org/schema/mule/xml" xmlns:scripting="http://www.mulesoft.org/schema/mule/scripting"
 	xmlns:tcp="http://www.mulesoft.org/schema/mule/tcp" xmlns:smtp="http://www.mulesoft.org/schema/mule/smtp"
 	xmlns:data-mapper="http://www.mulesoft.org/schema/mule/ee/data-mapper" xmlns:sfdc="http://www.mulesoft.org/schema/mule/sfdc"
 	xmlns:hl7="http://www.mulesoft.org/schema/mule/hl7" xmlns:file="http://www.mulesoft.org/schema/mule/file" xmlns="http://www.mulesoft.org/schema/mule/core"
 	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:spring="http://www.springframework.org/schema/beans"
-	version="EE-3.4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+	version="EE-3.4.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.mulesoft.org/schema/mule/smtps http://www.mulesoft.org/schema/mule/smtps/current/mule-smtps.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/vm http://www.mulesoft.org/schema/mule/vm/current/mule-vm.xsd
 http://www.mulesoft.org/schema/mule/xml http://www.mulesoft.org/schema/mule/xml/current/mule-xml.xsd
 http://www.mulesoft.org/schema/mule/hl7 http://www.mulesoft.org/schema/mule/hl7/current/mule-hl7.xsd
@@ -42,40 +44,26 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	<data-mapper:config name="mappatient_1_grf" transformationGraphPath="mappatient_1.grf" doc:name="DataMapper" />
 	<data-mapper:config name="mapproletosalesforceobject_grf" transformationGraphPath="mapproletosalesforceobject.grf"
 		doc:name="DataMapper" />
+	<smtps:connector name="smtpsGmailConnector" fromAddress="ucsfmule@gmail.com" ccAddresses="${mail.touser}" doc:name="SMTP">	 
+		<smtps:header key="mail.transport.protocol" value="smtps" />
+		<smtps:header key="mail.smtps.auth" value="true" />
+		<smtps:header key="mail.smtps.quitwait" value="false" />
+		<smtps:tls-client path="/etc/mule/somvs108.ucsf.edu.keystore.jks.new" storePassword="${server.keystorepassword}"/>
+		<smtps:tls-trust-store path="greenmail-truststore" storePassword="${server.keystorepassword}"/>
+		</smtps:connector>	
 	<configuration defaultExceptionStrategy-ref="Global_Catch_Exception_Strategy" doc:name="Configuration" />
 	<catch-exception-strategy name="Global_Catch_Exception_Strategy">
-		<set-payload value="#[originalhl7]" doc:name="Set Payload" />
-		<logger level="ERROR" message="Payload is: #[payload]" doc:name="Logger" />
-		<choice doc:name="Choice">
-			<when expression="flowVars['messageId'] != null">
-				<enricher doc:name="Message Enricher" target="variable:dummy">
-					<flow-ref name="messageErrorLogging" doc:name="Flow Reference" />
-				</enricher>
-			</when>
-		</choice>
-		<!-- <vm:outbound-endpoint path="DeadLetterQueue" doc:name="VM"/> -->
-		<!-- send to MMC -->
-		<tracking:custom-event event-name="Rejected Message" doc:name="Custom Business event">
-			<tracking:meta-data key="Message id" value="#[message.id]" />
-			<tracking:meta-data key="Payload" value="#[payload]" />
-			<tracking:meta-data key="ExceptionMessage" value="#[exception]" />
-		</tracking:custom-event>
-		<choice doc:name="Choice">
-			<when expression="#[exception.causedBy(org.mule.api.ConnectionException)]">
-				<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
-			</when>
-			<when expression="#[exception.causedBy(org.mule.api.expression.ExpressionRuntimeException)]">
-				<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
-			</when>
-			<otherwise>
-				<hl7:ack-component ackCode="AR" doc:name="HL7 ACK" />
-			</otherwise>
-		</choice>
-		<logger level="INFO" message="ACK Payload #[payload]" doc:name="Logger" />
-		<logger message=" Warnings during processing #[warnings]" level="WARN" doc:name="Logger" />
+		 <enricher doc:name="Message Enricher"  target="variable:dummy1">
+        <processor-chain doc:name="Processor Chain">
+          <set-payload value="Error processing HL7 docment #[exception]" doc:name="Set Payload ERror"/>
+            <flow-ref name="sendemail" doc:name="Flow Reference"/>
+           </processor-chain> 
+          
+        </enricher>
 	</catch-exception-strategy>
 	<!-- Dead Letter Queue Flow -->
 	<byte-array-to-string-transformer name="Byte_Array_to_StringForTCP" doc:name="Byte Array to String" />
+
 	<flow name="ErrorHandlingFlow" doc:name="ErrorHandlingFlow">
 		<vm:inbound-endpoint path="DeadLetterQueue" doc:name="VM" />
 		<!-- Delete every item uncorrectly inserted. -->
@@ -92,59 +80,19 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 				responseTimeout="1000000" doc:name="Receive HL7 message" transformer-refs="Byte_Array_to_StringForTCP" />
 			<hl7:inbound-endpoint port="8061" host="0.0.0.0" doc:name="HL7 MLLP" />
 		</composite-source>
-		<set-variable variableName="originalhl7" value="#[payload:]" doc:name="Variable" />
-		<logger level="INFO" message="${salesforce.username}-${salesforce.password}-${salesforce.securitytoken}"
-			doc:name="Logger" />
-		<enricher target="#[variable:messageId]" source="#[payload.id]" doc:name="Message Enricher">
-			<flow-ref name="SaveADT" doc:name="Flow Reference" />
-		</enricher>
-		<set-payload value="#[groovy:payload.replaceAll('\\|ADT\\^A\\d\\d\\|', '|ADT^A01|')]" doc:name="Processing everything as A01" />
-		<set-variable variableName="warnings" value="#[groovy:new StringBuilder()]" doc:name="Warning Messages" />
-		<!-- all doc:name="All"> <processor-chain -->
-		<logger message="&quot;received from  = &quot; #[payload]" level="INFO" doc:name="Log NEW" />
-		<hl7:hl7-encoding-transformer name="HL7_Encoding_Transformer" hl7Encoding="XML"
-			doc:name="Transform A01 to XML" />
-		<set-variable value="#[payload]" variableName="orginalXML" doc:name="Variable" />
-		<set-variable variableName="eventType" value="#[xpath('/hl7xml:ADT_A01/hl7xml:EVN/hl7xml:EVN.1').Text]"
-			doc:name="Variable" />
-		<set-variable variableName="controlID" value="#[xpath('/hl7xml:ADT_A01/hl7xml:MSH/hl7xml:MSH.10').Text]"
-			doc:name="Variable" />
-		<logger level="INFO" doc:name="Log XML original" message="#[payload]" />
-		<choice doc:name="Choice">
-			<when expression="#[groovy:eventType == 'A18' || eventType == 'A38']">
-				<enricher doc:name="Message Enricher" target="variable:dummy1">
-					<processor-chain doc:name="Processor Chain">
-					<set-payload value="#[eventType] is not supported yet" doc:name="Set Payload"/>
-					<flow-ref name="messageUnsupportedLogging" doc:name="Flow Reference" doc:description="logging"/>
-					</processor-chain>
-				</enricher>
-			</when>
-			<otherwise>
-				<enricher doc:name="Enricher PatientFlow">
-					<flow-ref name="mule-ucsf-insert-patient" doc:name="Insert Patient Flow" />
-					<enrich source="#[flowVars.?pId]" target="#[flowVars['pId']]" />
-					<!-- if savePatient is there it is upsert operation if only pId is present it is insert operation -->
-					<enrich source="#[flowVars.?savedPatient]" target="#[flowVars['savedPatient']]" />
-					<enrich source="#[flowVars.?mappedPatient]" target="#[flowVars['mappedPatient']]" />
-					<enrich source="#[flowVars.?saveInpatientRoles]" target="#[flowVars['saveInpatientRoles']]" />
-				</enricher>
-				<choice doc:name="Choice">
-					<when expression="#[pId instanceof NullPayload]">
-						<logger level="INFO" doc:name="Logger" message="In Null Visit Choice = #[payload]" />
-						
-						<set-payload value="&quot;Failed&quot;" doc:name="Set Payload" />
-					</when>
-					<otherwise>
-						<set-payload value="&quot;Success&quot;" doc:name="Set Payload" />
-					</otherwise>
-				</choice>
-				<byte-array-to-string-transformer doc:name="Byte Array to String" />
-				<flow-ref name="updateSalesforce" doc:name="Flow Reference" />
-				<!-- /processor-chain > <flow-ref name="SaveADT" doc:name="Flow Reference"/> </all -->
-				<set-payload value="#[originalhl7]" doc:name="Set Payload" />
-				<hl7:ack-component ackCode="AA" doc:name="HL7 ACK" />
-			</otherwise>
-		</choice>
+        <logger message="passing request to VM" level="INFO" doc:name="Logger"/>
+        	<!-- Removing  default MULE_REPLYTO so that we can response with ACK message only if you want Coverleaf is set to retry only if it doesn't get anything back. We want that to happen for certain case-->
+<!-- 		<flow-ref name="processhl7" doc:name="Flow Reference"/> -->
+		<request-reply storePrefix="mainFlow">
+				<vm:outbound-endpoint path="processhl7vm"> 
+			 		 <message-properties-transformer scope="outbound">
+            		 <delete-message-property key="MULE_REPLYTO"/>
+       				 </message-properties-transformer>
+    			</vm:outbound-endpoint>
+	
+			<vm:inbound-endpoint path="reply"/> 
+    	 </request-reply> 
+    	 <logger level="INFO" message="Finished flow .Payload #[payload:]" doc:name="Logger"/>
 	</flow>
 	<sub-flow name="mule-ucsf-insert-patient" doc:name="mule-ucsf-insert-patient">
 		<enricher doc:name="Message Enricher">
@@ -152,8 +100,8 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 				<byte-array-to-string-transformer doc:name="Byte Array to String" />
 				<data-mapper:transform config-ref="mappatient_1_grf" doc:name="DataMapper">
 				</data-mapper:transform>
-				<set-variable variableName="pcpid1" value="rr" doc:name="Variable" />
-				<logger message="-------#[payload:]" level="INFO" doc:name="Logger" />
+
+				<logger message="-------#[payload:]" level="DEBUG" doc:name="Logger" />
 				<!--logger message="&quot;After DM payload Log MRN &quot; + #[payload[0].MRN_Number__c]" level="INFO" doc:name="Log MRN"/ -->
 				<set-variable variableName="mappedPatient" value="#[payload]" doc:name="Set Variable" />
 				<processor-chain doc:name="Insert Update Patient">
@@ -242,7 +190,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		</enricher>
 	</sub-flow>
 	<sub-flow name="defaultErrorHandler" doc:name="defaultErrorHandler">
-		<logger message="Error occurred: #[payload]" level="INFO" doc:name="Log Error" />
+		<logger message="Error occurred: #[payload]" level="ERROR" doc:name="Log Error" />
 	</sub-flow>
 	<!-- <flow name="testflow" doc:name="testflow"> <file:inbound-endpoint path="/tmp/hl7test/input1" moveToDirectory="/tmp/hl7test/output1" 
 		responseTimeout="10000" doc:name="Read File" /> <byte-array-to-string-transformer doc:name="Byte Array to String" /> <set-property 
@@ -287,8 +235,11 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 					doc:name="Salesforce" />
 			</otherwise>
 		</choice>
+		
 		<set-variable variableName="saveRoles" value="#[payload]" doc:name="save current Roles" />
+	
 		<flow-ref name="getFinalRolesToUpsert" doc:name="Flow Reference" />
+	    <flow-ref name="addSalesforceNullField" doc:name="handle salesforce null" />
 		<choice doc:name="Choice">
 			<when expression="roletype == 'inpatient'">
 				<sfdc:upsert config-ref="UCSF_SF_Connection" externalIdFieldName="ExternalKey__c" type="ADT_Patient_Visit_Care_Role__c"
@@ -303,7 +254,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 				</sfdc:upsert>
 			</otherwise>
 		</choice>
-		<logger level="INFO" doc:name="Logger" />
+		<logger level="DEBUG" doc:name="Logger" />
 	</sub-flow>
 <!-- 	<flow name="mule-ucsf-admit-hospitalFlow1" doc:name="mule-ucsf-admit-hospitalFlow1"> -->
 <!-- 		<sfdc:query config-ref="UCSF_SF_Connection" -->
@@ -312,6 +263,8 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 <!-- 	</flow> -->
 	<sub-flow name="getMappedRoles" doc:name="getMappedRoles">
 		<set-variable variableName="orginalXML" value="#[payload:]" doc:name="save originalXML" />
+		
+		<!-- Had to use XSLT  because of limitation of Mule mapper to distinguish between ROL that came in same level but different position. -->
 		<mulexml:xslt-transformer maxIdleTransformers="2" maxActiveTransformers="5" doc:name="XSLT"
 			returnClass="java.lang.String">
 			<mulexml:xslt-text>
@@ -330,6 +283,12 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 									<ROLTYPE>
 										<xsl:value-of select="hl7xml:ROL.3/hl7xml:CE.1" />
 									</ROLTYPE>
+									<STARTDATE>
+										<xsl:value-of select="hl7xml:ROL.5/hl7xml:TS.1" />		
+									</STARTDATE>
+									<ENDDATE>
+										<xsl:value-of select="hl7xml:ROL.6/hl7xml:TS.1" />		
+									</ENDDATE>
 									<xsl:for-each select="hl7xml:ROL.4">
 										<xsl:choose>
 											<!-- HL7 doesn't tell you if it is MSO or UCSFID have to do this logic -->
@@ -346,6 +305,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 												<MIDDLENAME>
 													<xsl:value-of select="hl7xml:XCN.4" />
 												</MIDDLENAME>
+												
 											</xsl:when>
 											<xsl:otherwise>
 												<MSO>
@@ -402,7 +362,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<sfdc:upsert config-ref="UCSF_SF_Connection" externalIdFieldName="Id" type="ADT_Message__c" doc:name="Salesforce">
 			<sfdc:objects>
 				<sfdc:object>
-					<sfdc:inner-object key="log__c">#[payLoad:] </sfdc:inner-object>
+					<sfdc:inner-object key="log__c">#[payload] </sfdc:inner-object>
 					<sfdc:inner-object key="eventType__c">#[flowVars.?eventType]</sfdc:inner-object>
 					<sfdc:inner-object key="LogLevel__c">WARN</sfdc:inner-object>
 				</sfdc:object>
@@ -427,4 +387,117 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<http:inbound-endpoint exchange-pattern="request-response" host="0.0.0.0" port="9000" doc:name="HTTP" />
 		<set-payload value="OK" doc:name="Set Payload" />
 	</flow>
+	<sub-flow name="sendemail" doc:name="sendemail">
+			<smtps:outbound-endpoint 
+			connector-ref="smtpsGmailConnector"
+			user="${smtp.user}" 
+			password="${smtp.password}" 
+			host="${smtp.host}"
+			subject="Error Occured Please Check" doc:name="SMTP">
+		</smtps:outbound-endpoint>
+	</sub-flow>
+    <flow name="processhl7vm" doc:name="processhl7vm" >
+      <vm:inbound-endpoint path="processhl7vm" doc:name="VM"/>
+    	<set-variable variableName="warnings" value="#[groovy:new StringBuilder()]" doc:name="Warning Messages" />
+        <set-variable variableName="originalhl7" value="#[payload:]" doc:name="Variable" />
+			<enricher target="#[variable:messageId]" source="#[payload.id]" doc:name="Message Enricher">
+			<flow-ref name="SaveADT" doc:name="Flow Reference" />
+		</enricher>
+		<set-payload value="#[groovy:payload.replaceAll('\\|ADT\\^A\\d\\d\\|', '|ADT^A01|')]" doc:name="Processing everything as A01" />
+		
+		<!-- all doc:name="All"> <processor-chain -->
+		<logger message="&quot;received from  = &quot; #[payload]" level="DEBUG" doc:name="Log NEW" />
+		<hl7:hl7-encoding-transformer name="HL7_Encoding_Transformer" hl7Encoding="XML"
+			doc:name="Transform A01 to XML" />
+		<set-variable value="#[payload]" variableName="orginalXML" doc:name="Variable" />
+		<set-variable variableName="eventType" value="#[xpath('/hl7xml:ADT_A01/hl7xml:EVN/hl7xml:EVN.1').Text]"
+			doc:name="Variable" />
+		<set-variable variableName="controlID" value="#[xpath('/hl7xml:ADT_A01/hl7xml:MSH/hl7xml:MSH.10').Text]"
+			doc:name="Variable" />
+		<logger level="DEBUG" doc:name="Log XML original" message="#[payload]" />
+		<choice doc:name="Choice">
+			<when expression="#[groovy:eventType == 'A18' || eventType == 'A38']">
+				<enricher doc:name="Message Enricher" target="variable:dummy1">
+					<processor-chain doc:name="Processor Chain">
+					<set-payload value="#[eventType] is not supported yet" doc:name="Set Payload"/>
+					<flow-ref name="messageUnsupportedLogging" doc:name="Flow Reference" doc:description="logging"/>
+					</processor-chain>
+				</enricher>
+			</when>
+			<otherwise>
+				<enricher doc:name="Enricher PatientFlow">
+					<flow-ref name="mule-ucsf-insert-patient" doc:name="Insert Patient Flow" />
+					<enrich source="#[flowVars.?pId]" target="#[flowVars['pId']]" />
+					<!-- if savePatient is there it is upsert operation if only pId is present it is insert operation -->
+					<enrich source="#[flowVars.?savedPatient]" target="#[flowVars['savedPatient']]" />
+					<enrich source="#[flowVars.?mappedPatient]" target="#[flowVars['mappedPatient']]" />
+					<enrich source="#[flowVars.?saveInpatientRoles]" target="#[flowVars['saveInpatientRoles']]" />
+				</enricher>
+				<choice doc:name="Choice">
+					<when expression="#[pId instanceof NullPayload]">
+						
+						<set-payload value="&quot;Failed&quot;" doc:name="Set Payload" />
+					</when>
+					<otherwise>
+						<set-payload value="&quot;Success&quot;" doc:name="Set Payload" />
+					</otherwise>
+				</choice>
+				<byte-array-to-string-transformer doc:name="Byte Array to String" />
+				<flow-ref name="updateSalesforce" doc:name="Flow Reference" />
+				<!-- /processor-chain > <flow-ref name="SaveADT" doc:name="Flow Reference"/> </all -->
+				<set-payload value="#[originalhl7]" doc:name="Set Payload" />
+				<hl7:ack-component ackCode="AA" doc:name="HL7 ACK" />
+			</otherwise>
+		</choice>
+			<logger level="INFO" message="Payload is: #[payload]" doc:name="Logger" />
+		<vm:outbound-endpoint path="reply" doc:name="VM"/>
+		<catch-exception-strategy doc:name="Catch Exception Strategy"> 
+			<set-payload value="#[originalhl7]" doc:name="Set Payload" />
+			<logger level="ERROR" message="Payload is: #[payload]" doc:name="Logger" />
+			<choice doc:name="Choice">
+				<when expression="flowVars['messageId'] != null">
+					<tracking:custom-event event-name="Rejected Message" doc:name="Custom Business event">
+						<tracking:meta-data key="Message id" value="#[message.id]" />
+						<tracking:meta-data key="Payload" value="#[payload]" />
+						<tracking:meta-data key="ExceptionMessage" value="#[exception]" />
+					</tracking:custom-event>
+					<enricher doc:name="Message Enricher" target="variable:dummy">
+						<flow-ref name="messageErrorLogging" doc:name="Flow Reference" />
+					</enricher>
+				</when>
+				<otherwise>
+					<logger level="ERROR" message="Salesforce Connection error might have occoured" doc:name="Logger" />
+				</otherwise>
+			</choice>
+			<!-- <vm:outbound-endpoint path="DeadLetterQueue" doc:name="VM"/> -->
+			<!-- send to MMC -->
+			
+			
+	        <enricher doc:name="Message Enricher"  target="variable:dummy1">
+	        <processor-chain doc:name="Processor Chain">
+	          <set-payload value="Error processing HL7 docment #[exception]" doc:name="Set Payload Error Message"/>
+	            <flow-ref name="sendemail" doc:name="Flow Reference"/>
+	           </processor-chain> 
+	          
+	        </enricher>
+	        
+	        <choice doc:name="Choice">
+				<when expression="#[exception.causedBy(org.mule.api.ConnectionException)]">
+				 <logger level="ERROR" message="NOT creating any log and replying to the main thread as cloverleaf is setup to retry only if it does not get anything back" doc:name="Logger" />
+				</when>
+				<when expression="#[exception.causedBy(org.mule.api.expression.ExpressionRuntimeException)]">
+					<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
+					<vm:outbound-endpoint path="reply" doc:name="VM"/> 
+				</when>
+				<otherwise>
+					<hl7:ack-component ackCode="AR" doc:name="HL7 ACK" />
+					<vm:outbound-endpoint path="reply" doc:name="VM"/> 
+				</otherwise>
+			</choice>
+			<logger level="INFO" message="ACK Payload #[payload]" doc:name="Logger" />
+			<logger message=" Warnings during processing #[warnings]" level="WARN" doc:name="Logger" />
+			
+		</catch-exception-strategy>
+    </flow>
+	
 </mule>

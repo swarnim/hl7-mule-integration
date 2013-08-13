@@ -13842,13 +13842,13 @@ output.Facility__c = (isnull(input.text_175) ? ''  : input.text_175);
 output.Room__c = (isnull(input.text_176)   ? '' : input.text_176);
 output.Bed__c = (isnull(input.text_177) ? 'N/A' : input.text_177);
 output.Master_Patient__c = inputArguments.PatientIdentifier;
-output.Visit_Type__c = (isnull(input.text_174) ? '' : input.text_174);
 output.Patient_Visit_Number__c =  (isnull(input.text_227) ? '' : input.text_227);
 outputArguments.PCP = input.PCPNO1 + ':' + input.PCPNO2;
 output.ExternalKey__c = inputArguments.PatientIdentifier + '~' + (isnull(input.text_227) ? '' : input.text_227);
 output.Active__c = (isnull(inputArguments.eventType) ? true : ((inputArguments.eventType == 'A11' || inputArguments.eventType == 'A38')  ? false : true));
 output.Discharge_Date__c = (isnull(input.ExtractDateDischarge) ? null : str2date(input.ExtractDateDischarge, "yyyyMMddHHmm"));
-output.Admission_Date__c = (isnull(input.text_285) ? null : str2date(input.text_285,"yyyyMMddHHmm"));]]></attr>
+output.Admission_Date__c = (isnull(input.text_285) ? null : str2date(input.text_285,"yyyyMMddHHmm"));
+output.Visit_Type__c = input.text_226;]]></attr>
 </Node>
 <Node charset="UTF-8" enabled="enabled" fileURL="dict:inputPayload" guiHeight="0" guiName="XML READER" guiWidth="0" guiX="20" guiY="20" id="XML_READER0" type="XML_READER">
 <attr name="xmlSchemaURL"><![CDATA[.\src\main\resources\HL7v2XSDs\2.4\ADT_A01.xsd]]></attr>

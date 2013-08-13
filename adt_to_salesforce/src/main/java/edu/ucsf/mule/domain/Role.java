@@ -1,6 +1,12 @@
 package edu.ucsf.mule.domain;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 public class Role implements Serializable{
 	private String roleid;
@@ -14,6 +20,11 @@ public class Role implements Serializable{
 	private String patientVisitId;
 	private String providerId;
 	private boolean active;
+	private String startDateString;
+	private String endDateString;
+	private Date startDate;
+	private Date endDate;
+	final Log logger = LogFactory.getLog(getClass());
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -72,6 +83,33 @@ public class Role implements Serializable{
 	public void setPatientVisitId(String patientVisitId) {
 		this.patientVisitId = patientVisitId;
 	}
+	
+	public String getStartDateString() {
+		return startDateString;
+	}
+	public void setStartDateString(String startDateString) {
+		this.startDateString = startDateString;
+	}
+	public String getEndDateString() {
+		return endDateString;
+	}
+	public void setEndDateString(String endDateString) {
+		this.endDateString = endDateString;
+	}
+
+	public Date getStartDate() {
+		
+		return parseDate(startDateString);
+		
+	}
+
+
+	
+	public Date getEndDate() {
+		return  parseDate(endDateString);
+	}
+	
+	
 	public String getExternatlId(){
 		return (patientId == null ? "" : patientId.trim()) 
 				+  (patientVisitId == null ? "" :  "~"+ patientVisitId.trim()) 
@@ -79,7 +117,35 @@ public class Role implements Serializable{
 				;
 	}
 	
-	
+	private Date parseDate(String dateString) {
+		DateFormat format1 = new SimpleDateFormat("yyyyMMddHHmm"); // datetime
+		DateFormat format2 = new SimpleDateFormat("yyyyMMdd"); // date only
+
+		if (dateString != null && dateString.length() >= 8) {
+			if (dateString.length() == 8) {
+				return parseDateByFormat(dateString, format2);
+			} else if (dateString.length() == 12) {
+				return parseDateByFormat(dateString, format1);
+			} else {// don't recognize date taht is greater that 12
+				logger.error("Date String Greater than 12 char " +dateString);
+				
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
+
+	private Date parseDateByFormat(String dateString, DateFormat format2) {
+		Date returnDate = null;
+		try {
+			returnDate = format2.parse( dateString );
+		} catch (ParseException e) {
+			logger.error("Can not parse Date String " +dateString, e);
+			
+		}
+		return returnDate;
+	}
 	@Override
 	public String toString() {
 		return "Role [roleid=" + roleid + ", roletype=" + roletype
@@ -87,7 +153,8 @@ public class Role implements Serializable{
 				+ ", middlename=" + middlename + ", ucsfid=" + ucsfid
 				+ ", mso=" + mso + ", patientId=" + patientId
 				+ ", patientVisitId=" + patientVisitId + ", providerId="
-				+ providerId + "]";
+				+ providerId + ", active=" + active + ", startDate="
+				+ startDate + ", endDate=" + endDate + "]";
 	}
 	public String getProviderId() {
 		return providerId;
