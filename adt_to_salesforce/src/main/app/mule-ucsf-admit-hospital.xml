@@ -27,7 +27,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<mulexml:namespace prefix="hl7xml" uri="urn:hl7-org:v2xml" />
 	</mulexml:namespace-manager>
 	<sfdc:config name="UCSF_SF_Connection" username="${salesforce.username}" password="${salesforce.password}"
-		securityToken="${salesforce.securitytoken}" url="https://test.salesforce.com/services/Soap/u/26.0" doc:name="Salesforce">
+		securityToken="${salesforce.securitytoken}" url="${salesforce.mc.endpoint}" doc:name="Salesforce">
 		<sfdc:connection-pooling-profile initialisationPolicy="INITIALISE_ONE"
 			exhaustedAction="WHEN_EXHAUSTED_GROW" />
 		<reconnect frequency="10000" count="50" />
@@ -55,7 +55,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	<catch-exception-strategy name="Global_Catch_Exception_Strategy">
 		 <enricher doc:name="Message Enricher"  target="variable:dummy1">
         <processor-chain doc:name="Processor Chain">
-          <set-payload value="Error processing HL7 docment #[exception]" doc:name="Set Payload ERror"/>
+          <set-payload value="Error processing HL7 document #[exception]" doc:name="Set Payload ERror"/>
             <flow-ref name="sendemail" doc:name="Flow Reference"/>
            </processor-chain> 
           
@@ -208,7 +208,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			<expression-filter expression="ucsfIds != ''" evaluator="groovy" />
 		</message-filter>
 		<sfdc:query config-ref="UCSF_SF_Connection" doc:name="Lookup for  ucsfId"
-			query="SELECT id,UCSF_ID__c FROM User where UCSF_ID__c in (#[ucsfIds]) and IsActive=true" />
+			query="SELECT id,UCSF_ID__c FROM Contact where UCSF_ID__c in (#[ucsfIds]) " />
 		<set-variable variableName="ucsfid_salesforceid" value="#[payload:]" doc:name="Variable" />
 		<flow-ref name="getUpsertRoleListWithOtherIds" doc:name="Flow Reference getUpsertRoleListWithOtherIds" />
 		<set-variable variableName="rolesForUpsertList" value="#[payload]" doc:name="save mapped roles Roles" />
@@ -292,7 +292,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 									<xsl:for-each select="hl7xml:ROL.4">
 										<xsl:choose>
 											<!-- HL7 doesn't tell you if it is MSO or UCSFID have to do this logic -->
-											<xsl:when test="starts-with(hl7xml:XCN.1,'02') and string-length(hl7xml:XCN.1) = 9">
+											<xsl:when test="(starts-with(hl7xml:XCN.1,'02') and string-length(hl7xml:XCN.1) = 9) or (string-length(hl7xml:XCN.1) = 8 and hl7xml:XCN.13 = 'GenericID')">
 												<UCSFID>
 													<xsl:value-of select="hl7xml:XCN.1" />
 												</UCSFID>
@@ -475,7 +475,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			
 	        <enricher doc:name="Message Enricher"  target="variable:dummy1">
 	        <processor-chain doc:name="Processor Chain">
-	          <set-payload value="Error processing HL7 docment #[exception]" doc:name="Set Payload Error Message"/>
+	          <set-payload value="Error processing HL7 document #[exception]" doc:name="Set Payload Error Message"/>
 	            <flow-ref name="sendemail" doc:name="Flow Reference"/>
 	           </processor-chain> 
 	          
