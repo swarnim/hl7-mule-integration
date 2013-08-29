@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <mule-configuration xmlns="http://www.mulesoft.com/tooling/messageflow" name="helper">
-    <flow SubFlow="true" name="getUcsfIds" entity-id="c519edd4-9a9b-467d-9037-4e05e2e9d6b0">
+    <flow SubFlow="true" name="getUcsfIds" entity-id="259177db-122c-48f7-bf08-6da0ae82fef7">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -33,7 +33,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="getUpsertRoleListWithOtherIds" entity-id="35725b9d-ac14-4d0e-9d01-3cd1c9fb0fd3">
+    <flow SubFlow="true" name="getUpsertRoleListWithOtherIds" entity-id="ddad27b4-dada-43b1-a5bb-68fdf08b95e5">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -66,7 +66,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="getFinalRolesToUpsert" entity-id="53477a8f-5c1f-4021-93d4-fd8b250b95bc">
+    <flow SubFlow="true" name="getFinalRolesToUpsert" entity-id="590329b2-1705-4b5f-a1d2-15d04f6bbebd">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -99,7 +99,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="nullToBlank" entity-id="f4662b70-355a-4776-8271-f4e887ecd954">
+    <flow SubFlow="true" name="nullToBlank" entity-id="f29160bd-c80d-43da-8bf7-f363b744b32a">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>
@@ -132,7 +132,7 @@
             </pattern>
         </lane>
     </flow>
-    <flow SubFlow="true" name="addSalesforceNullField" entity-id="9153f9b0-7a1e-411b-9fcc-94317deb83b9">
+    <flow SubFlow="true" name="addSalesforceNullField" entity-id="d4f22c85-973d-49f6-8412-0f9bfee4c94e">
         <properties>
             <property name="processingStrategy"/>
             <property name="processingStrategy2"/>

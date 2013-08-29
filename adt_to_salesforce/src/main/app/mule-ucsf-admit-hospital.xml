@@ -27,9 +27,9 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<mulexml:namespace prefix="hl7xml" uri="urn:hl7-org:v2xml" />
 	</mulexml:namespace-manager>
 	<sfdc:config name="UCSF_SF_Connection" username="${salesforce.username}" password="${salesforce.password}"
-		securityToken="${salesforce.securitytoken}" url="${salesforce.mc.endpoint}" doc:name="Salesforce">
-		<sfdc:connection-pooling-profile initialisationPolicy="INITIALISE_ONE"
-			exhaustedAction="WHEN_EXHAUSTED_GROW" />
+		securityToken="${salesforce.securitytoken}" url="${salesforce.endpoint}" doc:name="Salesforce">
+		<sfdc:connection-pooling-profile maxActive="10" maxIdle="10"
+                             exhaustedAction="WHEN_EXHAUSTED_GROW" maxWait="120" minEvictionMillis="60000" evictionCheckIntervalMillis="30000" initialisationPolicy="INITIALISE_ONE"/>
 		<reconnect frequency="10000" count="50" />
 	</sfdc:config>
 	<hl7:connector name="hl7" doc:name="HL7 Connector">
@@ -76,11 +76,13 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	</sub-flow>
 	<flow name="mule-ucsf-pocFlow1" doc:name="mule-ucsf-pocFlow1" processingStrategy="synchronous">
 		<composite-source doc:name="Composite Source">
+		    <!-- IP address 0.0.0.0 will accept conection from everywhere -->
 			<tcp:inbound-endpoint exchange-pattern="request-response" host="0.0.0.0" port="8062"
 				responseTimeout="1000000" doc:name="Receive HL7 message" transformer-refs="Byte_Array_to_StringForTCP" />
 			<hl7:inbound-endpoint port="8061" host="0.0.0.0" doc:name="HL7 MLLP" />
 		</composite-source>
         <logger message="passing request to VM" level="INFO" doc:name="Logger"/>
+            <!-- Using VM so that any node can process it. -->
         	<!-- Removing  default MULE_REPLYTO so that we can response with ACK message only if you want Coverleaf is set to retry only if it doesn't get anything back. We want that to happen for certain case-->
 <!-- 		<flow-ref name="processhl7" doc:name="Flow Reference"/> -->
 		<request-reply storePrefix="mainFlow">
@@ -138,6 +140,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			<enrich source="#[flowVars.?saveInpatientRoles]" target="#[flowVars['saveInpatientRoles']]" />
 			<enrich source="#[flowVars.?pVisitId]" target="#[flowVars['pVisitId']]" />
 		</enricher>
+		<!-- roleType controlles if we are processing the inpatient Role or Outpatient Role. salesforce object to store inpartient and outpatient roles are different -->
 		<set-variable value="outpatient" variableName="roletype" doc:name="Variable" />
 		<enricher doc:name="Message Enricher">
 			<flow-ref name="mule-ucsf-insert-role" doc:name="Insert Patient Visit Role Flow" />
@@ -312,7 +315,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 													<xsl:value-of select="hl7xml:XCN.1" />
 												</MSO>
 											</xsl:otherwise>
-										</xsl:choose>'
+										</xsl:choose>
 <!-- 										<xsl:if test="position() = '1'"> -->
 									</xsl:for-each>
 								</ROL>
@@ -362,6 +365,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<sfdc:upsert config-ref="UCSF_SF_Connection" externalIdFieldName="Id" type="ADT_Message__c" doc:name="Salesforce">
 			<sfdc:objects>
 				<sfdc:object>
+				    <sfdc:inner-object key="Id">#[messageId]</sfdc:inner-object>
 					<sfdc:inner-object key="log__c">#[payload] </sfdc:inner-object>
 					<sfdc:inner-object key="eventType__c">#[flowVars.?eventType]</sfdc:inner-object>
 					<sfdc:inner-object key="LogLevel__c">WARN</sfdc:inner-object>
@@ -383,6 +387,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			</sfdc:objects>
 		</sfdc:upsert>
 	</sub-flow>
+	<!-- heartbeat flow for loadbalancer -->
 	<flow name="dummyhl7Flow1" doc:name="dummyhl7Flow1">
 		<http:inbound-endpoint exchange-pattern="request-response" host="0.0.0.0" port="9000" doc:name="HTTP" />
 		<set-payload value="OK" doc:name="Set Payload" />
@@ -398,11 +403,14 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	</sub-flow>
     <flow name="processhl7vm" doc:name="processhl7vm" >
       <vm:inbound-endpoint path="processhl7vm" doc:name="VM"/>
+        <!-- creating and initializing flowvar that holds warning messages during the flow execution -->
     	<set-variable variableName="warnings" value="#[groovy:new StringBuilder()]" doc:name="Warning Messages" />
+    	<!-- Using enricher so that the payload doesn't change -->
         <set-variable variableName="originalhl7" value="#[payload:]" doc:name="Variable" />
 			<enricher target="#[variable:messageId]" source="#[payload.id]" doc:name="Message Enricher">
 			<flow-ref name="SaveADT" doc:name="Flow Reference" />
 		</enricher>
+		<!-- Processing everything as ADT01 -->
 		<set-payload value="#[groovy:payload.replaceAll('\\|ADT\\^A\\d\\d\\|', '|ADT^A01|')]" doc:name="Processing everything as A01" />
 		
 		<!-- all doc:name="All"> <processor-chain -->
@@ -453,50 +461,63 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		<vm:outbound-endpoint path="reply" doc:name="VM"/>
 		<catch-exception-strategy doc:name="Catch Exception Strategy"> 
 			<set-payload value="#[originalhl7]" doc:name="Set Payload" />
-			<logger level="ERROR" message="Payload is: #[payload]" doc:name="Logger" />
-			<choice doc:name="Choice">
-				<when expression="flowVars['messageId'] != null">
-					<tracking:custom-event event-name="Rejected Message" doc:name="Custom Business event">
-						<tracking:meta-data key="Message id" value="#[message.id]" />
-						<tracking:meta-data key="Payload" value="#[payload]" />
-						<tracking:meta-data key="ExceptionMessage" value="#[exception]" />
-					</tracking:custom-event>
-					<enricher doc:name="Message Enricher" target="variable:dummy">
-						<flow-ref name="messageErrorLogging" doc:name="Flow Reference" />
-					</enricher>
-				</when>
-				<otherwise>
-					<logger level="ERROR" message="Salesforce Connection error might have occoured" doc:name="Logger" />
-				</otherwise>
-			</choice>
-			<!-- <vm:outbound-endpoint path="DeadLetterQueue" doc:name="VM"/> -->
-			<!-- send to MMC -->
-			
-			
-	        <enricher doc:name="Message Enricher"  target="variable:dummy1">
-	        <processor-chain doc:name="Processor Chain">
-	          <set-payload value="Error processing HL7 document #[exception]" doc:name="Set Payload Error Message"/>
-	            <flow-ref name="sendemail" doc:name="Flow Reference"/>
-	           </processor-chain> 
-	          
-	        </enricher>
-	        
-	        <choice doc:name="Choice">
-				<when expression="#[exception.causedBy(org.mule.api.ConnectionException)]">
-				 <logger level="ERROR" message="NOT creating any log and replying to the main thread as cloverleaf is setup to retry only if it does not get anything back" doc:name="Logger" />
-				</when>
-				<when expression="#[exception.causedBy(org.mule.api.expression.ExpressionRuntimeException)]">
-					<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
-					<vm:outbound-endpoint path="reply" doc:name="VM"/> 
-				</when>
-				<otherwise>
-					<hl7:ack-component ackCode="AR" doc:name="HL7 ACK" />
-					<vm:outbound-endpoint path="reply" doc:name="VM"/> 
-				</otherwise>
-			</choice>
-			<logger level="INFO" message="ACK Payload #[payload]" doc:name="Logger" />
-			<logger message=" Warnings during processing #[warnings]" level="WARN" doc:name="Logger" />
-			
+				<choice doc:name="Choice">
+						<when expression="flowVars['hasEnteredThisBefore'] != null">
+								<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
+								<vm:outbound-endpoint path="reply" doc:name="VM"/> 
+								<logger message="sending error ack #[payload:]"></logger>
+						</when>
+						<otherwise>
+						 <processor-chain doc:name="Processor Chain">
+							<set-payload value="#[originalhl7]" doc:name="Set Payload" />
+				                <set-variable variableName="hasEnteredThisBefore" value="&quot;yes&quot;" doc:name="Session Variable"/>
+							<logger level="ERROR" message="Payload is: #[payload]" doc:name="Logger" />
+							<choice doc:name="Choice">
+								<when expression="flowVars['messageId'] != null">
+									<tracking:custom-event event-name="Rejected Message" doc:name="Custom Business event">
+										<tracking:meta-data key="Message id" value="#[message.id]" />
+										<tracking:meta-data key="Payload" value="#[payload]" />
+										<tracking:meta-data key="ExceptionMessage" value="#[exception]" />
+									</tracking:custom-event>
+									<enricher doc:name="Message Enricher" target="variable:dummy">
+										<flow-ref name="messageErrorLogging" doc:name="Flow Reference" />
+									</enricher>
+								</when>
+								<otherwise>
+									<logger level="ERROR" message="Salesforce Connection error might have occoured" doc:name="Logger" />
+								</otherwise>
+							</choice>
+							<!-- <vm:outbound-endpoint path="DeadLetterQueue" doc:name="VM"/> -->
+							<!-- send to MMC -->
+							
+							<logger level="INFO" message="Sending email" doc:name="Logger" />
+					        <enricher doc:name="Message Enricher"  target="variable:dummy1">
+					        <processor-chain doc:name="Processor Chain">
+					          <set-payload value="Error processing HL7 document #[exception]" doc:name="Set Payload Error Message"/>
+					            <flow-ref name="sendemail" doc:name="Flow Reference"/>
+					           </processor-chain> 
+					          
+					        </enricher>
+					        
+					        <choice doc:name="Choice">
+								<when expression="#[exception.causedBy(org.mule.api.ConnectionException)]">
+								 <logger level="ERROR" message="NOT creating any log and replying to the main thread as cloverleaf is setup to retry only if it does not get anything back" doc:name="Logger" />
+								</when>
+								<when expression="#[exception.causedBy(org.mule.api.expression.ExpressionRuntimeException)]">
+									<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
+									<vm:outbound-endpoint path="reply" doc:name="VM"/> 
+								</when>
+								<otherwise>
+									<hl7:ack-component ackCode="AR" doc:name="HL7 ACK" />
+									<vm:outbound-endpoint path="reply" doc:name="VM"/> 
+								</otherwise>
+							</choice>
+							<logger level="INFO" message="ACK Payload #[payload]" doc:name="Logger" />
+							<logger message=" Warnings during processing #[warnings]" level="WARN" doc:name="Logger" />
+						</processor-chain>
+		</otherwise>
+		</choice>
+		  
 		</catch-exception-strategy>
     </flow>
 	

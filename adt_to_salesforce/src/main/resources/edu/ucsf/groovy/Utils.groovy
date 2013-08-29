@@ -86,7 +86,7 @@ class Utils {
 				ucsfIdSet.add(role.ucsfid)
 			} else {
 			logger.info("no ucsfid for" + role);
-			warnings.append(warnings).append(" no ucsfid for ").append(role).append("\n");
+			warnings.append(" no ucsfid for ").append(role).append("\n");
 				
 			}
 		}
