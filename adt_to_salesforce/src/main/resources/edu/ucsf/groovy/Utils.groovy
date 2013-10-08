@@ -4,6 +4,7 @@ import edu.ucsf.mule.domain.Role
 import java.sql.DatabaseMetaData
 import java.util.HashMap
 import java.util.Map
+import java.text.DateFormat;
 import java.text.SimpleDateFormat
 import java.text.ParseException
 
@@ -175,5 +176,31 @@ class Utils {
 
 	}
 
+	static getRolesToUpsertForDeactivation(saveRoles){
+		//hashset of Role external key which should be PVCareRoleKey__c of existing record if present.
+		def rolesToDeactivateList = new ArrayList<>()
+
+		for (role in saveRoles){
+			//set role isactive flag to false for inpatient providers
+			def newRole = HelperUtils.deepClone(role)
+			def clonedRole = (Map) HelperUtils.deepClone(newRole)
+			clonedRole.Active__c = false;
+			rolesToDeactivateList.add(clonedRole)
+		}
+		
+		return rolesToDeactivateList;
+	}
+	
+	static addAttending(payload, savedAttending){
+		//Adds Attending to the PV Role. Payload should be the list of roles
+	    if (savedAttending != null && payload != null){
+			DateFormat format1 = new SimpleDateFormat("yyyyMMddHHmm");
+			// There was a logic in Role where it took string date and converted to Date in the getDate method. mimicing same.
+			savedAttending.setStartDateString(format1.format(new Date()));
+			payload.add(savedAttending);
+		} 
+		return payload;
+	}
+		
 
 }

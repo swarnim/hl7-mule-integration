@@ -30,7 +30,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		securityToken="${salesforce.securitytoken}" url="${salesforce.endpoint}" doc:name="Salesforce">
 		<sfdc:connection-pooling-profile maxActive="10" maxIdle="10"
                              exhaustedAction="WHEN_EXHAUSTED_GROW" maxWait="120" minEvictionMillis="60000" evictionCheckIntervalMillis="30000" initialisationPolicy="INITIALISE_ONE"/>
-		<reconnect frequency="10000" count="50" />
+		<reconnect frequency="10000" count="50" /> 
 	</sfdc:config>
 	<hl7:connector name="hl7" doc:name="HL7 Connector">
 		<receiver-threading-profile maxBufferSize="30" maxThreadsActive="25" maxThreadsIdle="25" />
@@ -63,6 +63,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 	</catch-exception-strategy>
 	<!-- Dead Letter Queue Flow -->
 	<byte-array-to-string-transformer name="Byte_Array_to_StringForTCP" doc:name="Byte Array to String" />
+    <data-mapper:config name="attendingphysician_grf" transformationGraphPath="attendingphysician.grf" doc:name="DataMapper"/>
 
 	<flow name="ErrorHandlingFlow" doc:name="ErrorHandlingFlow">
 		<vm:inbound-endpoint path="DeadLetterQueue" doc:name="VM" />
@@ -174,6 +175,9 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 						</sfdc:upsert>
 						<logger message="Subflow Patient Visit + #[payload]" level="INFO" doc:name="Logger" />
 						<set-variable variableName="pVisitId" value="#[payload[0].Id]" doc:name="Set Patient visit Id" />
+                        <set-payload value="#[orginalXML]" doc:name="Set Payload to originalXML"/>
+                        <data-mapper:transform config-ref="attendingphysician_grf" doc:name="DataMapper"/>
+                        <set-variable variableName="savedAttending" value="#[payload:]" doc:name="savedAttending"/>
 					</when>
 					<otherwise>
 						<logger message="No Visit Id" level="INFO" doc:name="Logger" />
@@ -181,6 +185,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 				</choice>
 			</processor-chain>
 			<enrich source="#[flowVars.?savedPatientVisit]" target="#[flowVars['savedPatientVisit']]" />
+			<enrich source="#[flowVars.?savedAttending]" target="#[flowVars['savedAttending']]" />
 			<enrich source="#[flowVars.?pVisitId]" target="#[flowVars['pVisitId']]" />
 		</enricher>
 		<message-filter doc:name="Message">
@@ -240,9 +245,16 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		</choice>
 		
 		<set-variable variableName="saveRoles" value="#[payload]" doc:name="save current Roles" />
-	
-		<flow-ref name="getFinalRolesToUpsert" doc:name="Flow Reference" />
-	    <flow-ref name="addSalesforceNullField" doc:name="handle salesforce null" />
+        <choice doc:name="Choice">
+        	<when expression="#[groovy:roletype == 'inpatient' &amp;&amp; flowVars['eventType'] == 'A03']">
+        		<!-- If event type A03 (Discharge) and roletype inpatient -->
+        		<flow-ref name="getRolesToUpsertForDeactivation" doc:name="Flow Reference"/>
+        	</when>
+            <otherwise>
+                <flow-ref name="getFinalRolesToUpsert" doc:name="Flow Reference"/>
+                <flow-ref name="addSalesforceNullField" doc:name="handle salesforce null"/>
+            </otherwise>
+        </choice>
 		<choice doc:name="Choice">
 			<when expression="roletype == 'inpatient'">
 				<sfdc:upsert config-ref="UCSF_SF_Connection" externalIdFieldName="ExternalKey__c" type="ADT_Patient_Visit_Care_Role__c"
@@ -327,7 +339,15 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 			<mulexml:context-property key="roletype" value="#[flowVars['roletype']]" />
 		</mulexml:xslt-transformer>
 		<data-mapper:transform config-ref="maproletoobject_grf" doc:name="DataMapper" />
-		<set-variable variableName="patientADTROLs" value="#[payload:]" doc:name="patientRolsVariable" />
+        <choice doc:name="Choice">
+            <when expression="#[groovy:roletype == 'inpatient']">
+             	<flow-ref name="addAttending" doc:name="Flow Reference"/>
+             	 <set-variable variableName="patientADTROLs" value="#[payload:]" doc:name="patientRolsVariable"/>
+            </when>
+            <otherwise>
+                <set-variable variableName="patientADTROLs" value="#[payload:]" doc:name="patientRolsVariable"/>
+            </otherwise>
+        </choice>
 	</sub-flow>
 	<sub-flow name="SaveADT" doc:name="SaveADT">
 		<sfdc:create-single config-ref="UCSF_SF_Connection" type="ADT_Message__c" doc:name="Salesforce">
@@ -431,6 +451,8 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 					<flow-ref name="messageUnsupportedLogging" doc:name="Flow Reference" doc:description="logging"/>
 					</processor-chain>
 				</enricher>
+				<set-payload value="#[originalhl7]" doc:name="Set Payload" />
+				<hl7:ack-component ackCode="AA" doc:name="HL7 ACK" />				
 			</when>
 			<otherwise>
 				<enricher doc:name="Enricher PatientFlow">
@@ -465,7 +487,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 						<when expression="flowVars['hasEnteredThisBefore'] != null">
 								<hl7:ack-component ackCode="AE" doc:name="HL7 ACK" />
 								<vm:outbound-endpoint path="reply" doc:name="VM"/> 
-								<logger message="sending error ack #[payload:]"></logger>
+								<logger message="sending error ack #[payload:]" doc:name="Logger"></logger>
 						</when>
 						<otherwise>
 						 <processor-chain doc:name="Processor Chain">
