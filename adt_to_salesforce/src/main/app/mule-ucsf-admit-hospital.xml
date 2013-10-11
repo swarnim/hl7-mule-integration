@@ -30,7 +30,7 @@ http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/m
 		securityToken="${salesforce.securitytoken}" url="${salesforce.endpoint}" doc:name="Salesforce">
 		<sfdc:connection-pooling-profile maxActive="10" maxIdle="10"
                              exhaustedAction="WHEN_EXHAUSTED_GROW" maxWait="120" minEvictionMillis="60000" evictionCheckIntervalMillis="30000" initialisationPolicy="INITIALISE_ONE"/>
-		<reconnect frequency="10000" count="50"/> 
+		<reconnect frequency="10000" count="50" /> 
 	</sfdc:config>
 	<hl7:connector name="hl7" doc:name="HL7 Connector">
 		<receiver-threading-profile maxBufferSize="30" maxThreadsActive="25" maxThreadsIdle="25" />
