@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat
 import java.text.ParseException
 
 import org.jbpm.pvm.internal.wire.binding.FalseBinding;
+import org.mule.transport.NullPayload;
 class Utils {
 	static final org.slf4j.Logger  logger = org.slf4j.LoggerFactory.getLogger('edu.ucsf.groovy.Utils')
 	static blankMapValue(data) {
@@ -193,7 +194,7 @@ class Utils {
 	
 	static addAttending(payload, savedAttending){
 		//Adds Attending to the PV Role. Payload should be the list of roles
-	    if (savedAttending != null && payload != null){
+	    if (savedAttending != null && payload != null && !(savedAttending instanceof NullPayload)){
 			DateFormat format1 = new SimpleDateFormat("yyyyMMddHHmm");
 			// There was a logic in Role where it took string date and converted to Date in the getDate method. mimicing same.
 			savedAttending.setStartDateString(format1.format(new Date()));
